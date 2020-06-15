@@ -1,0 +1,9 @@
+/application.yml
+.idea/
+/aqts-capture-discrete-loader.iml
+/.env
+.settings/
+target/
+/.attach_pid*
+/.classpath
+/.project
