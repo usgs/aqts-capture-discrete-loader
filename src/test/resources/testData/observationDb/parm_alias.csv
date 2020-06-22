@@ -1,0 +1,8 @@
+"parm_cd","parm_alias_cd","parm_alias_nm","parm_alias_init_dt","parm_alias_init_nm","parm_alias_rev_dt","parm_alias_rev_nm"
+"61055","AQNAME","Water level, depth MP","2015-09-10","sbarthol","2016-04-06","pearsall"
+"61055","AQPARM","AQ208","2015-09-10","sbarthol","2015-09-10","sbarthol"
+"61055","AQUNIT","ft","2015-09-10","sbarthol","2015-09-10","sbarthol"
+"61055","SRSID","52457231","2007-01-31","jon","2007-01-31","jon"
+"61055","SRSNAME","Water level in well, depth from a reference point","2007-01-31","jon","2007-01-31","jon"
+"61055","WEB","Water level, depth below measuring point, ft","2010-03-29","pearsall","2010-03-29","pearsall"
+"61055","WQPCROSSWALK","Water level in well, depth from a reference point","2014-10-03","pearsall","2014-10-03","pearsall"

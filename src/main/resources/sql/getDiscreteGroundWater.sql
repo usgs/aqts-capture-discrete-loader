@@ -1,5 +1,5 @@
 select
-    field_visit_identifier
+    field_visit_identifier,
     location_identifier,
     start_time,
     end_time,
@@ -31,5 +31,4 @@ select
 from
     discrete_ground_water
 where
-    /*TODO not sure what this where clause should hold... probably not json_data_id at this stage...*/
     field_visit_identifier = ?

@@ -70,20 +70,25 @@ public class LoadDiscreteGroundWater implements Function<RequestObject, ResultOb
 	}
 
 	@Transactional
-	public void loadDiscreteGroundWaterIntoObservationDb (List<DiscreteGroundWater> discreteGroundWaterList, ResultObject result, String discreteGroundWaterUniqueId) {
+	public void loadDiscreteGroundWaterIntoObservationDb (List<DiscreteGroundWater> discreteGroundWaterList, ResultObject result, String fieldVisitIdentifier) {
 		// first delete existing discrete gw levels from observation db
-		observationDao.deleteDiscreteGroundWater(discreteGroundWaterUniqueId);
+		for (DiscreteGroundWater discreteGroundWater : discreteGroundWaterList) {
+			observationDao.deleteDiscreteGroundWater(
+					"USGS-" + discreteGroundWater.getLocationIdentifier(),
+					discreteGroundWater.getFieldVisitTime());
+		}
+
 
 		// insert discrete gw levels into observation db
-		int count = observationDao.insertDiscreteGroundWater(discreteGroundWaterUniqueId, discreteGroundWaterList);
+		int count = observationDao.insertDiscreteGroundWater(fieldVisitIdentifier, discreteGroundWaterList);
 		result.setCount(count);
 
 		if (count == discreteGroundWaterList.size() && count != 0) {
 			result.setStatus(STATUS_SUCCESS);
-			LOG.debug(String.format(STATUS_SUCCESS_MESSAGE, discreteGroundWaterUniqueId));
+			LOG.debug(String.format(STATUS_SUCCESS_MESSAGE, fieldVisitIdentifier));
 		} else {
 			result.setStatus(STATUS_FAIL);
-			String failMessageInsertFailed = String.format(FAIL_MESSAGE_INSERT_FAILED, discreteGroundWaterList.size(), count, discreteGroundWaterUniqueId);
+			String failMessageInsertFailed = String.format(FAIL_MESSAGE_INSERT_FAILED, discreteGroundWaterList.size(), count, fieldVisitIdentifier);
 			result.setFailMessage(failMessageInsertFailed);
 			LOG.debug(failMessageInsertFailed);
 		}

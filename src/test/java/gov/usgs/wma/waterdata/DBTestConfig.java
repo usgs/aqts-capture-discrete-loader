@@ -68,6 +68,7 @@ public class DBTestConfig {
 		DatabaseConfigBean dbUnitDbConfig = new DatabaseConfigBean();
 		dbUnitDbConfig.setDatatypeFactory(new TSDataTypeFactory());
 		dbUnitDbConfig.setTableType(new String[] {"PARTITIONED TABLE", "TABLE"});
+		dbUnitDbConfig.setAllowEmptyFields(true);
 		return dbUnitDbConfig;
 	}
 

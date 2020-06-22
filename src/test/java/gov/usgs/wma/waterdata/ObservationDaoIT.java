@@ -33,7 +33,7 @@ public class ObservationDaoIT extends BaseTestDao {
 			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testDelete() {
 		// delete existing data
-		Integer actualRowsDeletedCount = observationDao.deleteDiscreteGroundWater(request.getId());
+		Integer actualRowsDeletedCount = observationDao.deleteDiscreteGroundWater("USGS-" + discreteGroundWater1.getLocationIdentifier(), discreteGroundWater1.getFieldVisitTime());
 		assertNotNull(actualRowsDeletedCount);
 		Integer expectedRowsDeletedCount = 3;
 		assertEquals(expectedRowsDeletedCount, actualRowsDeletedCount);

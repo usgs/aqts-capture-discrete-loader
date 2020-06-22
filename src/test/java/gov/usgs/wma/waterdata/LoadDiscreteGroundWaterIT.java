@@ -37,7 +37,6 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			connection="observation")
 	public void testInsert() {
-
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
 		Integer expectedCount = 3;
 		assertEquals(expectedCount, result.getCount());
