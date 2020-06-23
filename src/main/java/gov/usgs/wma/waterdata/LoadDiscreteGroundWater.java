@@ -74,10 +74,9 @@ public class LoadDiscreteGroundWater implements Function<RequestObject, ResultOb
 		// first delete existing discrete gw levels from observation db
 		for (DiscreteGroundWater discreteGroundWater : discreteGroundWaterList) {
 			observationDao.deleteDiscreteGroundWater(
-					"USGS-" + discreteGroundWater.getLocationIdentifier(),
+					discreteGroundWater.getMonitoringLocationIdentifier(),
 					discreteGroundWater.getFieldVisitTime());
 		}
-
 
 		// insert discrete gw levels into observation db
 		int count = observationDao.insertDiscreteGroundWater(fieldVisitIdentifier, discreteGroundWaterList);

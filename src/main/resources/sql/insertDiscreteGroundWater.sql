@@ -23,29 +23,30 @@ select monitoring_location.monitoring_location_id,
        monitoring_location.hole_depth,
        monitoring_location.local_aquifer,
        monitoring_location.local_aquifer_type,
-       /* TODO everything from gw_levels will be coming from the discreteGroundWaterObject/AQTS side rather than the gw_levels table*/
+       /* TODO everything below comes from AQTS */
        ? date_measured_raw,
-       null timezone_code,
-       null timezone_offset,
+       'UTC' timezone_code, /* this can't be null but isn't explicity defined. Is everything from AQTS in utc? */
+       null timezone_offset, /* this may not come in with many of the measurement times */
        ? parameter_code,
-       ?::date date_measured, /* 10 character limit in observation db table, needs to be a date, not a timestamp */
-       null time_measured_utc, /* 8 character limit and just the time, but we need an offset to calculate it, do we have the offset?*/
-       ? level_feet_below_land_surface, /* This is coming in as a json string (numeric: blah, display: blah) - need to parse out just the display value - also we don't have a datum to make this calc... */ */
-       ? level_feet_above_vertical_datum,  /* This is coming in as a json string (numeric: blah, display: blah) - need to parse out just the display value - also we don't have a datum to make this calc... */
+       ?::date date_measured,
+       ?::time time_measured_utc, /* 8 character limit and just the time, but we need an offset to calculate it, do we have the offset?*/
+       null level_feet_below_land_surface,
+       ? level_feet_above_vertical_datum,  /* right now param code 61055 is our only parm, which is above datum */
        null vertical_datum_code,
        null vertical_datum,
        null site_status_code,
        null site_status,
-       null measuring_agency_code,
+       ? measuring_agency_code,
        null measuring_agency,
        null date_time_accuracy_code,
        null date_time_accuracy,
        null level_accuracy_code,
-       ? level_accuracy, /* This is coming in as a json string (numeric: blah, display: blah) - need to parse out just the display value */
+       ? level_accuracy, /* uncertainty */
        null measurement_source_code,
        null measurement_source,
        null measurement_method_code,
        ? measurement_method,
        null approval_status_code,
        null approval_status
-from monitoring_location;
+from monitoring_location
+	where monitoring_location.monitoring_location_identifier = ?;

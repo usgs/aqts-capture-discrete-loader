@@ -13,6 +13,7 @@ public class DiscreteGroundWaterRowMapper implements RowMapper<DiscreteGroundWat
 
 		discreteGroundWater.setFieldVisitIdentifier(rs.getString("field_visit_identifier"));
 		discreteGroundWater.setLocationIdentifier(rs.getString("location_identifier"));
+		discreteGroundWater.setAgencyCode(rs.getString("agency_code"));
 		discreteGroundWater.setStartTime(rs.getTimestamp("start_time"));
 		discreteGroundWater.setEndTime(rs.getTimestamp("end_time"));
 		discreteGroundWater.setParty(rs.getString("party"));

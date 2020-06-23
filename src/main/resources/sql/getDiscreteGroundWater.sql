@@ -1,6 +1,7 @@
 select
     field_visit_identifier,
-    location_identifier,
+	(regexp_match(location_identifier, '(\d*)-*(.*)'))[1] location_identifier, /*  This is the numeric portion of the aqts location identifier */
+	coalesce(nullif((regexp_match(location_identifier, '(\d*)-*(.*)'))[2], ''), 'USGS') agency_code, /* If there is a hyphen followed by any other text at the end of the identifier number, use it or default to USGS  */
     start_time,
     end_time,
     party,

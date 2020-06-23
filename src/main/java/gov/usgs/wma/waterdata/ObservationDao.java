@@ -65,12 +65,16 @@ public class ObservationDao {
                         public void setValues(PreparedStatement ps, int i) throws SQLException {
                             // TODO: not needed on the observation db side? ps.setString(1, discreteGroundWater.get(i).getFieldVisitIdentifier());
                             ps.setTimestamp(1, discreteGroundWater.get(i).getFieldVisitTime());
+//                            ps.setTimestamp(2, discreteGroundWater.get(i).getFieldVisitTime());
                             ps.setString(2, discreteGroundWater.get(i).getParmCd());
                             ps.setTimestamp(3, discreteGroundWater.get(i).getFieldVisitTime());
-                            ps.setString(4, discreteGroundWater.get(i).getFieldVisitValue());
+                            ps.setTimestamp(4, discreteGroundWater.get(i).getFieldVisitTime());
                             ps.setString(5, discreteGroundWater.get(i).getFieldVisitValue());
-                            ps.setString(6, discreteGroundWater.get(i).getUncertainty());
-                            ps.setString(7, discreteGroundWater.get(i).getMonitoringMethod());
+                            ps.setString(6, discreteGroundWater.get(i).getAgencyCode());
+                            ps.setString(7, discreteGroundWater.get(i).getUncertainty());
+                            ps.setString(8, discreteGroundWater.get(i).getMonitoringMethod());
+
+                            ps.setString(9, discreteGroundWater.get(i).getMonitoringLocationIdentifier());
 
 //                            ps.setString(2, discreteGroundWater.get(i).getLocationIdentifier());
 //                            ps.setTimestamp(3, discreteGroundWater.get(i).getStartTime());

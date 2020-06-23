@@ -7,6 +7,7 @@ public class DiscreteGroundWater {
 
 	String fieldVisitIdentifier;
 	String locationIdentifier;
+	String agencyCode;
 	Timestamp startTime;
 	Timestamp endTime;
 	String party;
@@ -49,6 +50,18 @@ public class DiscreteGroundWater {
 
 	public void setLocationIdentifier(String locationIdentifier) {
 		this.locationIdentifier = locationIdentifier;
+	}
+
+	public String getAgencyCode() {
+		return agencyCode;
+	}
+
+	public void setAgencyCode(String agencyCode) {
+		this.agencyCode = agencyCode;
+	}
+
+	public String getMonitoringLocationIdentifier() {
+		return agencyCode + '-' + locationIdentifier;
 	}
 
 	public Timestamp getStartTime() {
@@ -273,6 +286,7 @@ public class DiscreteGroundWater {
 		DiscreteGroundWater that = (DiscreteGroundWater) object;
 		return java.util.Objects.equals(fieldVisitIdentifier, that.fieldVisitIdentifier) &&
 				java.util.Objects.equals(locationIdentifier, that.locationIdentifier) &&
+				java.util.Objects.equals(agencyCode, that.agencyCode) &&
 				java.util.Objects.equals(startTime, that.startTime) &&
 				java.util.Objects.equals(endTime, that.endTime) &&
 				java.util.Objects.equals(party, that.party) &&
@@ -306,6 +320,7 @@ public class DiscreteGroundWater {
 		return Objects.hash(
 				fieldVisitIdentifier,
 				locationIdentifier,
+				agencyCode,
 				startTime,
 				endTime,
 				party,
