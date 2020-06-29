@@ -34,16 +34,26 @@ public class ObservationDao {
     protected Resource insertQuery;
 
     @Transactional
-    public Integer deleteDiscreteGroundWater(String fieldVisitIdentifier) {
-        Integer rowsDeletedCount = null;
+    public Integer deleteDiscreteGroundWater(List<DiscreteGroundWater> discreteGroundWaterList) {
+        int rowsDeletedCount = 0;
         try {
             String sql = new String(FileCopyUtils.copyToByteArray(deleteQuery.getInputStream()));
-            rowsDeletedCount = jdbcTemplate.update(
+            int [] rowsDeletedCounts = jdbcTemplate.batchUpdate(
                     sql,
-                    fieldVisitIdentifier
+                    new BatchPreparedStatementSetter() {
+                        @Override
+                        public void setValues(PreparedStatement ps, int i) throws SQLException {
+                            ps.setString(1, discreteGroundWaterList.get(i).getFieldVisitIdentifier());
+                        }
+                        @Override
+                        public int getBatchSize() {
+                            return discreteGroundWaterList.size();
+                        }
+                    }
             );
+            rowsDeletedCount = Arrays.stream(rowsDeletedCounts).sum();
         } catch (EmptyResultDataAccessException e) {
-            LOG.info("Couldn't find {} - {}", fieldVisitIdentifier, e.getLocalizedMessage());
+            LOG.info(e.getLocalizedMessage());
         } catch (IOException e) {
             LOG.error("Unable to get SQL statement", e);
             throw new RuntimeException(e);
@@ -52,7 +62,7 @@ public class ObservationDao {
     }
 
     @Transactional
-    public int insertDiscreteGroundWater(List<DiscreteGroundWater> discreteGroundWater) {
+    public int insertDiscreteGroundWater(List<DiscreteGroundWater> discreteGroundWaterList) {
         int rowsInsertedCount = 0;
         try {
             String sql = new String(FileCopyUtils.copyToByteArray(insertQuery.getInputStream()));
@@ -61,20 +71,20 @@ public class ObservationDao {
                     new BatchPreparedStatementSetter() {
                         @Override
                         public void setValues(PreparedStatement ps, int i) throws SQLException {
-                            ps.setString(1, discreteGroundWater.get(i).getFieldVisitIdentifier());
-                            ps.setTimestamp(2, discreteGroundWater.get(i).getFieldVisitTime());
-                            ps.setString(3, discreteGroundWater.get(i).getParmCd());
-                            ps.setTimestamp(4, discreteGroundWater.get(i).getFieldVisitTime());
-                            ps.setTimestamp(5, discreteGroundWater.get(i).getFieldVisitTime());
-                            ps.setString(6, discreteGroundWater.get(i).getFieldVisitValue());
-                            ps.setString(7, discreteGroundWater.get(i).getAgencyCode());
-                            ps.setString(8, discreteGroundWater.get(i).getUncertainty());
-                            ps.setString(9, discreteGroundWater.get(i).getMonitoringMethod());
-                            ps.setString(10, discreteGroundWater.get(i).getMonitoringLocationIdentifier());
+                            ps.setString(1, discreteGroundWaterList.get(i).getFieldVisitIdentifier());
+                            ps.setTimestamp(2, discreteGroundWaterList.get(i).getFieldVisitTime());
+                            ps.setString(3, discreteGroundWaterList.get(i).getParmCd());
+                            ps.setTimestamp(4, discreteGroundWaterList.get(i).getFieldVisitTime());
+                            ps.setTimestamp(5, discreteGroundWaterList.get(i).getFieldVisitTime());
+                            ps.setString(6, discreteGroundWaterList.get(i).getFieldVisitValue());
+                            ps.setString(7, discreteGroundWaterList.get(i).getAgencyCode());
+                            ps.setString(8, discreteGroundWaterList.get(i).getUncertainty());
+                            ps.setString(9, discreteGroundWaterList.get(i).getMonitoringMethod());
+                            ps.setString(10, discreteGroundWaterList.get(i).getMonitoringLocationIdentifier());
                         }
                         @Override
                         public int getBatchSize() {
-                            return discreteGroundWater.size();
+                            return discreteGroundWaterList.size();
                         }
                     }
             );

@@ -71,7 +71,7 @@ public class LoadDiscreteGroundWaterTest {
 		genericDiscreteGroundWaterList.add(genericDiscreteGroundWater2);
 		when(transformDao.getDiscreteGroundWater(anyList())).thenReturn(genericDiscreteGroundWaterList);
 		// delete succeeds
-		when(observationDao.deleteDiscreteGroundWater(anyString())).thenReturn(2);
+		when(observationDao.deleteDiscreteGroundWater(anyList())).thenReturn(2);
 		// insert fails
 		when(observationDao.insertDiscreteGroundWater(anyList())).thenReturn(0);
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
@@ -96,7 +96,7 @@ public class LoadDiscreteGroundWaterTest {
 		// 2 time steps returned
 		when(transformDao.getDiscreteGroundWater(anyList())).thenReturn(genericDiscreteGroundWaterList);
 		// delete succeeds
-		when(observationDao.deleteDiscreteGroundWater(anyString())).thenReturn(2);
+		when(observationDao.deleteDiscreteGroundWater(anyList())).thenReturn(2);
 		// insert succeeds
 		when(observationDao.insertDiscreteGroundWater(anyList())).thenReturn(2);
 		ResultObject result = loadDiscreteGroundWater.apply(request);
@@ -114,7 +114,7 @@ public class LoadDiscreteGroundWaterTest {
 		// 2 time steps returned
 		when(transformDao.getDiscreteGroundWater(anyList())).thenReturn(genericDiscreteGroundWaterList);
 		// nothing to delete
-		when(observationDao.deleteDiscreteGroundWater(anyString())).thenReturn(0);
+		when(observationDao.deleteDiscreteGroundWater(anyList())).thenReturn(0);
 		// insert succeeds
 		when(observationDao.insertDiscreteGroundWater(anyList())).thenReturn(2);
 		ResultObject result = loadDiscreteGroundWater.apply(request);

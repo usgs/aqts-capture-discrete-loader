@@ -39,8 +39,13 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			connection="observation")
 	public void testInsert() {
+		request.setFieldVisitIdentifiers(List.of(
+				FIELD_VISIT_IDENTIFIER_1
+				,FIELD_VISIT_IDENTIFIER_2
+				,FIELD_VISIT_IDENTIFIER_3
+				,FIELD_VISIT_IDENTIFIER_4));
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
-		Integer expectedCount = 1;
+		Integer expectedCount = 4;
 		assertEquals(expectedCount, result.getCount());
 		assertEquals(LoadDiscreteGroundWater.STATUS_SUCCESS, result.getStatus());
 		assertNull(result.getFailMessage());
@@ -55,9 +60,13 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			connection="observation")
 	public void testReplace() {
-
+		request.setFieldVisitIdentifiers(List.of(
+				FIELD_VISIT_IDENTIFIER_1
+				,FIELD_VISIT_IDENTIFIER_2
+				,FIELD_VISIT_IDENTIFIER_3
+				,FIELD_VISIT_IDENTIFIER_4));
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
-		Integer expectedCount = 1;
+		Integer expectedCount = 4;
 		assertEquals(expectedCount, result.getCount());
 		assertEquals(LoadDiscreteGroundWater.STATUS_SUCCESS, result.getStatus());
 		assertNull(result.getFailMessage());

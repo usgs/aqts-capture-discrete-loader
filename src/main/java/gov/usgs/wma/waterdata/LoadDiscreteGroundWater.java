@@ -21,8 +21,8 @@ public class LoadDiscreteGroundWater implements Function<RequestObject, ResultOb
 	public static final String FAIL_MESSAGE_NULL_IDENTIFIER = "field visit identifier was null";
 	public static final String FAIL_MESSAGE_INSERT_FAILED = "Selected row count: %s and inserted row count: %s differ, insert failed for field visit identifiers: %s";
 
-	private TransformDao transformDao;
-	private ObservationDao observationDao;
+	private final TransformDao transformDao;
+	private final ObservationDao observationDao;
 
 	@Autowired
 	public LoadDiscreteGroundWater(TransformDao transformDao, ObservationDao observationDao) {
@@ -71,9 +71,7 @@ public class LoadDiscreteGroundWater implements Function<RequestObject, ResultOb
 	@Transactional
 	public void loadDiscreteGroundWaterIntoObservationDb (List<DiscreteGroundWater> discreteGroundWaterList, ResultObject result, List<String> fieldVisitIdentifiers) {
 		// first delete existing discrete gw levels from observation db
-		for (DiscreteGroundWater discreteGroundWater : discreteGroundWaterList) {
-			observationDao.deleteDiscreteGroundWater(discreteGroundWater.getFieldVisitIdentifier());
-		}
+		observationDao.deleteDiscreteGroundWater(discreteGroundWaterList);
 
 		// insert discrete gw levels into observation db
 		int count = observationDao.insertDiscreteGroundWater(discreteGroundWaterList);

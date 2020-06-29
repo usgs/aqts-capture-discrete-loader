@@ -33,9 +33,14 @@ public class ObservationDaoIT extends BaseTestDao {
 			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testDelete() {
 		// delete existing data
-		Integer actualRowsDeletedCount = observationDao.deleteDiscreteGroundWater(discreteGroundWater1.getFieldVisitIdentifier());
+		Integer actualRowsDeletedCount = observationDao.deleteDiscreteGroundWater(
+				List.of(
+						discreteGroundWater1
+						,discreteGroundWater2
+						,discreteGroundWater3
+						,discreteGroundWater4));
 		assertNotNull(actualRowsDeletedCount);
-		assertEquals(1, actualRowsDeletedCount);
+		assertEquals(4, actualRowsDeletedCount);
 	}
 
 	@Test
@@ -51,8 +56,12 @@ public class ObservationDaoIT extends BaseTestDao {
 			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testInsert() {
 		// insert new data
-		Integer actualRowsInsertedCount = observationDao.insertDiscreteGroundWater(List.of(discreteGroundWater1));
+		Integer actualRowsInsertedCount = observationDao.insertDiscreteGroundWater(List.of(
+				discreteGroundWater1
+				,discreteGroundWater2
+				,discreteGroundWater3
+				,discreteGroundWater4));
 		assertNotNull(actualRowsInsertedCount);
-		assertEquals(1, actualRowsInsertedCount);
+		assertEquals(4, actualRowsInsertedCount);
 	}
 }

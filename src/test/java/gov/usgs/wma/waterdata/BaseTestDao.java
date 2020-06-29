@@ -1,7 +1,6 @@
 package gov.usgs.wma.waterdata;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -48,7 +47,7 @@ public abstract class BaseTestDao {
 	public void setup() {
 		request = new RequestObject();
 		// just a default option
-		request.setFieldVisitIdentifiers(List.of(FIELD_VISIT_IDENTIFIER_1));
+//		request.setFieldVisitIdentifiers(List.of(FIELD_VISIT_IDENTIFIER_1));
 
 		discreteGroundWater1 = new DiscreteGroundWater();
 		discreteGroundWater1.setFieldVisitIdentifier(FIELD_VISIT_IDENTIFIER_1);
