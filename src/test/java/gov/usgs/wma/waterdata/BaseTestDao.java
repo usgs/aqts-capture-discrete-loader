@@ -46,8 +46,6 @@ public abstract class BaseTestDao {
 	@BeforeEach
 	public void setup() {
 		request = new RequestObject();
-		// just a default option
-//		request.setFieldVisitIdentifiers(List.of(FIELD_VISIT_IDENTIFIER_1));
 
 		discreteGroundWater1 = new DiscreteGroundWater();
 		discreteGroundWater1.setFieldVisitIdentifier(FIELD_VISIT_IDENTIFIER_1);

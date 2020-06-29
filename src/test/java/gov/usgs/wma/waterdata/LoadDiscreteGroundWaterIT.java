@@ -33,9 +33,9 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 	@Test
 	@DatabaseSetup(
 			connection="observation",
-			value="classpath:/testResult/observationDb/discreteGroundWaterAQTS/empty/")
+			value="classpath:/testResult/empty/")
 	@ExpectedDatabase(
-			value="classpath:/testResult/observationDb/discreteGroundWaterAQTS/afterInsert/",
+			value="classpath:/testResult/afterInsert/",
 			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			connection="observation")
 	public void testInsertNewData() {
@@ -54,9 +54,9 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 	@Test
 	@DatabaseSetup(
 			connection="observation",
-			value="classpath:/testResult/observationDb/discreteGroundWaterAQTS/afterInsert/")
+			value="classpath:/testResult/afterInsert/")
 	@ExpectedDatabase(
-			value="classpath:/testResult/observationDb/discreteGroundWaterAQTS/afterInsert/",
+			value="classpath:/testResult/afterInsert/",
 			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			connection="observation")
 	public void testReplaceExistingData() {
@@ -75,11 +75,11 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 	@Test
 	@DatabaseSetup(
 			connection="observation",
-			value="classpath:/testResult/observationDb/discreteGroundWaterAQTS/empty/")
+			value="classpath:/testResult/empty/")
 	@ExpectedDatabase(
-			value="classpath:/testResult/observationDb/discreteGroundWaterAQTS/empty/",
-			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			connection="observation")
+			connection="observation",
+			value="classpath:/testResult/empty/",
+			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testNoRecordsFound() {
 		request.setFieldVisitIdentifiers(List.of(BAD_FIELD_VISIT_IDENTIFIER));
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
@@ -93,11 +93,11 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 	@Test
 	@DatabaseSetup(
 			connection="observation",
-			value="classpath:/testResult/observationDb/discreteGroundWaterAQTS/empty/")
+			value="classpath:/testResult/empty/")
 	@ExpectedDatabase(
-			value="classpath:/testResult/observationDb/discreteGroundWaterAQTS/empty/",
-			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			connection="observation")
+			connection="observation",
+			value="classpath:/testResult/empty/",
+			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testNullUniqueId() {
 		request.setFieldVisitIdentifiers(null);
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);

@@ -10,7 +10,6 @@ public class DiscreteGroundWaterRowMapper implements RowMapper<DiscreteGroundWat
 	@Override
 	public DiscreteGroundWater mapRow(ResultSet rs, int rowNum) throws SQLException {
 		DiscreteGroundWater discreteGroundWater = new DiscreteGroundWater();
-
 		discreteGroundWater.setFieldVisitIdentifier(rs.getString("field_visit_identifier"));
 		discreteGroundWater.setLocationIdentifier(rs.getString("location_identifier"));
 		discreteGroundWater.setAgencyCode(rs.getString("agency_code"));

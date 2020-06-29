@@ -35,11 +35,10 @@ public class TransformDaoIT extends BaseTestDao {
 	@Test
 	public void testGet() {
 		// get new data, return list of discrete gw objects
-		request.setFieldVisitIdentifiers(
-				List.of(
-					FIELD_VISIT_IDENTIFIER_1,
-					FIELD_VISIT_IDENTIFIER_2,
-					FIELD_VISIT_IDENTIFIER_3));
+		request.setFieldVisitIdentifiers(List.of(
+				FIELD_VISIT_IDENTIFIER_1,
+				FIELD_VISIT_IDENTIFIER_2,
+				FIELD_VISIT_IDENTIFIER_3));
 		List<DiscreteGroundWater> actualData = transformDao.getDiscreteGroundWater(request.getFieldVisitIdentifiers());
 		assertNotNull(actualData);
 		assertEquals(discreteGroundWaterList, actualData);
@@ -48,12 +47,11 @@ public class TransformDaoIT extends BaseTestDao {
 	@Test
 	public void testGetIncludingOneBadIdentifier() {
 		// get new data, return list of discrete gw objects, bad identifier should not affect query outcome
-		request.setFieldVisitIdentifiers(
-				List.of(
-					FIELD_VISIT_IDENTIFIER_1,
-					FIELD_VISIT_IDENTIFIER_2,
-					FIELD_VISIT_IDENTIFIER_3,
-					BAD_FIELD_VISIT_IDENTIFIER));
+		request.setFieldVisitIdentifiers(List.of(
+				FIELD_VISIT_IDENTIFIER_1,
+				FIELD_VISIT_IDENTIFIER_2,
+				FIELD_VISIT_IDENTIFIER_3,
+				BAD_FIELD_VISIT_IDENTIFIER));
 		List<DiscreteGroundWater> actualData = transformDao.getDiscreteGroundWater(request.getFieldVisitIdentifiers());
 		assertNotNull(actualData);
 		assertEquals(discreteGroundWaterList, actualData);

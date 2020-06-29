@@ -26,12 +26,12 @@ select monitoring_location.monitoring_location_id,
        /* TODO everything below comes from AQTS */
        ? field_visit_identifier,
        ? date_measured_raw,
-       'UTC' timezone_code, /* this can't be null but isn't explicity defined. Is everything from AQTS in utc? */
-       null timezone_offset, /* this may not come in with many of the measurement times */
+       'UTC' timezone_code, /* Everything from AQTS in UTC */
+       null timezone_offset,
        ? parameter_code,
        ?::date date_measured,
-       ?::time time_measured_utc, /* 8 character limit and just the time, but we need an offset to calculate it, do we have the offset?*/
-       ? display_result,  /* right now param code 61055 is our only parm, which is above datum */
+       ?::time time_measured_utc,
+       ? display_result,
        null vertical_datum_code,
        null vertical_datum,
        /* Status may come from the monitoring_location table in the obs db */
@@ -47,7 +47,6 @@ select monitoring_location.monitoring_location_id,
        /* This will come in through the comments field as something like Source: Reporting Agency */
        null measurement_source_code,
        null measurement_source,
-       /* this may be like the parm_cd to parameter description mappings i.e. 61055 = depth to surface, MP, but more like steel tape = someCode */
        null measurement_method_code,
        ? measurement_method,
        null approval_status_code,

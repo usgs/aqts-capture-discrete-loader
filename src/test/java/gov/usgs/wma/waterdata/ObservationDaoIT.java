@@ -26,19 +26,18 @@ public class ObservationDaoIT extends BaseTestDao {
 	@Test
 	@DatabaseSetup(
 			connection="observation",
-			value="classpath:/testResult/observationDb/discreteGroundWaterAQTS/afterInsert/")
+			value="classpath:/testResult/afterInsert/")
 	@ExpectedDatabase(
 			connection="observation",
-			value="classpath:/testResult/observationDb/discreteGroundWaterAQTS/empty/",
+			value="classpath:/testResult/empty/",
 			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testDelete() {
 		// delete existing data
-		Integer actualRowsDeletedCount = observationDao.deleteDiscreteGroundWater(
-				List.of(
-						discreteGroundWater1
-						,discreteGroundWater2
-						,discreteGroundWater3
-						,discreteGroundWater4));
+		Integer actualRowsDeletedCount = observationDao.deleteDiscreteGroundWater(List.of(
+				discreteGroundWater1,
+				discreteGroundWater2,
+				discreteGroundWater3,
+				discreteGroundWater4));
 		assertNotNull(actualRowsDeletedCount);
 		assertEquals(4, actualRowsDeletedCount);
 	}
@@ -49,18 +48,18 @@ public class ObservationDaoIT extends BaseTestDao {
 			value="classpath:/testData/observationDb/")
 	@DatabaseSetup(
 			connection="observation",
-			value="classpath:/testResult/observationDb/discreteGroundWaterAQTS/empty/")
+			value="classpath:/testResult/empty/")
 	@ExpectedDatabase(
 			connection="observation",
-			value="classpath:/testResult/observationDb/discreteGroundWaterAQTS/afterInsert/",
+			value="classpath:/testResult/afterInsert/",
 			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testInsert() {
 		// insert new data
 		Integer actualRowsInsertedCount = observationDao.insertDiscreteGroundWater(List.of(
-				discreteGroundWater1
-				,discreteGroundWater2
-				,discreteGroundWater3
-				,discreteGroundWater4));
+				discreteGroundWater1,
+				discreteGroundWater2,
+				discreteGroundWater3,
+				discreteGroundWater4));
 		assertNotNull(actualRowsInsertedCount);
 		assertEquals(4, actualRowsInsertedCount);
 	}

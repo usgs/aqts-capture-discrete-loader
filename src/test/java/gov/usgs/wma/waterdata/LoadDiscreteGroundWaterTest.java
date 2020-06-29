@@ -93,7 +93,7 @@ public class LoadDiscreteGroundWaterTest {
 	public void testFoundGeneric() {
 		genericDiscreteGroundWaterList.add(genericDiscreteGroundWater1);
 		genericDiscreteGroundWaterList.add(genericDiscreteGroundWater2);
-		// 2 time steps returned
+		// 2 gw levels returned
 		when(transformDao.getDiscreteGroundWater(anyList())).thenReturn(genericDiscreteGroundWaterList);
 		// delete succeeds
 		when(observationDao.deleteDiscreteGroundWater(anyList())).thenReturn(2);
