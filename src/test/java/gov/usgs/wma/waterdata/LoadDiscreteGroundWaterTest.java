@@ -30,7 +30,7 @@ public class LoadDiscreteGroundWaterTest {
 	public void setupLoadDiscreteGroundWater() {
 		loadDiscreteGroundWater = new LoadDiscreteGroundWater(transformDao, observationDao);
 		request = new RequestObject();
-		request.setId(BaseTestDao.FIELD_VISIT_IDENTIFIER);
+		request.setFieldVisitIdentifiers(List.of(BaseTestDao.FIELD_VISIT_IDENTIFIER_1));
 		genericDiscreteGroundWaterList = new ArrayList<>();
 		genericDiscreteGroundWater1 = new DiscreteGroundWater();
 		genericDiscreteGroundWater2 = new DiscreteGroundWater();
@@ -39,12 +39,12 @@ public class LoadDiscreteGroundWaterTest {
 	// tests for fails
 	@Test
 	public void testNullId() {
-		request.setId(null);
+		request.setFieldVisitIdentifiers(null);
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
 
 		assertNotNull(result);
 		assertEquals(LoadDiscreteGroundWater.STATUS_FAIL, result.getStatus());
-		assertEquals(LoadDiscreteGroundWater.FAIL_MESSAGE_NULL_UNIQUE_ID, result.getFailMessage());
+		assertEquals(LoadDiscreteGroundWater.FAIL_MESSAGE_NULL_IDENTIFIER, result.getFailMessage());
 		assertNull(result.getCount());
 		assertThrows(RuntimeException.class, () -> {
 			loadDiscreteGroundWater.apply(request);
@@ -54,7 +54,7 @@ public class LoadDiscreteGroundWaterTest {
 	@Test
 	public void testNoRecordsFound() {
 		// no gw levels data found
-		when(transformDao.getDiscreteGroundWater(anyString())).thenReturn(genericDiscreteGroundWaterList);
+		when(transformDao.getDiscreteGroundWater(anyList())).thenReturn(genericDiscreteGroundWaterList);
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
 
 		assertNotNull(result);
@@ -69,17 +69,17 @@ public class LoadDiscreteGroundWaterTest {
 	public void testFoundGenericFailedInsert() {
 		genericDiscreteGroundWaterList.add(genericDiscreteGroundWater1);
 		genericDiscreteGroundWaterList.add(genericDiscreteGroundWater2);
-		when(transformDao.getDiscreteGroundWater(anyString())).thenReturn(genericDiscreteGroundWaterList);
+		when(transformDao.getDiscreteGroundWater(anyList())).thenReturn(genericDiscreteGroundWaterList);
 		// delete succeeds
-		when(observationDao.deleteDiscreteGroundWater(anyString(), any())).thenReturn(2);
+		when(observationDao.deleteDiscreteGroundWater(anyString())).thenReturn(2);
 		// insert fails
-		when(observationDao.insertDiscreteGroundWater(anyString(), anyList())).thenReturn(0);
+		when(observationDao.insertDiscreteGroundWater(anyList())).thenReturn(0);
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
 
 		assertNotNull(result);
 		assertEquals(LoadDiscreteGroundWater.STATUS_FAIL, result.getStatus());
 		assertEquals(
-				String.format(LoadDiscreteGroundWater.FAIL_MESSAGE_INSERT_FAILED, 2, 0, BaseTestDao.FIELD_VISIT_IDENTIFIER),
+				String.format(LoadDiscreteGroundWater.FAIL_MESSAGE_INSERT_FAILED, 2, 0, List.of(BaseTestDao.FIELD_VISIT_IDENTIFIER_1)),
 				result.getFailMessage());
 		assertEquals(0, result.getCount());
 		// throws exception
@@ -94,11 +94,11 @@ public class LoadDiscreteGroundWaterTest {
 		genericDiscreteGroundWaterList.add(genericDiscreteGroundWater1);
 		genericDiscreteGroundWaterList.add(genericDiscreteGroundWater2);
 		// 2 time steps returned
-		when(transformDao.getDiscreteGroundWater(anyString())).thenReturn(genericDiscreteGroundWaterList);
+		when(transformDao.getDiscreteGroundWater(anyList())).thenReturn(genericDiscreteGroundWaterList);
 		// delete succeeds
-		when(observationDao.deleteDiscreteGroundWater(anyString(), any())).thenReturn(2);
+		when(observationDao.deleteDiscreteGroundWater(anyString())).thenReturn(2);
 		// insert succeeds
-		when(observationDao.insertDiscreteGroundWater(anyString(), anyList())).thenReturn(2);
+		when(observationDao.insertDiscreteGroundWater(anyList())).thenReturn(2);
 		ResultObject result = loadDiscreteGroundWater.apply(request);
 
 		assertNotNull(result);
@@ -112,11 +112,11 @@ public class LoadDiscreteGroundWaterTest {
 		genericDiscreteGroundWaterList.add(genericDiscreteGroundWater1);
 		genericDiscreteGroundWaterList.add(genericDiscreteGroundWater2);
 		// 2 time steps returned
-		when(transformDao.getDiscreteGroundWater(anyString())).thenReturn(genericDiscreteGroundWaterList);
+		when(transformDao.getDiscreteGroundWater(anyList())).thenReturn(genericDiscreteGroundWaterList);
 		// nothing to delete
-		when(observationDao.deleteDiscreteGroundWater(anyString(), any())).thenReturn(0);
+		when(observationDao.deleteDiscreteGroundWater(anyString())).thenReturn(0);
 		// insert succeeds
-		when(observationDao.insertDiscreteGroundWater(anyString(), anyList())).thenReturn(2);
+		when(observationDao.insertDiscreteGroundWater(anyList())).thenReturn(2);
 		ResultObject result = loadDiscreteGroundWater.apply(request);
 
 		assertNotNull(result);

@@ -29,14 +29,13 @@ public class ObservationDaoIT extends BaseTestDao {
 			value="classpath:/testResult/observationDb/discreteGroundWaterAQTS/afterInsert/")
 	@ExpectedDatabase(
 			connection="observation",
-			value="classpath:/testResult/observationDb/discreteGroundWaterAQTS/afterDelete/",
+			value="classpath:/testResult/observationDb/discreteGroundWaterAQTS/cleanseOutput/",
 			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testDelete() {
 		// delete existing data
-		Integer actualRowsDeletedCount = observationDao.deleteDiscreteGroundWater("USGS-" + discreteGroundWater1.getLocationIdentifier(), discreteGroundWater1.getFieldVisitTime());
+		Integer actualRowsDeletedCount = observationDao.deleteDiscreteGroundWater(discreteGroundWater1.getFieldVisitIdentifier());
 		assertNotNull(actualRowsDeletedCount);
-		Integer expectedRowsDeletedCount = 3;
-		assertEquals(expectedRowsDeletedCount, actualRowsDeletedCount);
+		assertEquals(1, actualRowsDeletedCount);
 	}
 
 	@Test
@@ -52,9 +51,8 @@ public class ObservationDaoIT extends BaseTestDao {
 			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testInsert() {
 		// insert new data
-		Integer actualRowsInsertedCount = observationDao.insertDiscreteGroundWater(FIELD_VISIT_IDENTIFIER, List.of(discreteGroundWater1, discreteGroundWater2, discreteGroundWater3));
+		Integer actualRowsInsertedCount = observationDao.insertDiscreteGroundWater(List.of(discreteGroundWater1));
 		assertNotNull(actualRowsInsertedCount);
-		Integer expectedRowsInsertedCount = 3;
-		assertEquals(expectedRowsInsertedCount, actualRowsInsertedCount);
+		assertEquals(1, actualRowsInsertedCount);
 	}
 }

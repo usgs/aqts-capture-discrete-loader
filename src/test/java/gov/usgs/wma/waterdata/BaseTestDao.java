@@ -1,7 +1,7 @@
 package gov.usgs.wma.waterdata;
 
-import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -33,7 +33,10 @@ import com.github.springtestdbunit.annotation.DbUnitConfiguration;
 @DirtiesContext
 public abstract class BaseTestDao {
 
-	public static final String FIELD_VISIT_IDENTIFIER = "0c8d1725-db51-47d9-aabb-a1dd9d1bdf08";
+	public static final String FIELD_VISIT_IDENTIFIER_1 = "0c8d1725-db51-47d9-aabb-a1dd9d1bdf08";
+	public static final String FIELD_VISIT_IDENTIFIER_2 = "035594ec-0451-4d63-a0a9-7fd471ee6f78";
+	public static final String FIELD_VISIT_IDENTIFIER_3 = "014cc69b-b5ed-4d12-9be7-90e4252db81c";
+	public static final String FIELD_VISIT_IDENTIFIER_4 = "2a618902-18ad-4b5f-b0fe-36b7eb2071f7";
 	public static final String BAD_FIELD_VISIT_IDENTIFIER = "badFieldVisitId";
 	public RequestObject request;
 	public DiscreteGroundWater discreteGroundWater1;
@@ -44,11 +47,13 @@ public abstract class BaseTestDao {
 	@BeforeEach
 	public void setup() {
 		request = new RequestObject();
-		request.setId(FIELD_VISIT_IDENTIFIER);
+		// just a default option
+		request.setFieldVisitIdentifiers(List.of(FIELD_VISIT_IDENTIFIER_1));
 
 		discreteGroundWater1 = new DiscreteGroundWater();
-		discreteGroundWater1.setFieldVisitIdentifier("0c8d1725-db51-47d9-aabb-a1dd9d1bdf08");
+		discreteGroundWater1.setFieldVisitIdentifier(FIELD_VISIT_IDENTIFIER_1);
 		discreteGroundWater1.setLocationIdentifier("323302117055201");
+		discreteGroundWater1.setAgencyCode("USGS");
 		discreteGroundWater1.setStartTime(Timestamp.valueOf("2013-01-08 08:00:00"));
 		discreteGroundWater1.setEndTime(Timestamp.valueOf("2013-01-09 07:59:59"));
 		discreteGroundWater1.setParty("GOM");
@@ -60,9 +65,9 @@ public abstract class BaseTestDao {
 		discreteGroundWater1.setParameter("Water level, depth MP");
 		discreteGroundWater1.setParmCd("61055");
 		discreteGroundWater1.setMonitoringMethod("GW level, calib electric tape");
-		discreteGroundWater1.setFieldVisitValue("{\"Display\": \"11.28\", \"Numeric\": 11.28}");
+		discreteGroundWater1.setFieldVisitValue("11.28");
 		discreteGroundWater1.setUnit("ft");
-		discreteGroundWater1.setUncertainty("{\"Display\": \"0.01\", \"Numeric\": 0.01}");
+		discreteGroundWater1.setUncertainty("0.01");
 		discreteGroundWater1.setReadingType("ReferencePrimary");
 		discreteGroundWater1.setManufacturer("Unspecified");
 		discreteGroundWater1.setModel("Unspecified");
@@ -78,8 +83,9 @@ public abstract class BaseTestDao {
 		discreteGroundWater1.setGroundWaterMeasurement("{}");
 
 		discreteGroundWater2 = new DiscreteGroundWater();
-		discreteGroundWater2.setFieldVisitIdentifier("035594ec-0451-4d63-a0a9-7fd471ee6f78");
+		discreteGroundWater2.setFieldVisitIdentifier(FIELD_VISIT_IDENTIFIER_2);
 		discreteGroundWater2.setLocationIdentifier("415502124084701");
+		discreteGroundWater2.setAgencyCode("USGS");
 		discreteGroundWater2.setStartTime(Timestamp.valueOf("1964-01-16 08:00:00"));
 		discreteGroundWater2.setEndTime(Timestamp.valueOf("1964-01-17 07:59:59"));
 		discreteGroundWater2.setParty(null);
@@ -91,9 +97,9 @@ public abstract class BaseTestDao {
 		discreteGroundWater2.setParameter("Water level, depth MP");
 		discreteGroundWater2.setParmCd("61055");
 		discreteGroundWater2.setMonitoringMethod("GW level, steel tape");
-		discreteGroundWater2.setFieldVisitValue("{\"Display\": \"16.16\", \"Numeric\": 16.16}");
+		discreteGroundWater2.setFieldVisitValue("16.16");
 		discreteGroundWater2.setUnit("ft");
-		discreteGroundWater2.setUncertainty("{\"Display\": \"0.01\", \"Numeric\": 0.01}");
+		discreteGroundWater2.setUncertainty("0.01");
 		discreteGroundWater2.setReadingType("ReferencePrimary");
 		discreteGroundWater2.setManufacturer("Unspecified");
 		discreteGroundWater2.setModel("Unspecified");
@@ -109,8 +115,9 @@ public abstract class BaseTestDao {
 		discreteGroundWater2.setGroundWaterMeasurement("{}");
 
 		discreteGroundWater3 =  new DiscreteGroundWater();
-		discreteGroundWater3.setFieldVisitIdentifier("014cc69b-b5ed-4d12-9be7-90e4252db81c");
+		discreteGroundWater3.setFieldVisitIdentifier(FIELD_VISIT_IDENTIFIER_3);
 		discreteGroundWater3.setLocationIdentifier("344405117580201");
+		discreteGroundWater3.setAgencyCode("USGS");
 		discreteGroundWater3.setStartTime(Timestamp.valueOf("1952-03-28 08:00:00"));
 		discreteGroundWater3.setEndTime(Timestamp.valueOf("1952-03-29 07:59:59"));
 		discreteGroundWater3.setParty(null);
@@ -122,9 +129,9 @@ public abstract class BaseTestDao {
 		discreteGroundWater3.setParameter("Water level, depth MP");
 		discreteGroundWater3.setParmCd("61055");
 		discreteGroundWater3.setMonitoringMethod("GW level, steel tape");
-		discreteGroundWater3.setFieldVisitValue("{\"Display\": \"83.08\", \"Numeric\": 83.08}");
+		discreteGroundWater3.setFieldVisitValue("83.08");
 		discreteGroundWater3.setUnit("ft");
-		discreteGroundWater3.setUncertainty("{\"Display\": \"0.01\", \"Numeric\": 0.01}");
+		discreteGroundWater3.setUncertainty("0.01");
 		discreteGroundWater3.setReadingType("ReferencePrimary");
 		discreteGroundWater3.setManufacturer("Unspecified");
 		discreteGroundWater3.setModel("Unspecified");
@@ -140,8 +147,9 @@ public abstract class BaseTestDao {
 		discreteGroundWater3.setGroundWaterMeasurement("{}");
 
 		discreteGroundWater4 =  new DiscreteGroundWater();
-		discreteGroundWater4.setFieldVisitIdentifier("2a618902-18ad-4b5f-b0fe-36b7eb2071f7");
+		discreteGroundWater4.setFieldVisitIdentifier(FIELD_VISIT_IDENTIFIER_4);
 		discreteGroundWater4.setLocationIdentifier("323302117055201");
+		discreteGroundWater4.setAgencyCode("USGS");
 		discreteGroundWater4.setStartTime(Timestamp.valueOf("2017-10-30 08:00:00"));
 		discreteGroundWater4.setEndTime(Timestamp.valueOf("2017-10-31 07:59:59"));
 		discreteGroundWater4.setParty("GMENDE");
@@ -153,9 +161,9 @@ public abstract class BaseTestDao {
 		discreteGroundWater4.setParameter("Water level, depth MP");
 		discreteGroundWater4.setParmCd("61055");
 		discreteGroundWater4.setMonitoringMethod("GW level, calib electric tape");
-		discreteGroundWater4.setFieldVisitValue("{\"Display\": \"11.36\", \"Numeric\": 11.36}");
+		discreteGroundWater4.setFieldVisitValue("11.36");
 		discreteGroundWater4.setUnit("ft");
-		discreteGroundWater4.setUncertainty("{\"Display\": \"0.01\", \"Numeric\": 0.01}");
+		discreteGroundWater4.setUncertainty("0.01");
 		discreteGroundWater4.setReadingType("ReferencePrimary");
 		discreteGroundWater4.setManufacturer("Unspecified");
 		discreteGroundWater4.setModel("Unspecified");

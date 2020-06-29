@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Primary;
 import com.github.springtestdbunit.bean.DatabaseConfigBean;
 import com.github.springtestdbunit.bean.DatabaseDataSourceConnectionFactoryBean;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 @TestConfiguration
 public class DBTestConfig {
@@ -38,8 +39,8 @@ public class DBTestConfig {
 
 	@Bean
 	@Primary
-	public JdbcTemplate jdbcTemplateTransform() {
-		return new JdbcTemplate(dataSourceTransform());
+	public NamedParameterJdbcTemplate jdbcTemplateTransform() {
+		return new NamedParameterJdbcTemplate(dataSourceTransform());
 	}
 
 	// Observation DB connection

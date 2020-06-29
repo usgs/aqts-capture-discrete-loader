@@ -16,10 +16,10 @@ public class LoadDiscreteGroundWater implements Function<RequestObject, ResultOb
 
 	public static final String STATUS_SUCCESS = "success";
 	public static final String STATUS_FAIL = "fail";
-	public static final String STATUS_SUCCESS_MESSAGE = "Successfully inserted gw levels with id: %s";
-	public static final String MESSAGE_NO_RECORDS = "No records found for gw levels id: %s";
-	public static final String FAIL_MESSAGE_NULL_UNIQUE_ID = "gw levels id was null";
-	public static final String FAIL_MESSAGE_INSERT_FAILED = "Selected row count: %s and inserted row count: %s differ, insert failed for gw levels id: %s";
+	public static final String STATUS_SUCCESS_MESSAGE = "Successfully inserted gw levels with field visit identifiers: %s";
+	public static final String MESSAGE_NO_RECORDS = "No records found for field visit identifiers: %s";
+	public static final String FAIL_MESSAGE_NULL_IDENTIFIER = "field visit identifier was null";
+	public static final String FAIL_MESSAGE_INSERT_FAILED = "Selected row count: %s and inserted row count: %s differ, insert failed for field visit identifiers: %s";
 
 	private TransformDao transformDao;
 	private ObservationDao observationDao;
@@ -42,52 +42,49 @@ public class LoadDiscreteGroundWater implements Function<RequestObject, ResultOb
 
 	protected ResultObject processRequest(RequestObject request) {
 
-		// TODO again not sure which id this should be yet
-		String fieldVisitIdentifier = request.getId();
+		List<String> fieldVisitIdentifiers = request.getFieldVisitIdentifiers();
 		ResultObject result = new ResultObject();
 
-		// don't interact with the databases if the incoming id null
-		if (null != fieldVisitIdentifier) {
+		// don't interact with the databases if the incoming list of identifiers is null
+		if (null != fieldVisitIdentifiers) {
 
 			// get gw levels from transform db
-			List<DiscreteGroundWater> discreteGroundWaterList = transformDao.getDiscreteGroundWater(fieldVisitIdentifier);
+			List<DiscreteGroundWater> discreteGroundWaterList = transformDao.getDiscreteGroundWater(fieldVisitIdentifiers);
 
 			if (0 == discreteGroundWaterList.size()) {
 				// do not try to delete or insert rows if no data is returned from the get
 				// This is not an error situation - there are no gw levels associated with this identifier yet
 				result.setStatus(STATUS_SUCCESS);
-				LOG.info(String.format(MESSAGE_NO_RECORDS, fieldVisitIdentifier));
+				LOG.info(String.format(MESSAGE_NO_RECORDS, fieldVisitIdentifiers));
 			} else {
 				// otherwise, try to insert new gw levels or replace existing ones
-				loadDiscreteGroundWaterIntoObservationDb(discreteGroundWaterList, result, fieldVisitIdentifier);
+				loadDiscreteGroundWaterIntoObservationDb(discreteGroundWaterList, result, fieldVisitIdentifiers);
 			}
 		} else {
 			result.setStatus(STATUS_FAIL);
-			result.setFailMessage(FAIL_MESSAGE_NULL_UNIQUE_ID);
-			LOG.debug(FAIL_MESSAGE_NULL_UNIQUE_ID);
+			result.setFailMessage(FAIL_MESSAGE_NULL_IDENTIFIER);
+			LOG.debug(FAIL_MESSAGE_NULL_IDENTIFIER);
 		}
 		return result;
 	}
 
 	@Transactional
-	public void loadDiscreteGroundWaterIntoObservationDb (List<DiscreteGroundWater> discreteGroundWaterList, ResultObject result, String fieldVisitIdentifier) {
+	public void loadDiscreteGroundWaterIntoObservationDb (List<DiscreteGroundWater> discreteGroundWaterList, ResultObject result, List<String> fieldVisitIdentifiers) {
 		// first delete existing discrete gw levels from observation db
 		for (DiscreteGroundWater discreteGroundWater : discreteGroundWaterList) {
-			observationDao.deleteDiscreteGroundWater(
-					discreteGroundWater.getMonitoringLocationIdentifier(),
-					discreteGroundWater.getFieldVisitTime());
+			observationDao.deleteDiscreteGroundWater(discreteGroundWater.getFieldVisitIdentifier());
 		}
 
 		// insert discrete gw levels into observation db
-		int count = observationDao.insertDiscreteGroundWater(fieldVisitIdentifier, discreteGroundWaterList);
+		int count = observationDao.insertDiscreteGroundWater(discreteGroundWaterList);
 		result.setCount(count);
 
 		if (count == discreteGroundWaterList.size() && count != 0) {
 			result.setStatus(STATUS_SUCCESS);
-			LOG.debug(String.format(STATUS_SUCCESS_MESSAGE, fieldVisitIdentifier));
+			LOG.debug(String.format(STATUS_SUCCESS_MESSAGE, fieldVisitIdentifiers));
 		} else {
 			result.setStatus(STATUS_FAIL);
-			String failMessageInsertFailed = String.format(FAIL_MESSAGE_INSERT_FAILED, discreteGroundWaterList.size(), count, fieldVisitIdentifier);
+			String failMessageInsertFailed = String.format(FAIL_MESSAGE_INSERT_FAILED, discreteGroundWaterList.size(), count, fieldVisitIdentifiers);
 			result.setFailMessage(failMessageInsertFailed);
 			LOG.debug(failMessageInsertFailed);
 		}

@@ -1,15 +1,14 @@
 package gov.usgs.wma.waterdata;
 
+import java.util.List;
+
 public class RequestObject {
+	private List<String> fieldVisitIdentifiers;
 
-	// TODO which ID are we using?  for sure field_visit_identifier but possibly other stuff should come in from
-	// from the transform lambda...
-	private String id;
-
-	public String getId() {
-		return id;
+	public List<String> getFieldVisitIdentifiers() {
+		return fieldVisitIdentifiers;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setFieldVisitIdentifiers(List<String> fieldVisitIdentifiers) {
+		this.fieldVisitIdentifiers = fieldVisitIdentifiers;
 	}
 }
