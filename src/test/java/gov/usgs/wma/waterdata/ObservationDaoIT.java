@@ -29,7 +29,7 @@ public class ObservationDaoIT extends BaseTestDao {
 			value="classpath:/testResult/observationDb/discreteGroundWaterAQTS/afterInsert/")
 	@ExpectedDatabase(
 			connection="observation",
-			value="classpath:/testResult/observationDb/discreteGroundWaterAQTS/cleanseOutput/",
+			value="classpath:/testResult/observationDb/discreteGroundWaterAQTS/empty/",
 			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testDelete() {
 		// delete existing data

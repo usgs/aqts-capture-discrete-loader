@@ -38,7 +38,7 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 			value="classpath:/testResult/observationDb/discreteGroundWaterAQTS/afterInsert/",
 			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			connection="observation")
-	public void testInsert() {
+	public void testInsertNewData() {
 		request.setFieldVisitIdentifiers(List.of(
 				FIELD_VISIT_IDENTIFIER_1
 				,FIELD_VISIT_IDENTIFIER_2
@@ -59,7 +59,7 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 			value="classpath:/testResult/observationDb/discreteGroundWaterAQTS/afterInsert/",
 			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			connection="observation")
-	public void testReplace() {
+	public void testReplaceExistingData() {
 		request.setFieldVisitIdentifiers(List.of(
 				FIELD_VISIT_IDENTIFIER_1
 				,FIELD_VISIT_IDENTIFIER_2

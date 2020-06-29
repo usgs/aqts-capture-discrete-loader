@@ -38,7 +38,7 @@ public class LoadDiscreteGroundWaterTest {
 
 	// tests for fails
 	@Test
-	public void testNullId() {
+	public void testNullIdentifier() {
 		request.setFieldVisitIdentifiers(null);
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
 
@@ -53,7 +53,7 @@ public class LoadDiscreteGroundWaterTest {
 
 	@Test
 	public void testNoRecordsFound() {
-		// no gw levels data found
+		// no gw levels found
 		when(transformDao.getDiscreteGroundWater(anyList())).thenReturn(genericDiscreteGroundWaterList);
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
 
