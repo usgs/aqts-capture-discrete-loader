@@ -27,32 +27,13 @@ public class TransformDaoIT extends BaseTestDao {
 	@BeforeEach
 	public void setupTransformDaoIT() {
 		discreteGroundWaterList = List.of(
-				discreteGroundWater1,
-				discreteGroundWater2,
-				discreteGroundWater3);
+				discreteGroundWater1);
 	}
 
 	@Test
 	public void testGet() {
 		// get new data, return list of discrete gw objects
-		request.setFieldVisitIdentifiers(List.of(
-				FIELD_VISIT_IDENTIFIER_1,
-				FIELD_VISIT_IDENTIFIER_2,
-				FIELD_VISIT_IDENTIFIER_3));
-		List<DiscreteGroundWater> actualData = transformDao.getDiscreteGroundWater(request.getFieldVisitIdentifiers());
-		assertNotNull(actualData);
-		assertEquals(discreteGroundWaterList, actualData);
-	}
-
-	@Test
-	public void testGetIncludingOneBadIdentifier() {
-		// get new data, return list of discrete gw objects, bad identifier should not affect query outcome
-		request.setFieldVisitIdentifiers(List.of(
-				FIELD_VISIT_IDENTIFIER_1,
-				FIELD_VISIT_IDENTIFIER_2,
-				FIELD_VISIT_IDENTIFIER_3,
-				BAD_FIELD_VISIT_IDENTIFIER));
-		List<DiscreteGroundWater> actualData = transformDao.getDiscreteGroundWater(request.getFieldVisitIdentifiers());
+		List<DiscreteGroundWater> actualData = transformDao.getDiscreteGroundWater(FIELD_VISIT_IDENTIFIER_1);
 		assertNotNull(actualData);
 		assertEquals(discreteGroundWaterList, actualData);
 	}
@@ -60,9 +41,7 @@ public class TransformDaoIT extends BaseTestDao {
 	@Test
 	public void testNotFound() {
 		// try to get data using a bad identifier
-		List<DiscreteGroundWater> expectedDiscreteGroundWaterList = Collections.emptyList();
-		request.setFieldVisitIdentifiers(List.of(BAD_FIELD_VISIT_IDENTIFIER));
-		List<DiscreteGroundWater> actualData = transformDao.getDiscreteGroundWater(request.getFieldVisitIdentifiers());
-		assertEquals(expectedDiscreteGroundWaterList, actualData);
+		List<DiscreteGroundWater> actualData = transformDao.getDiscreteGroundWater(BAD_FIELD_VISIT_IDENTIFIER);
+		assertEquals(Collections.emptyList(), actualData);
 	}
 }

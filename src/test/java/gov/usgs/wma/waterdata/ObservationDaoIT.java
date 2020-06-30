@@ -29,17 +29,13 @@ public class ObservationDaoIT extends BaseTestDao {
 			value="classpath:/testResult/afterInsert/")
 	@ExpectedDatabase(
 			connection="observation",
-			value="classpath:/testResult/empty/",
+			value="classpath:/testResult/afterDelete/",
 			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testDelete() {
 		// delete existing data
-		Integer actualRowsDeletedCount = observationDao.deleteDiscreteGroundWater(List.of(
-				discreteGroundWater1,
-				discreteGroundWater2,
-				discreteGroundWater3,
-				discreteGroundWater4));
+		Integer actualRowsDeletedCount = observationDao.deleteDiscreteGroundWater(discreteGroundWater1.getFieldVisitIdentifier());
 		assertNotNull(actualRowsDeletedCount);
-		assertEquals(4, actualRowsDeletedCount);
+		assertEquals(1, actualRowsDeletedCount);
 	}
 
 	@Test

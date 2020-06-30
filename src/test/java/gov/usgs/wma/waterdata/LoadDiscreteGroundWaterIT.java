@@ -35,9 +35,9 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 			connection="observation",
 			value="classpath:/testResult/empty/")
 	@ExpectedDatabase(
+			connection="observation",
 			value="classpath:/testResult/afterInsert/",
-			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			connection="observation")
+			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testInsertNewData() {
 		request.setFieldVisitIdentifiers(List.of(
 				FIELD_VISIT_IDENTIFIER_1
@@ -45,10 +45,7 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 				,FIELD_VISIT_IDENTIFIER_3
 				,FIELD_VISIT_IDENTIFIER_4));
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
-		Integer expectedCount = 4;
-		assertEquals(expectedCount, result.getCount());
-		assertEquals(LoadDiscreteGroundWater.STATUS_SUCCESS, result.getStatus());
-		assertNull(result.getFailMessage());
+		assertEquals(4, result.getCount());
 	}
 
 	@Test
@@ -68,8 +65,6 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
 		Integer expectedCount = 4;
 		assertEquals(expectedCount, result.getCount());
-		assertEquals(LoadDiscreteGroundWater.STATUS_SUCCESS, result.getStatus());
-		assertNull(result.getFailMessage());
 	}
 
 	@Test
@@ -83,28 +78,8 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 	public void testNoRecordsFound() {
 		request.setFieldVisitIdentifiers(List.of(BAD_FIELD_VISIT_IDENTIFIER));
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
-		assertNull(result.getCount());
-		assertEquals(LoadDiscreteGroundWater.STATUS_SUCCESS, result.getStatus());
+		assertEquals(0, result.getCount());
 		assertDoesNotThrow(() -> {
-			loadDiscreteGroundWater.apply(request);
-		}, "should have thrown an exception but did not");
-	}
-
-	@Test
-	@DatabaseSetup(
-			connection="observation",
-			value="classpath:/testResult/empty/")
-	@ExpectedDatabase(
-			connection="observation",
-			value="classpath:/testResult/empty/",
-			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED)
-	public void testNullUniqueId() {
-		request.setFieldVisitIdentifiers(null);
-		ResultObject result = loadDiscreteGroundWater.processRequest(request);
-		assertNull(result.getCount());
-		assertEquals(LoadDiscreteGroundWater.STATUS_FAIL, result.getStatus());
-		assertEquals(LoadDiscreteGroundWater.FAIL_MESSAGE_NULL_IDENTIFIER, result.getFailMessage());
-		assertThrows(RuntimeException.class, () -> {
 			loadDiscreteGroundWater.apply(request);
 		}, "should have thrown an exception but did not");
 	}

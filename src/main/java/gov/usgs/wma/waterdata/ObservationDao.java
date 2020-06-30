@@ -34,26 +34,16 @@ public class ObservationDao {
     protected Resource insertQuery;
 
     @Transactional
-    public Integer deleteDiscreteGroundWater(List<DiscreteGroundWater> discreteGroundWaterList) {
+    public int deleteDiscreteGroundWater(String fieldVisitIdentifier) {
         int rowsDeletedCount = 0;
         try {
             String sql = new String(FileCopyUtils.copyToByteArray(deleteQuery.getInputStream()));
-            int [] rowsDeletedCounts = jdbcTemplate.batchUpdate(
+            rowsDeletedCount = jdbcTemplate.update(
                     sql,
-                    new BatchPreparedStatementSetter() {
-                        @Override
-                        public void setValues(PreparedStatement ps, int i) throws SQLException {
-                            ps.setString(1, discreteGroundWaterList.get(i).getFieldVisitIdentifier());
-                        }
-                        @Override
-                        public int getBatchSize() {
-                            return discreteGroundWaterList.size();
-                        }
-                    }
+                    fieldVisitIdentifier
             );
-            rowsDeletedCount = Arrays.stream(rowsDeletedCounts).sum();
         } catch (EmptyResultDataAccessException e) {
-            LOG.info(e.getLocalizedMessage());
+            LOG.info("Could find {} - {}", fieldVisitIdentifier, e.getLocalizedMessage());
         } catch (IOException e) {
             LOG.error("Unable to get SQL statement", e);
             throw new RuntimeException(e);

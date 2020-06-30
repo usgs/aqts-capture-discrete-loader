@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 @Configuration
 public class DbConfig {
@@ -31,8 +30,8 @@ public class DbConfig {
 
 	@Bean
 	@Primary
-	public NamedParameterJdbcTemplate jdbcTemplateTransform() {
-		return new NamedParameterJdbcTemplate(dataSourceTransform());
+	public JdbcTemplate jdbcTemplateTransform() {
+		return new JdbcTemplate(dataSourceTransform());
 	}
 
 	@Bean

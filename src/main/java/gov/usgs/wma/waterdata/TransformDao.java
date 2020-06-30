@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.util.FileCopyUtils;
 
@@ -23,22 +21,22 @@ public class TransformDao {
 
 	@Autowired
 	@Qualifier("jdbcTemplateTransform")
-	protected NamedParameterJdbcTemplate jdbcTemplate;
+	protected JdbcTemplate jdbcTemplate;
 
 	@Value("classpath:sql/getDiscreteGroundWater.sql")
 	protected Resource selectQuery;
 
-	public List<DiscreteGroundWater> getDiscreteGroundWater(List<String> fieldVisitIdentifiers) {
+	public List<DiscreteGroundWater> getDiscreteGroundWater(String fieldVisitIdentifier) {
 		List<DiscreteGroundWater> rtn = Collections.emptyList();
-		SqlParameterSource identifiers = new MapSqlParameterSource("ids", fieldVisitIdentifiers);
 		try {
 			String sql = new String(FileCopyUtils.copyToByteArray(selectQuery.getInputStream()));
 			rtn = jdbcTemplate.query(
 					sql,
-					identifiers,
-					new DiscreteGroundWaterRowMapper());
+					new DiscreteGroundWaterRowMapper(),
+					fieldVisitIdentifier
+					);
 		} catch (EmptyResultDataAccessException e) {
-			LOG.info("Couldn't find {} - {} ", fieldVisitIdentifiers, e.getLocalizedMessage());
+			LOG.info("Couldn't find {} - {} ", fieldVisitIdentifier, e.getLocalizedMessage());
 		} catch (IOException e) {
 			LOG.error("Unable to get SQL statement", e);
 			throw new RuntimeException(e);
