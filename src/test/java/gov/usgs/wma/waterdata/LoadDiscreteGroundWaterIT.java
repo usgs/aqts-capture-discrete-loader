@@ -81,6 +81,6 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 		assertEquals(0, result.getCount());
 		assertDoesNotThrow(() -> {
 			loadDiscreteGroundWater.apply(request);
-		}, "should have thrown an exception but did not");
+		}, "should not have thrown an exception but did");
 	}
 }
