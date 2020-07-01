@@ -32,8 +32,8 @@ public class LoadDiscreteGroundWater implements Function<RequestObject, ResultOb
 	}
 
 	protected ResultObject processRequest(RequestObject request) {
-		LOG.info(request.getFieldVisitIdentifiers().toString());
 		List<String> fieldVisitIdentifiers = request.getFieldVisitIdentifiers();
+		LOG.debug("the request object: {}", fieldVisitIdentifiers.toString());
 		ResultObject result = new ResultObject();
 
 		for (String fieldVisitIdentifier : fieldVisitIdentifiers) {
