@@ -15,7 +15,7 @@ public class LoadDiscreteGroundWater implements Function<RequestObject, ResultOb
 	private static final Logger LOG = LoggerFactory.getLogger(LoadDiscreteGroundWater.class);
 
 	public static final String INSERT_SUCCEEDED_MESSAGE = "Successfully inserted gw levels with field visit identifier: %s";
-	public static final String INSERT_FAILED_MESSAGE = "Selected row count: %s and inserted row count: %s differ, insert failed for field visit identifier: %s";
+	public static final String INSERT_FAILED_MESSAGE = "Selected row count: %s and inserted row count: %s differ, insert failed for field visit identifier: %s with monitoring location identifier: %s";
 
 	private final TransformDao transformDao;
 	private final ObservationDao observationDao;
@@ -31,6 +31,7 @@ public class LoadDiscreteGroundWater implements Function<RequestObject, ResultOb
 		return processRequest(request);
 	}
 
+	@Transactional
 	protected ResultObject processRequest(RequestObject request) {
 		List<String> fieldVisitIdentifiers = request.getFieldVisitIdentifiers();
 		LOG.debug("the request object: {}", fieldVisitIdentifiers.toString());
@@ -60,7 +61,11 @@ public class LoadDiscreteGroundWater implements Function<RequestObject, ResultOb
 		if (count == discreteGroundWaterList.size()) {
 			LOG.debug(String.format(INSERT_SUCCEEDED_MESSAGE, fieldVisitIdentifier));
 		} else {
-			String failMessageInsertFailed = String.format(INSERT_FAILED_MESSAGE, discreteGroundWaterList.size(), count, fieldVisitIdentifier);
+			String failMessageInsertFailed = String.format(
+					INSERT_FAILED_MESSAGE,
+					discreteGroundWaterList.size(),
+					count, fieldVisitIdentifier,
+					discreteGroundWaterList.get(0).getMonitoringLocationIdentifier());
 			LOG.debug(failMessageInsertFailed);
 			throw new RuntimeException(failMessageInsertFailed);
 		}
