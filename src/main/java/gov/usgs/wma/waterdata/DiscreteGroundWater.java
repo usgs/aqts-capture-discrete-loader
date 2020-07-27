@@ -8,6 +8,8 @@ public class DiscreteGroundWater {
 	protected String fieldVisitIdentifier;
 	protected String locationIdentifier;
 	protected String agencyCode;
+	protected String dateTimeAccuracyCode;
+	protected String dateTimeAccuracy;
 	protected Timestamp startTime;
 	protected Timestamp endTime;
 	protected String party;
@@ -58,6 +60,22 @@ public class DiscreteGroundWater {
 
 	public void setAgencyCode(String agencyCode) {
 		this.agencyCode = agencyCode;
+	}
+
+	public String getDateTimeAccuracyCode() {
+		return dateTimeAccuracyCode;
+	}
+
+	public void setDateTimeAccuracyCode(final String dateTimeAccuracyCode) {
+		this.dateTimeAccuracyCode = dateTimeAccuracyCode;
+	}
+
+	public String getDateTimeAccuracyText() {
+		return dateTimeAccuracy;
+	}
+
+	public void setDateTimeAccuracyText(final String dateTimeAccuracy) {
+		this.dateTimeAccuracy = dateTimeAccuracy;
 	}
 
 	public String getMonitoringLocationIdentifier() {

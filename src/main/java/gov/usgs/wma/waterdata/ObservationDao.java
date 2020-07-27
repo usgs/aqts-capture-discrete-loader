@@ -68,9 +68,11 @@ public class ObservationDao {
                             ps.setTimestamp(5, discreteGroundWaterList.get(i).getFieldVisitTime());
                             ps.setString(6, discreteGroundWaterList.get(i).getFieldVisitValue());
                             ps.setString(7, discreteGroundWaterList.get(i).getAgencyCode());
-                            ps.setString(8, discreteGroundWaterList.get(i).getUncertainty());
-                            ps.setString(9, discreteGroundWaterList.get(i).getMonitoringMethod());
-                            ps.setString(10, discreteGroundWaterList.get(i).getMonitoringLocationIdentifier());
+                            ps.setString(8, discreteGroundWaterList.get(i).getDateTimeAccuracyCode());
+                            ps.setString(9, discreteGroundWaterList.get(i).getDateTimeAccuracyText());
+                            ps.setString(10, discreteGroundWaterList.get(i).getUncertainty());
+                            ps.setString(11, discreteGroundWaterList.get(i).getMonitoringMethod());
+                            ps.setString(12, discreteGroundWaterList.get(i).getMonitoringLocationIdentifier());
                         }
                         @Override
                         public int getBatchSize() {
