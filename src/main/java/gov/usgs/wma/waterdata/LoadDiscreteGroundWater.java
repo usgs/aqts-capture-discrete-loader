@@ -14,8 +14,8 @@ public class LoadDiscreteGroundWater implements Function<RequestObject, ResultOb
 
 	private static final Logger LOG = LoggerFactory.getLogger(LoadDiscreteGroundWater.class);
 
-	public static final String INSERT_SUCCEEDED_MESSAGE = "Successfully inserted gw levels with field visit identifier: %s";
-	public static final String INSERT_FAILED_MESSAGE = "Selected row count: %s and inserted row count: %s differ, insert failed for field visit identifier: %s with monitoring location identifier: %s";
+	public static final String INSERT_SUCCEEDED_MESSAGE = "Successfully inserted gw levels with monitoring location identifier: %s";
+	public static final String INSERT_FAILED_MESSAGE = "Selected row count: %s and inserted row count: %s differ, insert failed for monitoring location identifier: %s";
 
 	private final TransformDao transformDao;
 	private final ObservationDao observationDao;
@@ -33,39 +33,44 @@ public class LoadDiscreteGroundWater implements Function<RequestObject, ResultOb
 
 	@Transactional
 	protected ResultObject processRequest(RequestObject request) {
-		List<String> fieldVisitIdentifiers = request.getFieldVisitIdentifiers();
-		LOG.debug("the request object: {}", fieldVisitIdentifiers.toString());
+
+		String locationIdentifier = request.getLocationIdentifier();
+		LOG.debug("the request object location id: {}", locationIdentifier);
+
 		ResultObject result = new ResultObject();
 
-		for (String fieldVisitIdentifier : fieldVisitIdentifiers) {
-			// each field visit identifier could have more than one record returned
-			List<DiscreteGroundWater> discreteGroundWaterList = transformDao.getDiscreteGroundWater(fieldVisitIdentifier);
-			int rowsInserted = loadDiscreteGroundWaterIntoObservationDb(discreteGroundWaterList, fieldVisitIdentifier);
-			if (null == result.getCount()) {
-				result.setCount(rowsInserted);
-			} else {
-				result.setCount(result.getCount() + rowsInserted);
-			}
+		// get all the records for this location identifier from the transform db
+		List<DiscreteGroundWater> discreteGroundWaterList = transformDao.getDiscreteGroundWater(locationIdentifier);
+
+		int rowsInserted = 0;
+
+		// if we do not get records back from the transform db, don't try to load anything to the observation db
+		if (discreteGroundWaterList.size() > 0) {
+			rowsInserted = loadDiscreteGroundWaterIntoObservationDb(discreteGroundWaterList);
 		}
+
+		result.setCount(rowsInserted);
+
 		return result;
 	}
 
 	@Transactional
-	public int loadDiscreteGroundWaterIntoObservationDb (List<DiscreteGroundWater> discreteGroundWaterList, String fieldVisitIdentifier) {
-		// first delete existing discrete gw levels from observation db
-		observationDao.deleteDiscreteGroundWater(fieldVisitIdentifier);
+	public int loadDiscreteGroundWaterIntoObservationDb (List<DiscreteGroundWater> discreteGroundWaterList) {
+		// first delete existing discrete gw levels from observation db using the monitoring location identifier
+		String monitoringLocationIdentifier = discreteGroundWaterList.get(0).getMonitoringLocationIdentifier();
+		observationDao.deleteDiscreteGroundWater(monitoringLocationIdentifier);
 
 		// insert discrete gw levels into observation db
 		int count = observationDao.insertDiscreteGroundWater(discreteGroundWaterList);
 
 		if (count == discreteGroundWaterList.size()) {
-			LOG.debug(String.format(INSERT_SUCCEEDED_MESSAGE, fieldVisitIdentifier));
+			LOG.debug(String.format(INSERT_SUCCEEDED_MESSAGE, monitoringLocationIdentifier));
 		} else {
 			String failMessageInsertFailed = String.format(
 					INSERT_FAILED_MESSAGE,
 					discreteGroundWaterList.size(),
-					count, fieldVisitIdentifier,
-					discreteGroundWaterList.get(0).getMonitoringLocationIdentifier());
+					count,
+					monitoringLocationIdentifier);
 			LOG.debug(failMessageInsertFailed);
 			throw new RuntimeException(failMessageInsertFailed);
 		}

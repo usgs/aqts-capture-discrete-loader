@@ -34,16 +34,16 @@ public class ObservationDao {
     protected Resource insertQuery;
 
     @Transactional
-    public int deleteDiscreteGroundWater(String fieldVisitIdentifier) {
+    public int deleteDiscreteGroundWater(String monitoringLocationIdentifier) {
         int rowsDeletedCount = 0;
         try {
             String sql = new String(FileCopyUtils.copyToByteArray(deleteQuery.getInputStream()));
             rowsDeletedCount = jdbcTemplate.update(
                     sql,
-                    fieldVisitIdentifier
+                    monitoringLocationIdentifier
             );
         } catch (EmptyResultDataAccessException e) {
-            LOG.info("Could find {} - {}", fieldVisitIdentifier, e.getLocalizedMessage());
+            LOG.info("Could find {} - {}", monitoringLocationIdentifier, e.getLocalizedMessage());
         } catch (IOException e) {
             LOG.error("Unable to get SQL statement", e);
             throw new RuntimeException(e);

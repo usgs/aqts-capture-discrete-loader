@@ -8,8 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.NONE,
@@ -33,19 +31,15 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 	@Test
 	@DatabaseSetup(
 			connection="observation",
-			value="classpath:/testResult/empty/")
+			value="classpath:/testResult/existingData/")
 	@ExpectedDatabase(
 			connection="observation",
 			value="classpath:/testResult/afterInsert/",
 			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testInsertNewData() {
-		request.setFieldVisitIdentifiers(List.of(
-				FIELD_VISIT_IDENTIFIER_1
-				,FIELD_VISIT_IDENTIFIER_2
-				,FIELD_VISIT_IDENTIFIER_3
-				,FIELD_VISIT_IDENTIFIER_4));
+		request.setLocationIdentifier(LOCATION_IDENTIFIER_1);
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
-		assertEquals(4, result.getCount());
+		assertEquals(2, result.getCount());
 	}
 
 	@Test
@@ -57,14 +51,9 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			connection="observation")
 	public void testReplaceExistingData() {
-		request.setFieldVisitIdentifiers(List.of(
-				FIELD_VISIT_IDENTIFIER_1
-				,FIELD_VISIT_IDENTIFIER_2
-				,FIELD_VISIT_IDENTIFIER_3
-				,FIELD_VISIT_IDENTIFIER_4));
+		request.setLocationIdentifier(LOCATION_IDENTIFIER_1);
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
-		Integer expectedCount = 4;
-		assertEquals(expectedCount, result.getCount());
+		assertEquals(2, result.getCount());
 	}
 
 	@Test
@@ -76,7 +65,7 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 			value="classpath:/testResult/empty/",
 			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testNoRecordsFound() {
-		request.setFieldVisitIdentifiers(List.of(BAD_FIELD_VISIT_IDENTIFIER));
+		request.setLocationIdentifier(BAD_LOCATION_IDENTIFIER);
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
 		assertEquals(0, result.getCount());
 		assertDoesNotThrow(() -> {

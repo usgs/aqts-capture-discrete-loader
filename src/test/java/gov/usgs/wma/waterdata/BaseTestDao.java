@@ -32,11 +32,11 @@ import com.github.springtestdbunit.annotation.DbUnitConfiguration;
 @DirtiesContext
 public abstract class BaseTestDao {
 
-	public static final String FIELD_VISIT_IDENTIFIER_1 = "0c8d1725-db51-47d9-aabb-a1dd9d1bdf08";
-	public static final String FIELD_VISIT_IDENTIFIER_2 = "035594ec-0451-4d63-a0a9-7fd471ee6f78";
-	public static final String FIELD_VISIT_IDENTIFIER_3 = "014cc69b-b5ed-4d12-9be7-90e4252db81c";
-	public static final String FIELD_VISIT_IDENTIFIER_4 = "2a618902-18ad-4b5f-b0fe-36b7eb2071f7";
-	public static final String BAD_FIELD_VISIT_IDENTIFIER = "badFieldVisitId";
+
+	public static final String LOCATION_IDENTIFIER_1 = "323302117055201";
+	public static final String LOCATION_IDENTIFIER_2 = "415502124084701";
+	public static final String LOCATION_IDENTIFIER_3 = "344405117580201";
+	public static final String BAD_LOCATION_IDENTIFIER = "badLocationIdentifier";
 	public RequestObject request;
 	public DiscreteGroundWater discreteGroundWater1;
 	public DiscreteGroundWater discreteGroundWater2;
@@ -48,8 +48,8 @@ public abstract class BaseTestDao {
 		request = new RequestObject();
 
 		discreteGroundWater1 = new DiscreteGroundWater();
-		discreteGroundWater1.setFieldVisitIdentifier(FIELD_VISIT_IDENTIFIER_1);
-		discreteGroundWater1.setLocationIdentifier("323302117055201");
+		discreteGroundWater1.setFieldVisitIdentifier("0c8d1725-db51-47d9-aabb-a1dd9d1bdf08");
+		discreteGroundWater1.setLocationIdentifier(LOCATION_IDENTIFIER_1);
 		discreteGroundWater1.setAgencyCode("USGS");
 		discreteGroundWater1.setStartTime(Timestamp.valueOf("2013-01-08 08:00:00"));
 		discreteGroundWater1.setEndTime(Timestamp.valueOf("2013-01-09 07:59:59"));
@@ -80,8 +80,8 @@ public abstract class BaseTestDao {
 		discreteGroundWater1.setGroundWaterMeasurement("{}");
 
 		discreteGroundWater2 = new DiscreteGroundWater();
-		discreteGroundWater2.setFieldVisitIdentifier(FIELD_VISIT_IDENTIFIER_2);
-		discreteGroundWater2.setLocationIdentifier("415502124084701");
+		discreteGroundWater2.setFieldVisitIdentifier("035594ec-0451-4d63-a0a9-7fd471ee6f78");
+		discreteGroundWater2.setLocationIdentifier(LOCATION_IDENTIFIER_2);
 		discreteGroundWater2.setAgencyCode("USGS");
 		discreteGroundWater2.setDateTimeAccuracyCode(DateTimeAccuracy.DAY.getCode());
 		discreteGroundWater2.setDateTimeAccuracyText(DateTimeAccuracy.DAY.getText());
@@ -114,8 +114,8 @@ public abstract class BaseTestDao {
 		discreteGroundWater2.setGroundWaterMeasurement("{}");
 
 		discreteGroundWater3 =  new DiscreteGroundWater();
-		discreteGroundWater3.setFieldVisitIdentifier(FIELD_VISIT_IDENTIFIER_3);
-		discreteGroundWater3.setLocationIdentifier("344405117580201");
+		discreteGroundWater3.setFieldVisitIdentifier("014cc69b-b5ed-4d12-9be7-90e4252db81c");
+		discreteGroundWater3.setLocationIdentifier(LOCATION_IDENTIFIER_3);
 		discreteGroundWater3.setAgencyCode("USGS");
 		discreteGroundWater3.setDateTimeAccuracyCode(DateTimeAccuracy.MONTH.getCode());
 		discreteGroundWater3.setDateTimeAccuracyText(DateTimeAccuracy.MONTH.getText());
@@ -148,8 +148,8 @@ public abstract class BaseTestDao {
 		discreteGroundWater3.setGroundWaterMeasurement("{}");
 
 		discreteGroundWater4 =  new DiscreteGroundWater();
-		discreteGroundWater4.setFieldVisitIdentifier(FIELD_VISIT_IDENTIFIER_4);
-		discreteGroundWater4.setLocationIdentifier("323302117055201");
+		discreteGroundWater4.setFieldVisitIdentifier("2a618902-18ad-4b5f-b0fe-36b7eb2071f7");
+		discreteGroundWater4.setLocationIdentifier(LOCATION_IDENTIFIER_1);
 		discreteGroundWater4.setAgencyCode("USGS");
 		discreteGroundWater4.setStartTime(Timestamp.valueOf("2017-10-30 08:00:00"));
 		discreteGroundWater4.setEndTime(Timestamp.valueOf("2017-10-31 07:59:59"));
