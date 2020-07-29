@@ -39,9 +39,8 @@ select monitoring_location.monitoring_location_id,
        null site_status,
        ? measuring_agency_code,
        null measuring_agency,
-       /* This will come in through the comments field as something like Accuracy: d */
-       null date_time_accuracy_code,
-       null date_time_accuracy,
+       ? date_time_accuracy_code,
+       ? date_time_accuracy,
        null level_accuracy_code,
        ? level_accuracy, /* uncertainty */
        /* This will come in through the comments field as something like Source: Reporting Agency */

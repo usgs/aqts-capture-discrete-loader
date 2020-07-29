@@ -83,6 +83,8 @@ public abstract class BaseTestDao {
 		discreteGroundWater2.setFieldVisitIdentifier(FIELD_VISIT_IDENTIFIER_2);
 		discreteGroundWater2.setLocationIdentifier("415502124084701");
 		discreteGroundWater2.setAgencyCode("USGS");
+		discreteGroundWater2.setDateTimeAccuracyCode(DateTimeAccuracy.DAY.getCode());
+		discreteGroundWater2.setDateTimeAccuracyText(DateTimeAccuracy.DAY.getText());
 		discreteGroundWater2.setStartTime(Timestamp.valueOf("1964-01-16 08:00:00"));
 		discreteGroundWater2.setEndTime(Timestamp.valueOf("1964-01-17 07:59:59"));
 		discreteGroundWater2.setParty(null);
@@ -115,6 +117,8 @@ public abstract class BaseTestDao {
 		discreteGroundWater3.setFieldVisitIdentifier(FIELD_VISIT_IDENTIFIER_3);
 		discreteGroundWater3.setLocationIdentifier("344405117580201");
 		discreteGroundWater3.setAgencyCode("USGS");
+		discreteGroundWater3.setDateTimeAccuracyCode(DateTimeAccuracy.MONTH.getCode());
+		discreteGroundWater3.setDateTimeAccuracyText(DateTimeAccuracy.MONTH.getText());
 		discreteGroundWater3.setStartTime(Timestamp.valueOf("1952-03-28 08:00:00"));
 		discreteGroundWater3.setEndTime(Timestamp.valueOf("1952-03-29 07:59:59"));
 		discreteGroundWater3.setParty(null);
