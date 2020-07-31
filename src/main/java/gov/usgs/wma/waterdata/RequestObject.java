@@ -1,14 +1,14 @@
 package gov.usgs.wma.waterdata;
 
-import java.util.List;
-
 public class RequestObject {
-	private List<String> fieldVisitIdentifiers;
 
-	public List<String> getFieldVisitIdentifiers() {
-		return fieldVisitIdentifiers;
+	private String locationIdentifier;
+
+	public String getLocationIdentifier() {
+		return locationIdentifier;
 	}
-	public void setFieldVisitIdentifiers(List<String> fieldVisitIdentifiers) {
-		this.fieldVisitIdentifiers = fieldVisitIdentifiers;
+
+	public void setLocationIdentifier(String locationIdentifier) {
+		this.locationIdentifier = locationIdentifier;
 	}
 }

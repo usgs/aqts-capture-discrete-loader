@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -34,16 +33,14 @@ public class ObservationDao {
     protected Resource insertQuery;
 
     @Transactional
-    public int deleteDiscreteGroundWater(String fieldVisitIdentifier) {
+    public int deleteDiscreteGroundWater(String monitoringLocationIdentifier) {
         int rowsDeletedCount = 0;
         try {
             String sql = new String(FileCopyUtils.copyToByteArray(deleteQuery.getInputStream()));
             rowsDeletedCount = jdbcTemplate.update(
                     sql,
-                    fieldVisitIdentifier
+                    monitoringLocationIdentifier
             );
-        } catch (EmptyResultDataAccessException e) {
-            LOG.info("Could find {} - {}", fieldVisitIdentifier, e.getLocalizedMessage());
         } catch (IOException e) {
             LOG.error("Unable to get SQL statement", e);
             throw new RuntimeException(e);
@@ -81,8 +78,6 @@ public class ObservationDao {
                     }
             );
             rowsInsertedCount = Arrays.stream(rowsInsertedCounts).sum();
-        } catch (EmptyResultDataAccessException e) {
-            LOG.info(e.getLocalizedMessage());
         } catch (IOException e) {
             LOG.error("Unable to get SQL statement", e);
             throw new RuntimeException(e);

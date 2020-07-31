@@ -32,4 +32,4 @@ select
 from
     discrete_ground_water
 where
-    field_visit_identifier = ?
+    location_identifier = ?

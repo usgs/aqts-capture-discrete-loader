@@ -33,15 +33,15 @@ public class ObservationDaoIT extends BaseTestDao {
 			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testDelete() {
 		// delete existing data
-		Integer actualRowsDeletedCount = observationDao.deleteDiscreteGroundWater(discreteGroundWater1.getFieldVisitIdentifier());
+		Integer actualRowsDeletedCount = observationDao.deleteDiscreteGroundWater(discreteGroundWater1.getMonitoringLocationIdentifier());
 		assertNotNull(actualRowsDeletedCount);
-		assertEquals(1, actualRowsDeletedCount);
+		assertEquals(2, actualRowsDeletedCount);
 	}
 
 	@Test
 	@DatabaseSetup(
 			connection="observation",
-			value="classpath:/testData/observationDb/")
+			value="classpath:/testData/monitoringLocation/")
 	@DatabaseSetup(
 			connection="observation",
 			value="classpath:/testResult/empty/")
