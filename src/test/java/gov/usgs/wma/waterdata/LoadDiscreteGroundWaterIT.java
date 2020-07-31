@@ -39,6 +39,7 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 	public void testInsertNewData() {
 		request.setLocationIdentifier(LOCATION_IDENTIFIER_1);
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
+		assertEquals("USGS-323302117055201", result.getMonitoringLocationIdentifier());
 		assertEquals(2, result.getInsertCount());
 		assertEquals(0, result.getDeleteCount());
 	}
@@ -54,6 +55,7 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 	public void testReplaceExistingData() {
 		request.setLocationIdentifier(LOCATION_IDENTIFIER_1);
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
+		assertEquals("USGS-323302117055201", result.getMonitoringLocationIdentifier());
 		assertEquals(2, result.getInsertCount());
 		assertEquals(2, result.getDeleteCount());
 	}
@@ -69,6 +71,7 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 	public void testDeleteRecordsNolongerAssociatedWithMonitoringLocation() {
 		request.setLocationIdentifier(LOCATION_IDENTIFIER_1);
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
+		assertEquals("USGS-323302117055201", result.getMonitoringLocationIdentifier());
 		assertEquals(2, result.getInsertCount());
 		assertEquals(4, result.getDeleteCount());
 	}
@@ -84,6 +87,7 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 	public void testNoRecordsFound() {
 		request.setLocationIdentifier(BAD_LOCATION_IDENTIFIER);
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
+		assertNull(result.getMonitoringLocationIdentifier());
 		assertEquals(0, result.getInsertCount());
 		assertEquals(0, result.getDeleteCount());
 

@@ -14,7 +14,7 @@ public class LoadDiscreteGroundWater implements Function<RequestObject, ResultOb
 
 	private static final Logger LOG = LoggerFactory.getLogger(LoadDiscreteGroundWater.class);
 
-	public static final String INSERT_SUCCEEDED_MESSAGE = "Successfully inserted gw levels with monitoring location identifier: %s";
+	public static final String INSERT_SUCCEEDED_MESSAGE = "Successfully update discrete gw levels for monitoring location identifier: %s.  Inserted %s rows, deleted %s rows";
 	public static final String INSERT_FAILED_MESSAGE = "Selected row count: %s and inserted row count: %s differ, insert failed for monitoring location identifier: %s";
 
 	private final TransformDao transformDao;
@@ -35,7 +35,7 @@ public class LoadDiscreteGroundWater implements Function<RequestObject, ResultOb
 	protected ResultObject processRequest(RequestObject request) {
 
 		String locationIdentifier = request.getLocationIdentifier();
-		LOG.debug("the request object location id: {}", locationIdentifier);
+		LOG.debug("Begin processing request for locationIdentifier: {}", locationIdentifier);
 
 		if (locationIdentifier == null) {
 			throw new IllegalArgumentException("The locationIdentifier cannot be null");
@@ -54,6 +54,8 @@ public class LoadDiscreteGroundWater implements Function<RequestObject, ResultOb
 			result = new ResultObject();
 		}
 
+		LOG.debug(String.format(INSERT_SUCCEEDED_MESSAGE, result.getMonitoringLocationIdentifier(), result.getInsertCount(), result.getDeleteCount()));
+
 		return result;
 	}
 
@@ -64,6 +66,7 @@ public class LoadDiscreteGroundWater implements Function<RequestObject, ResultOb
 
 		// first delete existing discrete gw levels from observation db using the monitoring location identifier
 		String monitoringLocationIdentifier = discreteGroundWaterList.get(0).getMonitoringLocationIdentifier();
+		result.setMonitoringLocationIdentifier(monitoringLocationIdentifier);
 		result.setDeleteCount(
 				observationDao.deleteDiscreteGroundWater(monitoringLocationIdentifier)
 		);
@@ -73,9 +76,7 @@ public class LoadDiscreteGroundWater implements Function<RequestObject, ResultOb
 				observationDao.insertDiscreteGroundWater(discreteGroundWaterList)
 		);
 
-		if (result.getInsertCount() == discreteGroundWaterList.size()) {
-			LOG.debug(String.format(INSERT_SUCCEEDED_MESSAGE, monitoringLocationIdentifier));
-		} else {
+		if (result.getInsertCount() != discreteGroundWaterList.size()) {
 			String failMessageInsertFailed = String.format(
 					INSERT_FAILED_MESSAGE,
 					discreteGroundWaterList.size(),
