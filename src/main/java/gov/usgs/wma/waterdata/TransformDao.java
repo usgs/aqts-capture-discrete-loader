@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.util.FileCopyUtils;
@@ -35,8 +34,6 @@ public class TransformDao {
 					new DiscreteGroundWaterRowMapper(),
 					locationIdentifier
 					);
-		} catch (EmptyResultDataAccessException e) {
-			LOG.info("Couldn't find {} - {} ", locationIdentifier, e.getLocalizedMessage());
 		} catch (IOException e) {
 			LOG.error("Unable to get SQL statement", e);
 			throw new RuntimeException(e);

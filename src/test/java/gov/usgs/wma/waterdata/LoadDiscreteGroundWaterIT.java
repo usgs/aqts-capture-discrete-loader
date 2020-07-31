@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 		value="classpath:/testData/transformDb/")
 @DatabaseSetup(
 		connection="observation",
-		value="classpath:/testData/observationDb/")
+		value="classpath:/testData/monitoringLocation/")
 @ActiveProfiles("it")
 public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 
@@ -39,7 +39,8 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 	public void testInsertNewData() {
 		request.setLocationIdentifier(LOCATION_IDENTIFIER_1);
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
-		assertEquals(2, result.getCount());
+		assertEquals(2, result.getInsertCount());
+		assertEquals(0, result.getDeleteCount());
 	}
 
 	@Test
@@ -53,7 +54,23 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 	public void testReplaceExistingData() {
 		request.setLocationIdentifier(LOCATION_IDENTIFIER_1);
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
-		assertEquals(2, result.getCount());
+		assertEquals(2, result.getInsertCount());
+		assertEquals(2, result.getDeleteCount());
+	}
+
+	@Test
+	@DatabaseSetup(
+			connection="observation",
+			value="classpath:/testData/discreteGWAqtsDbWithExtraRecord/")
+	@ExpectedDatabase(
+			value="classpath:/testResult/afterInsert/",
+			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED,
+			connection="observation")
+	public void testDeleteRecordsNolongerAssociatedWithMonitoringLocation() {
+		request.setLocationIdentifier(LOCATION_IDENTIFIER_1);
+		ResultObject result = loadDiscreteGroundWater.processRequest(request);
+		assertEquals(2, result.getInsertCount());
+		assertEquals(4, result.getDeleteCount());
 	}
 
 	@Test
@@ -67,7 +84,9 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 	public void testNoRecordsFound() {
 		request.setLocationIdentifier(BAD_LOCATION_IDENTIFIER);
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
-		assertEquals(0, result.getCount());
+		assertEquals(0, result.getInsertCount());
+		assertEquals(0, result.getDeleteCount());
+
 		assertDoesNotThrow(() -> {
 			loadDiscreteGroundWater.apply(request);
 		}, "should not have thrown an exception but did");

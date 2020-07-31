@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -42,8 +41,6 @@ public class ObservationDao {
                     sql,
                     monitoringLocationIdentifier
             );
-        } catch (EmptyResultDataAccessException e) {
-            LOG.info("Could find {} - {}", monitoringLocationIdentifier, e.getLocalizedMessage());
         } catch (IOException e) {
             LOG.error("Unable to get SQL statement", e);
             throw new RuntimeException(e);
@@ -81,8 +78,6 @@ public class ObservationDao {
                     }
             );
             rowsInsertedCount = Arrays.stream(rowsInsertedCounts).sum();
-        } catch (EmptyResultDataAccessException e) {
-            LOG.info(e.getLocalizedMessage());
         } catch (IOException e) {
             LOG.error("Unable to get SQL statement", e);
             throw new RuntimeException(e);

@@ -45,4 +45,11 @@ public class TransformDaoIT extends BaseTestDao {
 		List<DiscreteGroundWater> actualData = transformDao.getDiscreteGroundWater(BAD_LOCATION_IDENTIFIER);
 		assertEquals(Collections.emptyList(), actualData);
 	}
+
+	@Test
+	public void testGetWithNull() {
+		// get new data, return list of discrete gw objects
+		List<DiscreteGroundWater> actualData = transformDao.getDiscreteGroundWater(null);
+		assertEquals(Collections.emptyList(), actualData);
+	}
 }

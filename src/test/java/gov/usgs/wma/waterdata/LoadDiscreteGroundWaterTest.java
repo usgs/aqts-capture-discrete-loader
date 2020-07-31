@@ -43,10 +43,17 @@ public class LoadDiscreteGroundWaterTest {
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
 
 		assertNotNull(result);
-		assertEquals(0, result.getCount());
+		assertEquals(0, result.getInsertCount());
 		assertDoesNotThrow(() -> {
 			loadDiscreteGroundWater.apply(request);
 		}, "should not have thrown an exception but did");
+	}
+
+	@Test
+	public void testNullLocationIdentifier() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			ResultObject result = loadDiscreteGroundWater.processRequest(new RequestObject());
+		});
 	}
 
 	@Test
@@ -80,7 +87,7 @@ public class LoadDiscreteGroundWaterTest {
 		ResultObject result = loadDiscreteGroundWater.apply(request);
 
 		assertNotNull(result);
-		assertEquals(genericDiscreteGroundWaterList.size(), result.getCount());
+		assertEquals(genericDiscreteGroundWaterList.size(), result.getInsertCount());
 	}
 
 	@Test
@@ -96,6 +103,6 @@ public class LoadDiscreteGroundWaterTest {
 		ResultObject result = loadDiscreteGroundWater.apply(request);
 
 		assertNotNull(result);
-		assertEquals(genericDiscreteGroundWaterList.size(), result.getCount());
+		assertEquals(genericDiscreteGroundWaterList.size(), result.getInsertCount());
 	}
 }
