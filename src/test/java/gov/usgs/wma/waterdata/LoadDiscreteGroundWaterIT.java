@@ -38,8 +38,9 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testInsertNewData() {
 		request.setLocationIdentifier(LOCATION_IDENTIFIER_1);
+		request.setMonitoringLocationIdentifier(MONITORING_LOCATION_IDENTIFIER_1);
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
-		assertEquals("USGS-323302117055201", result.getMonitoringLocationIdentifier());
+		assertEquals(MONITORING_LOCATION_IDENTIFIER_1, result.getMonitoringLocationIdentifier());
 		assertEquals(2, result.getInsertCount());
 		assertEquals(0, result.getDeleteCount());
 	}
@@ -54,8 +55,9 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 			connection="observation")
 	public void testReplaceExistingData() {
 		request.setLocationIdentifier(LOCATION_IDENTIFIER_1);
+		request.setMonitoringLocationIdentifier(MONITORING_LOCATION_IDENTIFIER_1);
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
-		assertEquals("USGS-323302117055201", result.getMonitoringLocationIdentifier());
+		assertEquals(MONITORING_LOCATION_IDENTIFIER_1, result.getMonitoringLocationIdentifier());
 		assertEquals(2, result.getInsertCount());
 		assertEquals(2, result.getDeleteCount());
 	}
@@ -70,8 +72,9 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 			connection="observation")
 	public void testDeleteRecordsNolongerAssociatedWithMonitoringLocation() {
 		request.setLocationIdentifier(LOCATION_IDENTIFIER_1);
+		request.setMonitoringLocationIdentifier(MONITORING_LOCATION_IDENTIFIER_1);
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
-		assertEquals("USGS-323302117055201", result.getMonitoringLocationIdentifier());
+		assertEquals(MONITORING_LOCATION_IDENTIFIER_1, result.getMonitoringLocationIdentifier());
 		assertEquals(2, result.getInsertCount());
 		assertEquals(4, result.getDeleteCount());
 	}
@@ -84,15 +87,39 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 			connection="observation",
 			value="classpath:/testResult/empty/",
 			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED)
-	public void testNoRecordsFound() {
+	public void testNoRecordsFoundInTransformDB() {
 		request.setLocationIdentifier(BAD_LOCATION_IDENTIFIER);
+		request.setMonitoringLocationIdentifier(BAD_MONITORING_LOCATION_IDENTIFIER);
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
-		assertNull(result.getMonitoringLocationIdentifier());
+		assertEquals(BAD_MONITORING_LOCATION_IDENTIFIER, result.getMonitoringLocationIdentifier());
 		assertEquals(0, result.getInsertCount());
 		assertEquals(0, result.getDeleteCount());
 
 		assertDoesNotThrow(() -> {
 			loadDiscreteGroundWater.apply(request);
 		}, "should not have thrown an exception but did");
+	}
+
+	@Test
+	// Records no longer present in the transform db, delete should still happen
+	@DatabaseSetup(
+			connection="transform",
+			value="classpath:/testData/transformDbRecordsNoLongerPresent/")
+	// Records are still present here in the observations db
+	@DatabaseSetup(
+			connection="observation",
+			value="classpath:/testResult/afterInsert/")
+	// So now they should be deleted and nothing inserted
+	@ExpectedDatabase(
+			value="classpath:/testResult/noMorePublicRecordsSoMustDelete/",
+			assertionMode= DatabaseAssertionMode.NON_STRICT_UNORDERED,
+			connection="observation")
+	public void testRecordsNoLongerInTransformDbSoDeleteInObservationsDb() {
+		request.setLocationIdentifier(LOCATION_IDENTIFIER_1);
+		request.setMonitoringLocationIdentifier(MONITORING_LOCATION_IDENTIFIER_1);
+		ResultObject result = loadDiscreteGroundWater.processRequest(request);
+		assertEquals(MONITORING_LOCATION_IDENTIFIER_1, result.getMonitoringLocationIdentifier());
+		assertEquals(0, result.getInsertCount());
+		assertEquals(2, result.getDeleteCount());
 	}
 }

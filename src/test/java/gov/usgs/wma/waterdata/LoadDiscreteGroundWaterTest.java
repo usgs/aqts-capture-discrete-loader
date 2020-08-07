@@ -31,6 +31,7 @@ public class LoadDiscreteGroundWaterTest {
 		loadDiscreteGroundWater = new LoadDiscreteGroundWater(transformDao, observationDao);
 		request = new RequestObject();
 		request.setLocationIdentifier(BaseTestDao.LOCATION_IDENTIFIER_1);
+		request.setMonitoringLocationIdentifier(BaseTestDao.MONITORING_LOCATION_IDENTIFIER_1);
 		genericDiscreteGroundWaterList = new ArrayList<>();
 		genericDiscreteGroundWater1 = new DiscreteGroundWater();
 		genericDiscreteGroundWater2 = new DiscreteGroundWater();
