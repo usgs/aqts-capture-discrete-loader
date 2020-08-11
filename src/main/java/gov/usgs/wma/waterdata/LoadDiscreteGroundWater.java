@@ -35,24 +35,19 @@ public class LoadDiscreteGroundWater implements Function<RequestObject, ResultOb
 	protected ResultObject processRequest(RequestObject request) {
 
 		String locationIdentifier = request.getLocationIdentifier();
-		LOG.debug("Begin processing request for locationIdentifier: {}", locationIdentifier);
+		String monitoringLocationIdentifier = request.getMonitoringLocationIdentifier();
 
-		if (locationIdentifier == null) {
-			throw new IllegalArgumentException("The locationIdentifier cannot be null");
+		LOG.debug("Begin processing request for locationIdentifier: {}, monitoringLocationIdentifier: {}", locationIdentifier, monitoringLocationIdentifier);
+
+		if (locationIdentifier == null || monitoringLocationIdentifier == null) {
+			throw new IllegalArgumentException("Neither the locationIdentifier nor monitoringLocationIdentifier can be null");
 		}
 
-		// get all the records for this location identifier from the transform db
+		// Get all the records for this aqts location identifier from the transform db
 		List<DiscreteGroundWater> discreteGroundWaterList = transformDao.getDiscreteGroundWater(locationIdentifier);
 
-		ResultObject result;
-
-		//TODO:  IOW-574 - if we do not get records back from the transform db, we won't know the
-		// monitoringLocationIdentifier, so we cannot attempt to do the delete portion of the update.
-		if (discreteGroundWaterList.size() > 0) {
-			result = updateDiscreteGroundWaterIntoObservationDb(discreteGroundWaterList);
-		} else {
-			result = new ResultObject();
-		}
+		// Update the observations db
+		ResultObject result = updateDiscreteGroundWaterIntoObservationDb(discreteGroundWaterList, monitoringLocationIdentifier);
 
 		LOG.debug(String.format(INSERT_SUCCEEDED_MESSAGE, result.getMonitoringLocationIdentifier(), result.getInsertCount(), result.getDeleteCount()));
 
@@ -60,22 +55,31 @@ public class LoadDiscreteGroundWater implements Function<RequestObject, ResultOb
 	}
 
 	@Transactional
-	public ResultObject updateDiscreteGroundWaterIntoObservationDb(List<DiscreteGroundWater> discreteGroundWaterList) {
+	public ResultObject updateDiscreteGroundWaterIntoObservationDb(List<DiscreteGroundWater> discreteGroundWaterList, String monitoringLocationIdentifier) {
 
 		ResultObject result = new ResultObject();
-
-		// first delete existing discrete gw levels from observation db using the monitoring location identifier
-		String monitoringLocationIdentifier = discreteGroundWaterList.get(0).getMonitoringLocationIdentifier();
 		result.setMonitoringLocationIdentifier(monitoringLocationIdentifier);
-		result.setDeleteCount(
-				observationDao.deleteDiscreteGroundWater(monitoringLocationIdentifier)
-		);
 
-		// insert discrete gw levels into observation db
-		result.setInsertCount(
-				observationDao.insertDiscreteGroundWater(discreteGroundWaterList)
-		);
+		if (discreteGroundWaterList.size() > 0) {
+			// Do the delete and the insert if we get discrete gw levels from the transform db
+			result.setDeleteCount(
+					observationDao.deleteDiscreteGroundWater(monitoringLocationIdentifier)
+			);
+			result.setInsertCount(
+					observationDao.insertDiscreteGroundWater(discreteGroundWaterList)
+			);
+		} else {
+			// Just do the delete if we get no discrete gw levels from the transform db
+			// This happens if discrete gw levels are no longer public
+			result.setDeleteCount(
+					observationDao.deleteDiscreteGroundWater(monitoringLocationIdentifier)
+			);
+			result.setInsertCount(0);
+		}
 
+
+		// If the number of discrete gw levels that were inserted differs from number of discrete gw levels we attempted
+		// to insert, then throw an error. This would be a rare case.
 		if (result.getInsertCount() != discreteGroundWaterList.size()) {
 			String failMessageInsertFailed = String.format(
 					INSERT_FAILED_MESSAGE,

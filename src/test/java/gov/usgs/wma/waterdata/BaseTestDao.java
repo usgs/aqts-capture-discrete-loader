@@ -36,7 +36,11 @@ public abstract class BaseTestDao {
 	public static final String LOCATION_IDENTIFIER_1 = "323302117055201";
 	public static final String LOCATION_IDENTIFIER_2 = "415502124084701";
 	public static final String LOCATION_IDENTIFIER_3 = "344405117580201";
+	public static final String MONITORING_LOCATION_IDENTIFIER_1 = "USGS-323302117055201";
+	public static final String MONITORING_LOCATION_IDENTIFIER_2 = "USGS-415502124084701";
+	public static final String MONITORING_LOCATION_IDENTIFIER_3 = "USGS-344405117580201";
 	public static final String BAD_LOCATION_IDENTIFIER = "badLocationIdentifier";
+	public static final String BAD_MONITORING_LOCATION_IDENTIFIER = "USGS-badLocationIdentifier";
 	public RequestObject request;
 	public DiscreteGroundWater discreteGroundWater1;
 	public DiscreteGroundWater discreteGroundWater2;
