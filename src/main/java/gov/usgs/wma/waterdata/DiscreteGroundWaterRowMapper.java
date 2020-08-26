@@ -45,6 +45,7 @@ public class DiscreteGroundWaterRowMapper implements RowMapper<DiscreteGroundWat
 		discreteGroundWater.setReadingQualifier(rs.getString("reading_qualifier"));
 		discreteGroundWater.setReadingQualifiers(rs.getString("reading_qualifiers"));
 		discreteGroundWater.setGroundWaterMeasurement(rs.getString("ground_water_measurement"));
+		discreteGroundWater.setDatum(rs.getString("datum"));
 
 		return discreteGroundWater;
 	}

@@ -28,7 +28,8 @@ select
     use_location_datum_as_reference,
     reading_qualifier,
     reading_qualifiers,
-    ground_water_measurement
+    ground_water_measurement,
+    datum
 from
     discrete_ground_water
 where
