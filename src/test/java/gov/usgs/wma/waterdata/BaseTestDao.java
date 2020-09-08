@@ -45,6 +45,7 @@ public abstract class BaseTestDao {
 	public DiscreteGroundWater discreteGroundWater3;
 	public DiscreteGroundWater discreteGroundWater4;
 	public DiscreteGroundWater discreteGroundWater5;
+	public DiscreteGroundWater discreteGroundWater6;
 
 	@BeforeEach
 	public void setup() {
@@ -218,5 +219,38 @@ public abstract class BaseTestDao {
 		discreteGroundWater5.setReadingQualifiers("[\"Static\"]");
 		discreteGroundWater5.setGroundWaterMeasurement("{}");
 		discreteGroundWater5.setDatum("NGVD89");
+
+		discreteGroundWater6 =  new DiscreteGroundWater();
+		discreteGroundWater6.setFieldVisitIdentifier("2a618902-18ad-4b5f-b0fe-36b7eb2071f7");
+		discreteGroundWater6.setLocationIdentifier(LOCATION_IDENTIFIER_1);
+		discreteGroundWater6.setAgencyCode("USGS");
+		discreteGroundWater6.setStartTime(Timestamp.valueOf("2017-10-30 08:00:00"));
+		discreteGroundWater6.setEndTime(Timestamp.valueOf("2017-10-31 07:59:59"));
+		discreteGroundWater6.setParty("GMENDE");
+		discreteGroundWater6.setRemarks("");
+		discreteGroundWater6.setWeather(null);
+		discreteGroundWater6.setIsValidHeaderInfo("true");
+		discreteGroundWater6.setCompletedWork("{\"LevelsPerformed\": false, \"CollectionAgency\": \"USGS\", \"OtherSampleTaken\": false, \"SedimentSampleTaken\": false, \"BiologicalSampleTaken\": false, \"RecorderDataCollected\": false, \"WaterQualitySampleTaken\": false, \"GroundWaterLevelPerformed\": true, \"SafetyInspectionPerformed\": false}");
+		discreteGroundWater6.setLastModified(Timestamp.valueOf("2020-05-11 04:20:42.246364"));
+		discreteGroundWater6.setParameter("Local Assumed Datum");
+		discreteGroundWater6.setParmCd("72019");
+		discreteGroundWater6.setMonitoringMethod("GW level, calib electric tape");
+		discreteGroundWater6.setFieldVisitValue("11.36");
+		discreteGroundWater6.setUnit("ft");
+		discreteGroundWater6.setUncertainty("0.01");
+		discreteGroundWater6.setReadingType("ReferencePrimary");
+		discreteGroundWater6.setManufacturer("Unspecified");
+		discreteGroundWater6.setModel("Unspecified");
+		discreteGroundWater6.setSerialNumber("SDP.ET.500.03");
+		discreteGroundWater6.setFieldVisitTime(Timestamp.valueOf("2017-10-30 18:08:00"));
+		discreteGroundWater6.setFieldVisitComments("Source: Reporting Agency");
+		discreteGroundWater6.setPublish("true");
+		discreteGroundWater6.setIsValidReadings("true");
+		discreteGroundWater6.setReferencePointUniqueId("e42ffa2b69a3488aa8567a7e0c31e8cc");
+		discreteGroundWater6.setUseLocationDatumAsReference("false");
+		discreteGroundWater6.setReadingQualifier("Static");
+		discreteGroundWater6.setReadingQualifiers("[\"Static\"]");
+		discreteGroundWater6.setGroundWaterMeasurement("{}");
+		discreteGroundWater6.setDatum("NGVD89");
 	}
 }

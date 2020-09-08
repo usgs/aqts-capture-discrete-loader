@@ -29,7 +29,8 @@ public class TransformDaoIT extends BaseTestDao {
 		discreteGroundWaterList = List.of(
 				discreteGroundWater1,
 				discreteGroundWater4,
-				discreteGroundWater5);
+				discreteGroundWater5,
+				discreteGroundWater6);
 	}
 
 	@Test

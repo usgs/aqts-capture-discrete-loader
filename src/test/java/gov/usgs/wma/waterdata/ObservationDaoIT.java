@@ -35,7 +35,7 @@ public class ObservationDaoIT extends BaseTestDao {
 		// delete existing data
 		Integer actualRowsDeletedCount = observationDao.deleteDiscreteGroundWater(discreteGroundWater1.getMonitoringLocationIdentifier());
 		assertNotNull(actualRowsDeletedCount);
-		assertEquals(3, actualRowsDeletedCount);
+		assertEquals(4, actualRowsDeletedCount);
 	}
 
 	@Test
@@ -56,8 +56,9 @@ public class ObservationDaoIT extends BaseTestDao {
 				discreteGroundWater2,
 				discreteGroundWater3,
 				discreteGroundWater4,
-				discreteGroundWater5));
+				discreteGroundWater5,
+				discreteGroundWater6));
 		assertNotNull(actualRowsInsertedCount);
-		assertEquals(5, actualRowsInsertedCount);
+		assertEquals(6, actualRowsInsertedCount);
 	}
 }
