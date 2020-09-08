@@ -33,7 +33,7 @@ select monitoring_location.monitoring_location_id,
        ?::time time_measured_utc,
        ? display_result,
        null vertical_datum_code,
-       null vertical_datum,
+       ? vertical_datum,
        /* Status may come from the monitoring_location table in the obs db */
        null site_status_code,
        null site_status,

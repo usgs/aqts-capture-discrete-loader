@@ -37,6 +37,7 @@ public class DiscreteGroundWater {
 	protected String readingQualifier;
 	protected String readingQualifiers;
 	protected String groundWaterMeasurement;
+	protected String datum;
 
 	public String getFieldVisitIdentifier() {
 		return fieldVisitIdentifier;
@@ -298,6 +299,14 @@ public class DiscreteGroundWater {
 		this.groundWaterMeasurement = groundWaterMeasurement;
 	}
 
+	public String getDatum() {
+		return datum;
+	}
+
+	public void setDatum(String datum) {
+		this.datum = datum;
+	}
+
 	public boolean equals(Object object) {
 		if (this == object) return true;
 		if (object == null || getClass() != object.getClass()) return false;
@@ -331,7 +340,8 @@ public class DiscreteGroundWater {
 				java.util.Objects.equals(useLocationDatumAsReference, that.useLocationDatumAsReference) &&
 				java.util.Objects.equals(readingQualifier, that.readingQualifier) &&
 				java.util.Objects.equals(readingQualifiers, that.readingQualifiers) &&
-				java.util.Objects.equals(groundWaterMeasurement, that.groundWaterMeasurement);
+				java.util.Objects.equals(groundWaterMeasurement, that.groundWaterMeasurement) &&
+				java.util.Objects.equals(datum, that.datum);
 	}
 
 	public int hashCode() {
@@ -365,7 +375,8 @@ public class DiscreteGroundWater {
 				useLocationDatumAsReference,
 				readingQualifier,
 				readingQualifiers,
-				groundWaterMeasurement
+				groundWaterMeasurement,
+				datum
 		);
 	}
 }
