@@ -37,8 +37,6 @@ public abstract class BaseTestDao {
 	public static final String LOCATION_IDENTIFIER_2 = "415502124084701";
 	public static final String LOCATION_IDENTIFIER_3 = "344405117580201";
 	public static final String MONITORING_LOCATION_IDENTIFIER_1 = "USGS-323302117055201";
-	public static final String MONITORING_LOCATION_IDENTIFIER_2 = "USGS-415502124084701";
-	public static final String MONITORING_LOCATION_IDENTIFIER_3 = "USGS-344405117580201";
 	public static final String BAD_LOCATION_IDENTIFIER = "badLocationIdentifier";
 	public static final String BAD_MONITORING_LOCATION_IDENTIFIER = "USGS-badLocationIdentifier";
 	public RequestObject request;
@@ -46,6 +44,7 @@ public abstract class BaseTestDao {
 	public DiscreteGroundWater discreteGroundWater2;
 	public DiscreteGroundWater discreteGroundWater3;
 	public DiscreteGroundWater discreteGroundWater4;
+	public DiscreteGroundWater discreteGroundWater5;
 
 	@BeforeEach
 	public void setup() {
@@ -186,5 +185,38 @@ public abstract class BaseTestDao {
 		discreteGroundWater4.setReadingQualifiers("[\"Static\"]");
 		discreteGroundWater4.setGroundWaterMeasurement("{}");
 		discreteGroundWater4.setDatum("NAVD88");
+
+		discreteGroundWater5 =  new DiscreteGroundWater();
+		discreteGroundWater5.setFieldVisitIdentifier("2a618902-18ad-4b5f-b0fe-36b7eb2071f7");
+		discreteGroundWater5.setLocationIdentifier(LOCATION_IDENTIFIER_1);
+		discreteGroundWater5.setAgencyCode("USGS");
+		discreteGroundWater5.setStartTime(Timestamp.valueOf("2017-10-30 08:00:00"));
+		discreteGroundWater5.setEndTime(Timestamp.valueOf("2017-10-31 07:59:59"));
+		discreteGroundWater5.setParty("GMENDE");
+		discreteGroundWater5.setRemarks("");
+		discreteGroundWater5.setWeather(null);
+		discreteGroundWater5.setIsValidHeaderInfo("true");
+		discreteGroundWater5.setCompletedWork("{\"LevelsPerformed\": false, \"CollectionAgency\": \"USGS\", \"OtherSampleTaken\": false, \"SedimentSampleTaken\": false, \"BiologicalSampleTaken\": false, \"RecorderDataCollected\": false, \"WaterQualitySampleTaken\": false, \"GroundWaterLevelPerformed\": true, \"SafetyInspectionPerformed\": false}");
+		discreteGroundWater5.setLastModified(Timestamp.valueOf("2020-05-11 04:20:42.246364"));
+		discreteGroundWater5.setParameter("Water level, depth MP");
+		discreteGroundWater5.setParmCd("61055");
+		discreteGroundWater5.setMonitoringMethod("GW level, calib electric tape");
+		discreteGroundWater5.setFieldVisitValue("11.36");
+		discreteGroundWater5.setUnit("ft");
+		discreteGroundWater5.setUncertainty("0.01");
+		discreteGroundWater5.setReadingType("ReferencePrimary");
+		discreteGroundWater5.setManufacturer("Unspecified");
+		discreteGroundWater5.setModel("Unspecified");
+		discreteGroundWater5.setSerialNumber("SDP.ET.500.03");
+		discreteGroundWater5.setFieldVisitTime(Timestamp.valueOf("2017-10-30 18:08:00"));
+		discreteGroundWater5.setFieldVisitComments("Source: Reporting Agency");
+		discreteGroundWater5.setPublish("true");
+		discreteGroundWater5.setIsValidReadings("true");
+		discreteGroundWater5.setReferencePointUniqueId("e42ffa2b69a3488aa8567a7e0c31e8cc");
+		discreteGroundWater5.setUseLocationDatumAsReference("false");
+		discreteGroundWater5.setReadingQualifier("Static");
+		discreteGroundWater5.setReadingQualifiers("[\"Static\"]");
+		discreteGroundWater5.setGroundWaterMeasurement("{}");
+		discreteGroundWater5.setDatum("NGVD89");
 	}
 }

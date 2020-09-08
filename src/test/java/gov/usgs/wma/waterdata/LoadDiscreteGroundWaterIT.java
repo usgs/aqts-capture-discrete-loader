@@ -41,7 +41,7 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 		request.setMonitoringLocationIdentifier(MONITORING_LOCATION_IDENTIFIER_1);
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
 		assertEquals(MONITORING_LOCATION_IDENTIFIER_1, result.getMonitoringLocationIdentifier());
-		assertEquals(2, result.getInsertCount());
+		assertEquals(3, result.getInsertCount());
 		assertEquals(0, result.getDeleteCount());
 	}
 
@@ -58,8 +58,8 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 		request.setMonitoringLocationIdentifier(MONITORING_LOCATION_IDENTIFIER_1);
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
 		assertEquals(MONITORING_LOCATION_IDENTIFIER_1, result.getMonitoringLocationIdentifier());
-		assertEquals(2, result.getInsertCount());
-		assertEquals(2, result.getDeleteCount());
+		assertEquals(3, result.getInsertCount());
+		assertEquals(3, result.getDeleteCount());
 	}
 
 	@Test
@@ -75,7 +75,7 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 		request.setMonitoringLocationIdentifier(MONITORING_LOCATION_IDENTIFIER_1);
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
 		assertEquals(MONITORING_LOCATION_IDENTIFIER_1, result.getMonitoringLocationIdentifier());
-		assertEquals(2, result.getInsertCount());
+		assertEquals(3, result.getInsertCount());
 		assertEquals(4, result.getDeleteCount());
 	}
 
@@ -120,6 +120,6 @@ public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 		ResultObject result = loadDiscreteGroundWater.processRequest(request);
 		assertEquals(MONITORING_LOCATION_IDENTIFIER_1, result.getMonitoringLocationIdentifier());
 		assertEquals(0, result.getInsertCount());
-		assertEquals(2, result.getDeleteCount());
+		assertEquals(3, result.getDeleteCount());
 	}
 }
