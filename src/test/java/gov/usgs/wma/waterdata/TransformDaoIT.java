@@ -1,5 +1,7 @@
 package gov.usgs.wma.waterdata;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -38,7 +40,7 @@ public class TransformDaoIT extends BaseTestDao {
 		// get new data, return list of discrete gw objects
 		List<DiscreteGroundWater> actualData = transformDao.getDiscreteGroundWater(LOCATION_IDENTIFIER_1);
 		assertNotNull(actualData);
-		assertEquals(discreteGroundWaterList, actualData);
+		assertThat(actualData, containsInAnyOrder(discreteGroundWaterList.toArray()));
 	}
 
 	@Test
