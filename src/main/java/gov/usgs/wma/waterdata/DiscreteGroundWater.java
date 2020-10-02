@@ -315,6 +315,7 @@ public class DiscreteGroundWater {
 				java.util.Objects.equals(locationIdentifier, that.locationIdentifier) &&
 				java.util.Objects.equals(agencyCode, that.agencyCode) &&
 				java.util.Objects.equals(dateTimeAccuracyCode, that.dateTimeAccuracyCode) &&
+				java.util.Objects.equals(dateTimeAccuracy, that.dateTimeAccuracy) &&
 				java.util.Objects.equals(startTime, that.startTime) &&
 				java.util.Objects.equals(endTime, that.endTime) &&
 				java.util.Objects.equals(party, that.party) &&
@@ -351,6 +352,7 @@ public class DiscreteGroundWater {
 				locationIdentifier,
 				agencyCode,
 				dateTimeAccuracyCode,
+				dateTimeAccuracy,
 				startTime,
 				endTime,
 				party,
