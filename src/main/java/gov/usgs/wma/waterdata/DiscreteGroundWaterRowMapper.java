@@ -10,6 +10,8 @@ public class DiscreteGroundWaterRowMapper implements RowMapper<DiscreteGroundWat
 	@Override
 	public DiscreteGroundWater mapRow(ResultSet rs, int rowNum) throws SQLException {
 
+		DiscreteGroundWaterRules rules = new DiscreteGroundWaterRules();
+
 		DateTimeAccuracy dta = DateTimeAccuracy.parse(rs.getString("field_visit_comments"));
 
 		DiscreteGroundWater discreteGroundWater = new DiscreteGroundWater();
@@ -46,6 +48,8 @@ public class DiscreteGroundWaterRowMapper implements RowMapper<DiscreteGroundWat
 		discreteGroundWater.setReadingQualifiers(rs.getString("reading_qualifiers"));
 		discreteGroundWater.setGroundWaterMeasurement(rs.getString("ground_water_measurement"));
 		discreteGroundWater.setDatum(rs.getString("datum"));
+
+		rules.apply(discreteGroundWater);
 
 		return discreteGroundWater;
 	}

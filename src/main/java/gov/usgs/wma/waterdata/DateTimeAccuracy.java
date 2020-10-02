@@ -77,4 +77,24 @@ public enum DateTimeAccuracy {
 
 		return UNKNOWN;
 	}
+
+	/**
+	 * Parses a code
+	 *
+	 * @param code The text to match up against a DTA Code
+	 * @return A DateTimeAccuracy instance, which is never null.
+	 * If the text is null or no matching code is found, the UNKNOWN instance is returned.
+	 */
+	public static DateTimeAccuracy parseCode(final String code) {
+
+		if (code != null) {
+			for(DateTimeAccuracy acc : DateTimeAccuracy.values()) {
+				if (acc.isReal() && code.equals(acc.code)) {
+					return acc;
+				}
+			}
+		}
+
+		return UNKNOWN;
+	}
 }
