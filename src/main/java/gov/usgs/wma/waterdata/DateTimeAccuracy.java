@@ -77,4 +77,14 @@ public enum DateTimeAccuracy {
 
 		return UNKNOWN;
 	}
+
+	/**
+	 * This is the string we expect to find in the field_visit_comment to indicate this
+	 * DateTimeAccuracy
+	 * @return
+	 */
+	public String getMatchString() {
+		return matchString;
+	}
+
 }

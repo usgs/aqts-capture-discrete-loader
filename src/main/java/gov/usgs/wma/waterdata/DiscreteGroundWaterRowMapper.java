@@ -10,14 +10,14 @@ public class DiscreteGroundWaterRowMapper implements RowMapper<DiscreteGroundWat
 	@Override
 	public DiscreteGroundWater mapRow(ResultSet rs, int rowNum) throws SQLException {
 
-		DateTimeAccuracy dta = DateTimeAccuracy.parse(rs.getString("field_visit_comments"));
+		DiscreteGroundWaterRules rules = new DiscreteGroundWaterRules();
 
 		DiscreteGroundWater discreteGroundWater = new DiscreteGroundWater();
 		discreteGroundWater.setFieldVisitIdentifier(rs.getString("field_visit_identifier"));
 		discreteGroundWater.setLocationIdentifier(rs.getString("location_identifier"));
 		discreteGroundWater.setAgencyCode(rs.getString("agency_code"));
-		discreteGroundWater.setDateTimeAccuracyCode(dta.getCode());
-		discreteGroundWater.setDateTimeAccuracyText(dta.getText());
+		discreteGroundWater.setDateTimeAccuracyCode(null);  //Set by business rules
+		discreteGroundWater.setDateTimeAccuracyText(null);  //Set by business rules
 		discreteGroundWater.setStartTime(rs.getTimestamp("start_time"));
 		discreteGroundWater.setEndTime(rs.getTimestamp("end_time"));
 		discreteGroundWater.setParty(rs.getString("party"));
@@ -46,6 +46,9 @@ public class DiscreteGroundWaterRowMapper implements RowMapper<DiscreteGroundWat
 		discreteGroundWater.setReadingQualifiers(rs.getString("reading_qualifiers"));
 		discreteGroundWater.setGroundWaterMeasurement(rs.getString("ground_water_measurement"));
 		discreteGroundWater.setDatum(rs.getString("datum"));
+
+		//Applies all business rules
+		rules.apply(discreteGroundWater);
 
 		return discreteGroundWater;
 	}

@@ -55,6 +55,8 @@ public abstract class BaseTestDao {
 		discreteGroundWater1.setFieldVisitIdentifier("0c8d1725-db51-47d9-aabb-a1dd9d1bdf08");
 		discreteGroundWater1.setLocationIdentifier(LOCATION_IDENTIFIER_1);
 		discreteGroundWater1.setAgencyCode("USGS");
+		discreteGroundWater1.setDateTimeAccuracyCode(DateTimeAccuracy.MINUTE.getCode());
+		discreteGroundWater1.setDateTimeAccuracyText(DateTimeAccuracy.MINUTE.getText());
 		discreteGroundWater1.setStartTime(Timestamp.valueOf("2013-01-08 08:00:00"));
 		discreteGroundWater1.setEndTime(Timestamp.valueOf("2013-01-09 07:59:59"));
 		discreteGroundWater1.setParty("GOM");
@@ -158,6 +160,8 @@ public abstract class BaseTestDao {
 		discreteGroundWater4.setFieldVisitIdentifier("2a618902-18ad-4b5f-b0fe-36b7eb2071f7");
 		discreteGroundWater4.setLocationIdentifier(LOCATION_IDENTIFIER_1);
 		discreteGroundWater4.setAgencyCode("USGS");
+		discreteGroundWater4.setDateTimeAccuracyCode(DateTimeAccuracy.MINUTE.getCode());
+		discreteGroundWater4.setDateTimeAccuracyText(DateTimeAccuracy.MINUTE.getText());
 		discreteGroundWater4.setStartTime(Timestamp.valueOf("2017-10-30 08:00:00"));
 		discreteGroundWater4.setEndTime(Timestamp.valueOf("2017-10-31 07:59:59"));
 		discreteGroundWater4.setParty("GMENDE");
@@ -191,6 +195,8 @@ public abstract class BaseTestDao {
 		discreteGroundWater5.setFieldVisitIdentifier("2a618902-18ad-4b5f-b0fe-36b7eb2071f7");
 		discreteGroundWater5.setLocationIdentifier(LOCATION_IDENTIFIER_1);
 		discreteGroundWater5.setAgencyCode("USGS");
+		discreteGroundWater5.setDateTimeAccuracyCode(DateTimeAccuracy.MINUTE.getCode());
+		discreteGroundWater5.setDateTimeAccuracyText(DateTimeAccuracy.MINUTE.getText());
 		discreteGroundWater5.setStartTime(Timestamp.valueOf("2017-10-30 08:00:00"));
 		discreteGroundWater5.setEndTime(Timestamp.valueOf("2017-10-31 07:59:59"));
 		discreteGroundWater5.setParty("GMENDE");
@@ -224,6 +230,8 @@ public abstract class BaseTestDao {
 		discreteGroundWater6.setFieldVisitIdentifier("2a618902-18ad-4b5f-b0fe-36b7eb2071f7");
 		discreteGroundWater6.setLocationIdentifier(LOCATION_IDENTIFIER_1);
 		discreteGroundWater6.setAgencyCode("USGS");
+		discreteGroundWater6.setDateTimeAccuracyCode(DateTimeAccuracy.MINUTE.getCode());
+		discreteGroundWater6.setDateTimeAccuracyText(DateTimeAccuracy.MINUTE.getText());
 		discreteGroundWater6.setStartTime(Timestamp.valueOf("2017-10-30 08:00:00"));
 		discreteGroundWater6.setEndTime(Timestamp.valueOf("2017-10-31 07:59:59"));
 		discreteGroundWater6.setParty("GMENDE");
