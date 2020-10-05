@@ -16,9 +16,9 @@ class DiscreteGroundWaterRulesTest {
 	}
 
 	@Test
-	void recognizedDTACodesShouldBeUnmodified() {
-		dga.setDateTimeAccuracyCode(DateTimeAccuracy.HOUR.getCode());
-		dga.setDateTimeAccuracyText(DateTimeAccuracy.HOUR.getText());
+	void recognizedFieldVisitCommentsShouldParseToCorrectDateTimeAccuracyCode() {
+
+		dga.setFieldVisitComments(DateTimeAccuracy.HOUR.getMatchString());
 
 		rules.apply(dga);
 
@@ -27,8 +27,8 @@ class DiscreteGroundWaterRulesTest {
 	}
 
 	@Test
-	void unrecognizedDTACodesShouldBeConvertedToMinute() {
-		dga.setDateTimeAccuracyCode("XYZ");
+	void unrecognizedFieldVisitCommentsShouldParseToCorrectDateTimeAccuracyCode() {
+		dga.setFieldVisitComments("XYZ");
 
 		rules.apply(dga);
 
@@ -37,9 +37,8 @@ class DiscreteGroundWaterRulesTest {
 	}
 
 	@Test
-	void emptyDTACodesShouldDefaultToMinute() {
-		dga.setDateTimeAccuracyCode("");
-		dga.setDateTimeAccuracyText("");
+	void emptyFieldVisitCommentsShouldParseToMINUTEDateTimeAccuracyCode() {
+		dga.setFieldVisitComments("");
 
 		rules.apply(dga);
 
@@ -48,7 +47,10 @@ class DiscreteGroundWaterRulesTest {
 	}
 
 	@Test
-	void nullDTACodesShouldDefaultToMinute() {
+	void nullFieldVisitCommentsShouldParseToMINUTEDateTimeAccuracyCode() {
+
+		dga.setFieldVisitComments(null);
+
 		rules.apply(dga);
 		assertEquals(DateTimeAccuracy.MINUTE.getCode(), dga.getDateTimeAccuracyCode());
 		assertEquals(DateTimeAccuracy.MINUTE.getText(), dga.getDateTimeAccuracyText());

@@ -12,13 +12,23 @@ public class DiscreteGroundWaterRules {
 	 */
 	public void apply(DiscreteGroundWater domObj) {
 
-		//Rule:  The DateTime accuracy when unspecified is MINUTE.
-		//Ref:  https://internal.cida.usgs.gov/jira/browse/IOW-652
-		if(! DateTimeAccuracy.parseCode(domObj.getDateTimeAccuracyCode()).isReal()) {
-			DateTimeAccuracy defDTA = DateTimeAccuracy.MINUTE;
+		//Rule:  The DateTime accuracy is read from a standardized format in the field_visit_comment.
+		//If the unrecognized or unspecified, it is assumed to be MINUTE.
+		//Ref:  https://internal.cida.usgs.gov/jira/browse/IOW-558 (read from comment)
+		//Ref:  https://internal.cida.usgs.gov/jira/browse/IOW-652 (default to MINUTE)
+		{
+			DateTimeAccuracy dta = DateTimeAccuracy.parse(domObj.getFieldVisitComments());
 
-			domObj.setDateTimeAccuracyCode(defDTA.getCode());
-			domObj.setDateTimeAccuracyText(defDTA.getText());
+			if (dta.isReal()) {
+
+				domObj.setDateTimeAccuracyCode(dta.getCode());
+				domObj.setDateTimeAccuracyText(dta.getText());
+			} else {
+
+				dta = DateTimeAccuracy.MINUTE;
+				domObj.setDateTimeAccuracyCode(dta.getCode());
+				domObj.setDateTimeAccuracyText(dta.getText());
+			}
 		}
 	}
 }
