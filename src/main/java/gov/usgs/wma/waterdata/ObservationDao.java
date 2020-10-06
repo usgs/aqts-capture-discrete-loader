@@ -65,7 +65,7 @@ public class ObservationDao {
                             ps.setTimestamp(5, discreteGroundWaterList.get(i).getFieldVisitTime());
                             ps.setString(6, discreteGroundWaterList.get(i).getFieldVisitValue());
                             ps.setString(7, discreteGroundWaterList.get(i).getDatum());
-                            ps.setString(8, discreteGroundWaterList.get(i).getAgencyCode());
+                            ps.setString(8, discreteGroundWaterList.get(i).getCollectionAgency());
                             ps.setString(9, discreteGroundWaterList.get(i).getDateTimeAccuracyCode());
                             ps.setString(10, discreteGroundWaterList.get(i).getDateTimeAccuracyText());
                             ps.setString(11, discreteGroundWaterList.get(i).getUncertainty());

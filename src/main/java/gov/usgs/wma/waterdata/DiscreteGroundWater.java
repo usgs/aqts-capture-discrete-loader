@@ -38,6 +38,7 @@ public class DiscreteGroundWater {
 	protected String readingQualifiers;
 	protected String groundWaterMeasurement;
 	protected String datum;
+	protected String collectionAgency;
 
 	public String getFieldVisitIdentifier() {
 		return fieldVisitIdentifier;
@@ -307,6 +308,14 @@ public class DiscreteGroundWater {
 		this.datum = datum;
 	}
 
+	public String getCollectionAgency() {
+		return collectionAgency;
+	}
+
+	public void setCollectionAgency(String collectionAgency) {
+		this.collectionAgency = collectionAgency;
+	}
+
 	public boolean equals(Object object) {
 		if (this == object) return true;
 		if (object == null || getClass() != object.getClass()) return false;
@@ -341,7 +350,8 @@ public class DiscreteGroundWater {
 				java.util.Objects.equals(readingQualifier, that.readingQualifier) &&
 				java.util.Objects.equals(readingQualifiers, that.readingQualifiers) &&
 				java.util.Objects.equals(groundWaterMeasurement, that.groundWaterMeasurement) &&
-				java.util.Objects.equals(datum, that.datum);
+				java.util.Objects.equals(datum, that.datum) &&
+				java.util.Objects.equals(collectionAgency, that.collectionAgency);
 	}
 
 	public int hashCode() {
@@ -376,7 +386,8 @@ public class DiscreteGroundWater {
 				readingQualifier,
 				readingQualifiers,
 				groundWaterMeasurement,
-				datum
+				datum,
+				collectionAgency
 		);
 	}
 }

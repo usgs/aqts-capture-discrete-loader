@@ -29,7 +29,8 @@ select
     reading_qualifier,
     reading_qualifiers,
     ground_water_measurement,
-    datum
+    datum,
+    jsonb_extract_path_text(completed_work, 'CollectionAgency') collection_agency
 from
     discrete_ground_water
 where

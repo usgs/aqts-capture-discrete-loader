@@ -85,6 +85,7 @@ public abstract class BaseTestDao {
 		discreteGroundWater1.setReadingQualifiers("[\"Static\"]");
 		discreteGroundWater1.setGroundWaterMeasurement("{}");
 		discreteGroundWater1.setDatum("NAVD88");
+		discreteGroundWater1.setCollectionAgency("USGS");
 
 		discreteGroundWater2 = new DiscreteGroundWater();
 		discreteGroundWater2.setFieldVisitIdentifier("035594ec-0451-4d63-a0a9-7fd471ee6f78");
@@ -190,6 +191,7 @@ public abstract class BaseTestDao {
 		discreteGroundWater4.setReadingQualifiers("[\"Static\"]");
 		discreteGroundWater4.setGroundWaterMeasurement("{}");
 		discreteGroundWater4.setDatum("NAVD88");
+		discreteGroundWater4.setCollectionAgency("USGS");
 
 		discreteGroundWater5 =  new DiscreteGroundWater();
 		discreteGroundWater5.setFieldVisitIdentifier("2a618902-18ad-4b5f-b0fe-36b7eb2071f7");
@@ -225,6 +227,7 @@ public abstract class BaseTestDao {
 		discreteGroundWater5.setReadingQualifiers("[\"Static\"]");
 		discreteGroundWater5.setGroundWaterMeasurement("{}");
 		discreteGroundWater5.setDatum("NGVD89");
+		discreteGroundWater5.setCollectionAgency("USGS");
 
 		discreteGroundWater6 =  new DiscreteGroundWater();
 		discreteGroundWater6.setFieldVisitIdentifier("2a618902-18ad-4b5f-b0fe-36b7eb2071f7");
@@ -260,5 +263,6 @@ public abstract class BaseTestDao {
 		discreteGroundWater6.setReadingQualifiers("[\"Static\"]");
 		discreteGroundWater6.setGroundWaterMeasurement("{}");
 		discreteGroundWater6.setDatum("NGVD89");
+		discreteGroundWater6.setCollectionAgency("USGS");
 	}
 }
