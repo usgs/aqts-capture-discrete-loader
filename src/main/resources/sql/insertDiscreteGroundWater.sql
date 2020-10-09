@@ -46,7 +46,7 @@ select monitoring_location.monitoring_location_id,
        /* This will come in through the comments field as something like Source: Reporting Agency */
        null measurement_source_code,
        null measurement_source,
-       null measurement_method_code,
+       ? measurement_method_code,
        ? measurement_method,
        null approval_status_code,
        null approval_status

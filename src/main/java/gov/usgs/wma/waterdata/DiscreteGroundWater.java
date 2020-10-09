@@ -21,6 +21,7 @@ public class DiscreteGroundWater {
 	protected String parameter;
 	protected String parmCd;
 	protected String monitoringMethod;
+	protected String nwisMethodCode;
 	protected String fieldVisitValue;
 	protected String unit;
 	protected String uncertainty;
@@ -38,6 +39,7 @@ public class DiscreteGroundWater {
 	protected String readingQualifiers;
 	protected String groundWaterMeasurement;
 	protected String datum;
+	protected String collectionAgency;
 
 	public String getFieldVisitIdentifier() {
 		return fieldVisitIdentifier;
@@ -169,6 +171,14 @@ public class DiscreteGroundWater {
 
 	public void setMonitoringMethod(String monitoringMethod) {
 		this.monitoringMethod = monitoringMethod;
+	}
+
+	public String getNwisMethodCode() {
+		return nwisMethodCode;
+	}
+
+	public void setNwisMethodCode(String nwisMethodCode) {
+		this.nwisMethodCode = nwisMethodCode;
 	}
 
 	public String getFieldVisitValue() {
@@ -307,6 +317,14 @@ public class DiscreteGroundWater {
 		this.datum = datum;
 	}
 
+	public String getCollectionAgency() {
+		return collectionAgency;
+	}
+
+	public void setCollectionAgency(String collectionAgency) {
+		this.collectionAgency = collectionAgency;
+	}
+
 	public boolean equals(Object object) {
 		if (this == object) return true;
 		if (object == null || getClass() != object.getClass()) return false;
@@ -327,6 +345,7 @@ public class DiscreteGroundWater {
 				java.util.Objects.equals(parameter, that.parameter) &&
 				java.util.Objects.equals(parmCd, that.parmCd) &&
 				java.util.Objects.equals(monitoringMethod, that.monitoringMethod) &&
+				java.util.Objects.equals(nwisMethodCode, that.nwisMethodCode) &&
 				java.util.Objects.equals(fieldVisitValue, that.fieldVisitValue) &&
 				java.util.Objects.equals(unit, that.unit) &&
 				java.util.Objects.equals(uncertainty, that.uncertainty) &&
@@ -343,7 +362,8 @@ public class DiscreteGroundWater {
 				java.util.Objects.equals(readingQualifier, that.readingQualifier) &&
 				java.util.Objects.equals(readingQualifiers, that.readingQualifiers) &&
 				java.util.Objects.equals(groundWaterMeasurement, that.groundWaterMeasurement) &&
-				java.util.Objects.equals(datum, that.datum);
+				java.util.Objects.equals(datum, that.datum) &&
+				java.util.Objects.equals(collectionAgency, that.collectionAgency);
 	}
 
 	public int hashCode() {
@@ -364,6 +384,7 @@ public class DiscreteGroundWater {
 				parameter,
 				parmCd,
 				monitoringMethod,
+				nwisMethodCode,
 				fieldVisitValue,
 				unit,
 				uncertainty,
@@ -380,7 +401,8 @@ public class DiscreteGroundWater {
 				readingQualifier,
 				readingQualifiers,
 				groundWaterMeasurement,
-				datum
+				datum,
+				collectionAgency
 		);
 	}
 }

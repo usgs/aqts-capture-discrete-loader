@@ -11,8 +11,8 @@ public class DiscreteGroundWaterRowMapper implements RowMapper<DiscreteGroundWat
 	public DiscreteGroundWater mapRow(ResultSet rs, int rowNum) throws SQLException {
 
 		DiscreteGroundWaterRules rules = new DiscreteGroundWaterRules();
-
 		DiscreteGroundWater discreteGroundWater = new DiscreteGroundWater();
+
 		discreteGroundWater.setFieldVisitIdentifier(rs.getString("field_visit_identifier"));
 		discreteGroundWater.setLocationIdentifier(rs.getString("location_identifier"));
 		discreteGroundWater.setAgencyCode(rs.getString("agency_code"));
@@ -29,6 +29,7 @@ public class DiscreteGroundWaterRowMapper implements RowMapper<DiscreteGroundWat
 		discreteGroundWater.setParameter(rs.getString("parameter"));
 		discreteGroundWater.setParmCd(rs.getString("parm_cd"));
 		discreteGroundWater.setMonitoringMethod(rs.getString("monitoring_method"));
+		discreteGroundWater.setNwisMethodCode(rs.getString("nwis_method_code"));
 		discreteGroundWater.setFieldVisitValue(rs.getString("field_visit_value"));
 		discreteGroundWater.setUnit(rs.getString("unit"));
 		discreteGroundWater.setUncertainty(rs.getString("uncertainty"));
@@ -46,6 +47,7 @@ public class DiscreteGroundWaterRowMapper implements RowMapper<DiscreteGroundWat
 		discreteGroundWater.setReadingQualifiers(rs.getString("reading_qualifiers"));
 		discreteGroundWater.setGroundWaterMeasurement(rs.getString("ground_water_measurement"));
 		discreteGroundWater.setDatum(rs.getString("datum"));
+		discreteGroundWater.setCollectionAgency(rs.getString("collection_agency"));
 
 		//Applies all business rules
 		rules.apply(discreteGroundWater);

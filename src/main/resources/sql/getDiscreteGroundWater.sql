@@ -13,6 +13,7 @@ select
     parameter,
     parm_cd,
     monitoring_method,
+    nwis_method_code,
     field_visit_value,
     unit,
     uncertainty,
@@ -29,7 +30,8 @@ select
     reading_qualifier,
     reading_qualifiers,
     ground_water_measurement,
-    datum
+    datum,
+    jsonb_extract_path_text(completed_work, 'CollectionAgency') collection_agency
 from
     discrete_ground_water
 where
