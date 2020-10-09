@@ -68,6 +68,7 @@ public abstract class BaseTestDao {
 		discreteGroundWater1.setParameter("Water level, depth MP");
 		discreteGroundWater1.setParmCd("61055");
 		discreteGroundWater1.setMonitoringMethod("GW level, calib electric tape");
+		discreteGroundWater1.setNwisMethodCode("V");
 		discreteGroundWater1.setFieldVisitValue("11.28");
 		discreteGroundWater1.setUnit("ft");
 		discreteGroundWater1.setUncertainty("0.01");
@@ -104,6 +105,7 @@ public abstract class BaseTestDao {
 		discreteGroundWater2.setParameter("Water level, depth MP");
 		discreteGroundWater2.setParmCd("61055");
 		discreteGroundWater2.setMonitoringMethod("GW level, steel tape");
+		discreteGroundWater2.setNwisMethodCode("S");
 		discreteGroundWater2.setFieldVisitValue("16.16");
 		discreteGroundWater2.setUnit("ft");
 		discreteGroundWater2.setUncertainty("0.01");
@@ -139,6 +141,7 @@ public abstract class BaseTestDao {
 		discreteGroundWater3.setParameter("Water level, depth MP");
 		discreteGroundWater3.setParmCd("61055");
 		discreteGroundWater3.setMonitoringMethod("GW level, steel tape");
+		discreteGroundWater3.setNwisMethodCode("S");
 		discreteGroundWater3.setFieldVisitValue("83.08");
 		discreteGroundWater3.setUnit("ft");
 		discreteGroundWater3.setUncertainty("0.01");
@@ -174,6 +177,7 @@ public abstract class BaseTestDao {
 		discreteGroundWater4.setParameter("Water level, depth MP");
 		discreteGroundWater4.setParmCd("61055");
 		discreteGroundWater4.setMonitoringMethod("GW level, calib electric tape");
+		discreteGroundWater4.setNwisMethodCode("V");
 		discreteGroundWater4.setFieldVisitValue("11.36");
 		discreteGroundWater4.setUnit("ft");
 		discreteGroundWater4.setUncertainty("0.01");
@@ -210,6 +214,7 @@ public abstract class BaseTestDao {
 		discreteGroundWater5.setParameter("Water level, depth MP");
 		discreteGroundWater5.setParmCd("61055");
 		discreteGroundWater5.setMonitoringMethod("GW level, calib electric tape");
+		discreteGroundWater5.setNwisMethodCode("V");
 		discreteGroundWater5.setFieldVisitValue("11.36");
 		discreteGroundWater5.setUnit("ft");
 		discreteGroundWater5.setUncertainty("0.01");
@@ -246,6 +251,7 @@ public abstract class BaseTestDao {
 		discreteGroundWater6.setParameter("Local Assumed Datum");
 		discreteGroundWater6.setParmCd("72019");
 		discreteGroundWater6.setMonitoringMethod("GW level, calib electric tape");
+		discreteGroundWater6.setNwisMethodCode("V");
 		discreteGroundWater6.setFieldVisitValue("11.36");
 		discreteGroundWater6.setUnit("ft");
 		discreteGroundWater6.setUncertainty("0.01");

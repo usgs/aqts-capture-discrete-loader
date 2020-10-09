@@ -29,6 +29,7 @@ public class DiscreteGroundWaterRowMapper implements RowMapper<DiscreteGroundWat
 		discreteGroundWater.setParameter(rs.getString("parameter"));
 		discreteGroundWater.setParmCd(rs.getString("parm_cd"));
 		discreteGroundWater.setMonitoringMethod(rs.getString("monitoring_method"));
+		discreteGroundWater.setNwisMethodCode(rs.getString("nwis_method_code"));
 		discreteGroundWater.setFieldVisitValue(rs.getString("field_visit_value"));
 		discreteGroundWater.setUnit(rs.getString("unit"));
 		discreteGroundWater.setUncertainty(rs.getString("uncertainty"));

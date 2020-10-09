@@ -13,6 +13,7 @@ select
     parameter,
     parm_cd,
     monitoring_method,
+    nwis_method_code,
     field_visit_value,
     unit,
     uncertainty,

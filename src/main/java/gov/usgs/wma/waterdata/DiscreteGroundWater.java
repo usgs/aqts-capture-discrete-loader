@@ -21,6 +21,7 @@ public class DiscreteGroundWater {
 	protected String parameter;
 	protected String parmCd;
 	protected String monitoringMethod;
+	protected String nwisMethodCode;
 	protected String fieldVisitValue;
 	protected String unit;
 	protected String uncertainty;
@@ -170,6 +171,14 @@ public class DiscreteGroundWater {
 
 	public void setMonitoringMethod(String monitoringMethod) {
 		this.monitoringMethod = monitoringMethod;
+	}
+
+	public String getNwisMethodCode() {
+		return nwisMethodCode;
+	}
+
+	public void setNwisMethodCode(String nwisMethodCode) {
+		this.nwisMethodCode = nwisMethodCode;
 	}
 
 	public String getFieldVisitValue() {
@@ -336,6 +345,7 @@ public class DiscreteGroundWater {
 				java.util.Objects.equals(parameter, that.parameter) &&
 				java.util.Objects.equals(parmCd, that.parmCd) &&
 				java.util.Objects.equals(monitoringMethod, that.monitoringMethod) &&
+				java.util.Objects.equals(nwisMethodCode, that.nwisMethodCode) &&
 				java.util.Objects.equals(fieldVisitValue, that.fieldVisitValue) &&
 				java.util.Objects.equals(unit, that.unit) &&
 				java.util.Objects.equals(uncertainty, that.uncertainty) &&
@@ -374,6 +384,7 @@ public class DiscreteGroundWater {
 				parameter,
 				parmCd,
 				monitoringMethod,
+				nwisMethodCode,
 				fieldVisitValue,
 				unit,
 				uncertainty,
