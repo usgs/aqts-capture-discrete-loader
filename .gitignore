@@ -8,3 +8,5 @@ target/
 /.classpath
 /.project
 /notes.txt
+.serverless/
+node_modules/
