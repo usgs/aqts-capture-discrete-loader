@@ -96,6 +96,7 @@ resources:
 
 plugins:
   - serverless-plugin-git-variables
+  - serverless-pseudo-parameters
 
 package:
   artifact: aqts-capture-discrete-loader-aws.jar
