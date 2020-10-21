@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # This script pulls maven settings into the jenkins job runner workspace
-# It's main purpose is to overrides the wma.maven.url in the project's pom.xml
+# It's main purpose is to provide the wma.maven.url to the project's pom.xml
 # so that we don't expose the private chs artifactory url to the public
 
 git config user.email "cida_javadev@usgs.gov"
