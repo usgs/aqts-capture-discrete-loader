@@ -49,6 +49,7 @@ select monitoring_location.monitoring_location_id,
        ? measurement_method_code,
        ? measurement_method,
        null approval_status_code,
-       null approval_status
+       null approval_status,
+       ?::json result_measure_qualifiers
 from monitoring_location
 	where monitoring_location.monitoring_location_identifier = ?;

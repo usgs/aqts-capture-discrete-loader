@@ -35,7 +35,6 @@ public class DiscreteGroundWater {
 	protected String isValidReadings;
 	protected String referencePointUniqueId;
 	protected String useLocationDatumAsReference;
-	protected String readingQualifier;
 	protected String readingQualifiers;
 	protected String groundWaterMeasurement;
 	protected String datum;
@@ -285,14 +284,6 @@ public class DiscreteGroundWater {
 		this.useLocationDatumAsReference = useLocationDatumAsReference;
 	}
 
-	public String getReadingQualifier() {
-		return readingQualifier;
-	}
-
-	public void setReadingQualifier(String readingQualifier) {
-		this.readingQualifier = readingQualifier;
-	}
-
 	public String getReadingQualifiers() {
 		return readingQualifiers;
 	}
@@ -359,7 +350,6 @@ public class DiscreteGroundWater {
 				java.util.Objects.equals(isValidReadings, that.isValidReadings) &&
 				java.util.Objects.equals(referencePointUniqueId, that.referencePointUniqueId) &&
 				java.util.Objects.equals(useLocationDatumAsReference, that.useLocationDatumAsReference) &&
-				java.util.Objects.equals(readingQualifier, that.readingQualifier) &&
 				java.util.Objects.equals(readingQualifiers, that.readingQualifiers) &&
 				java.util.Objects.equals(groundWaterMeasurement, that.groundWaterMeasurement) &&
 				java.util.Objects.equals(datum, that.datum) &&
@@ -398,7 +388,6 @@ public class DiscreteGroundWater {
 				isValidReadings,
 				referencePointUniqueId,
 				useLocationDatumAsReference,
-				readingQualifier,
 				readingQualifiers,
 				groundWaterMeasurement,
 				datum,
