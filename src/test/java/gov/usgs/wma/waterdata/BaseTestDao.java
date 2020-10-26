@@ -260,7 +260,7 @@ public abstract class BaseTestDao {
 		discreteGroundWater6.setIsValidReadings("true");
 		discreteGroundWater6.setReferencePointUniqueId("e42ffa2b69a3488aa8567a7e0c31e8cc");
 		discreteGroundWater6.setUseLocationDatumAsReference("false");
-		discreteGroundWater6.setReadingQualifiers("[\"Static\"]");
+		discreteGroundWater6.setReadingQualifiers("[\"Groundwater level affected by tide\",\"True value is below reported value due to local conditions\"]");
 		discreteGroundWater6.setGroundWaterMeasurement("{}");
 		discreteGroundWater6.setDatum("NGVD89");
 		discreteGroundWater6.setCollectionAgency("USGS");

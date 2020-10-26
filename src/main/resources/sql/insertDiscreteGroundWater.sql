@@ -7,7 +7,8 @@ into discrete_ground_water_aqts(monitoring_location_id, agency_code, agency, sit
                                 vertical_datum_code, vertical_datum, site_status_code, site_status,
                                 measuring_agency_code, measuring_agency, date_time_accuracy_code, date_time_accuracy,
                                 level_accuracy_code, level_accuracy, measurement_source_code, measurement_source,
-                                measurement_method_code, measurement_method, approval_status_code, approval_status)
+                                measurement_method_code, measurement_method, approval_status_code, approval_status,
+                                result_measure_qualifiers)
 select monitoring_location.monitoring_location_id,
        monitoring_location.agency_cd agency_code,
        monitoring_location.agency,
