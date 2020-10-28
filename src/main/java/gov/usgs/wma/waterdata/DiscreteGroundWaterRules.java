@@ -1,10 +1,24 @@
 package gov.usgs.wma.waterdata;
 
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonToken;
+import org.springframework.util.StringUtils;
+
+import java.io.IOException;
+import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Applies business rules to a domain object.
  * It is assumed that this object can be modified.
  */
 public class DiscreteGroundWaterRules {
+
+	//Threadsafe factory
+	private static final JsonFactory jsonFactory = new JsonFactory();
 
 	/**
 	 * Apply business rules to a DiscreteGroundWater, modifying it in place.
@@ -29,6 +43,56 @@ public class DiscreteGroundWaterRules {
 				domObj.setDateTimeAccuracyCode(dta.getCode());
 				domObj.setDateTimeAccuracyText(dta.getText());
 			}
+		}
+
+		//Data Quality:  The Reading Qualifiers are a list encoded in JSON, but sometimes individual values are not trimmed.
+		{
+			String qualStr = domObj.getReadingQualifiers();
+
+			qualStr = StringUtils.trimWhitespace(qualStr);
+
+			if (! StringUtils.isEmpty(qualStr)) {
+				try {
+
+					List<String> vals = new ArrayList();
+
+					JsonParser parser = jsonFactory.createParser(qualStr);
+
+					while (! parser.isClosed()) {
+
+						JsonToken token = parser.nextToken();
+
+						if (token != null && token.isScalarValue()) {
+							String val = StringUtils.trimWhitespace(parser.getValueAsString());
+
+							if (!StringUtils.isEmpty(val)) {
+								vals.add(StringUtils.trimWhitespace(parser.getValueAsString()));
+							}
+						}
+					}
+
+					if (vals.size() > 0) {
+						StringWriter writer = new StringWriter();
+
+						JsonGenerator gen = jsonFactory.createGenerator(writer);
+
+						gen.writeArray(vals.toArray(new String[vals.size()]), 0, vals.size());
+						gen.flush();
+
+						qualStr = writer.toString();
+
+					} else {
+						qualStr = null;
+					}
+
+					domObj.setReadingQualifiers(qualStr);
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+				}
+			} else {
+				domObj.setReadingQualifiers(null);
+			}
+
 		}
 	}
 }

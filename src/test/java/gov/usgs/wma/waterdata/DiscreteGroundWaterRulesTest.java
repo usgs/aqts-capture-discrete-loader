@@ -55,4 +55,151 @@ class DiscreteGroundWaterRulesTest {
 		assertEquals(DateTimeAccuracy.MINUTE.getCode(), dga.getDateTimeAccuracyCode());
 		assertEquals(DateTimeAccuracy.MINUTE.getText(), dga.getDateTimeAccuracyText());
 	}
+
+	@Test
+	void trimmedSingleValuedResultQualifiersShouldBeUnmodified() {
+
+		String qualStr = "[\"abc\"]";
+
+		dga.setReadingQualifiers(qualStr);
+
+		rules.apply(dga);
+
+		assertEquals(qualStr, dga.getReadingQualifiers());
+	}
+
+	@Test
+	void trimmedDoubleValuedResultQualifiersShouldBeUnmodified() {
+
+		String qualStr = "[\"abc\",\"def\"]";
+
+		dga.setReadingQualifiers(qualStr);
+
+		rules.apply(dga);
+
+		assertEquals(qualStr, dga.getReadingQualifiers());
+	}
+
+	@Test
+	void untrimmedSingleValuedResultQualifiersShouldBeTrimmed() {
+
+		String qualStr = "[\"   abc   \"]";
+
+		dga.setReadingQualifiers(qualStr);
+
+		rules.apply(dga);
+
+		assertEquals("[\"abc\"]", dga.getReadingQualifiers());
+	}
+
+	@Test
+	void untrimmedDoubleValuedResultQualifiersShouldBeTrimmed() {
+
+		String qualStr = "[\"   abc   \",\"   def   \"]";
+
+		dga.setReadingQualifiers(qualStr);
+
+		rules.apply(dga);
+
+		assertEquals("[\"abc\",\"def\"]", dga.getReadingQualifiers());
+	}
+
+	@Test
+	void meaninglessWhitespaceIsIgnoredForSingleValuedResultQualifiers() {
+
+		String qualStr = "[   \"abc\"   ]";
+
+		dga.setReadingQualifiers(qualStr);
+
+		rules.apply(dga);
+
+		assertEquals("[\"abc\"]", dga.getReadingQualifiers());
+	}
+
+	@Test
+	void meaninglessWhitespaceIsIgnoredForDoubleValuedResultQualifiers() {
+
+		String qualStr = "[   \"abc\"   ,   \"def\"   ]";
+
+		dga.setReadingQualifiers(qualStr);
+
+		rules.apply(dga);
+
+		assertEquals("[\"abc\",\"def\"]", dga.getReadingQualifiers());
+	}
+
+	@Test
+	void nullValuedResultQualifiersRemainNull() {
+
+		String qualStr = null;
+
+		dga.setReadingQualifiers(qualStr);
+
+		rules.apply(dga);
+
+		assertNull(dga.getReadingQualifiers());
+	}
+
+	@Test
+	void emptyValuedResultQualifiersIsConvertedToNull() {
+
+		String qualStr = "";
+
+		dga.setReadingQualifiers(qualStr);
+
+		rules.apply(dga);
+
+		assertNull(dga.getReadingQualifiers());
+	}
+
+	@Test
+	void emptyArrayResultQualifiersIsConvertedToNull() {
+
+		String qualStr = "[]";
+
+		dga.setReadingQualifiers(qualStr);
+
+		rules.apply(dga);
+
+		assertNull(dga.getReadingQualifiers());
+	}
+
+	@Test
+	void whitespaceResultQualifiersAreConvertedToNull() {
+
+		String qualStr = "  \t  ";
+
+		dga.setReadingQualifiers(qualStr);
+
+		rules.apply(dga);
+
+		assertNull(dga.getReadingQualifiers());
+	}
+
+	@Test
+	void whitespaceValuesInResultQualifiersAreSkipped() {
+
+		String qualStr = "[   \"\",  \"abc\"   ,   \"\"   ]";
+
+		dga.setReadingQualifiers(qualStr);
+
+		rules.apply(dga);
+
+		assertEquals("[\"abc\"]", dga.getReadingQualifiers());
+	}
+
+	@Test
+	void NonJsonResultQualifiersThrowsRuntimeException() {
+
+		String qualStr = "I am not Json";
+
+		dga.setReadingQualifiers(qualStr);
+
+		RuntimeException e = assertThrows(RuntimeException.class, () -> {
+			rules.apply(dga);
+		});
+
+	}
+
+
 }
