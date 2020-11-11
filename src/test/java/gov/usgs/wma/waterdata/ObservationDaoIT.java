@@ -18,6 +18,9 @@ import java.util.List;
 			DBTestConfig.class,
 			ObservationDao.class})
 @ActiveProfiles("it")
+@DatabaseSetup(
+		connection="observation",
+		value="classpath:/testData/lookups/")
 public class ObservationDaoIT extends BaseTestDao {
 
 	@Autowired
@@ -41,7 +44,7 @@ public class ObservationDaoIT extends BaseTestDao {
 	@Test
 	@DatabaseSetup(
 			connection="observation",
-			value="classpath:/testData/monitoringLocation/")
+			value="classpath:/testData/sitefile/")
 	@DatabaseSetup(
 			connection="observation",
 			value="classpath:/testResult/empty/")

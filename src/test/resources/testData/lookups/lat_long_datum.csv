@@ -1,0 +1,327 @@
+"code","name","sort_order","description","valid_flag"
+SAMERICA,South Amer 1956P,253,rov South Amer. Datum 1956 - Bolivia Ecuador Peru Venezuela,true
+SANTO1936,Porto Santo 1936,249,Porto Santo & Madeira Islands,true
+SANTO1965,Santo DOS 1965,281,Espirito Santo Island,true
+SANTO1995,Porto Santo 1995,250,"Portugal - Madeira, Porto Santo and Desertas islands.",true
+SAOBRAZ,Sao Braz,282,Azores - Sao Miguel & Santa Maria Islands,true
+SAPPERHILL,Sapper Hill 1943,283,Falkland Islands,true
+SASIA,South Asia,295,Singapore,true
+SCHWARZEDC,Schwarzedc,284,Namibia,true
+SCORESBYSU,Scoresbysund1952,285,Greenland - Scoresbysund area,true
+SEGARAJAK,Gun SegaraJakart,123,Indonesia - east Kalimantan,true
+SEGORA,Segora,286,Indonesia - SE Kalimantan,true
+SELVAGEM38,Selvagem 1938,287,Salvage Islands - Selvagem Grande 1938,true
+SERINDUNG,Serindung,288,Indonesia - E Kalimantan,true
+SIRGAS,SIRGAS,292,South America,true
+SJTSK,S-JTSK,293,Czechoslovakia (prior to 1 Jan 1993),true
+ST71BELEP,ST71 Belep,299,New Caledonia - Belep,true
+ST84PINS,ST84 liedes Pins,300,New Caledonia - lie des Pins,true
+ST87OUVEA,ST87 Ouvea,301,New Caledonia - Ouvea,true
+STGEORGE,St. George Is.,10,Alaska island,true
+STKITTS55,St. Kitts 1955,296,Leeward Islands - St. Kitts,true
+STLAWRENCE,St. Lawrence Is.,11,Alaska island,true
+STLUCIA,St. Lucia 1955,297,Windward Islands - St. Lucia,true
+STPAUL,St. Paul Island,12,Alaska island,true
+STVINCENT,St. Vincent 1945,298,Windward Islands - St. Vincent,true
+SUDAN,Sudan,302,Sudan - south,true
+SWEREF99,SWEREF99,303,Sweden,true
+TAHAA,Tahaa,304,"French Polynesia - Society Islands - Bora Bora, Huahin, Raiatea, Tahaa",true
+TAHITI,Tahiti,305,Tahiti,true
+TANANADVE,Tananadve 1925,306,Madagascar,true
+TETE,Tete,307,Mozambique,true
+TIMBALAI48,Timbalai 1948,308,Brunei & East Malaysia,true
+TM65,TM65,309,Ireland,true
+TM75,TM75,310,Ireland,true
+TOKYO,Tokyo,311,"Japan, North Korea, South Korea",true
+TOMISLAND,Tom Island 1961,312,Tern Island,true
+TRINIDAD,Trinidad 1903,313,Trinidad,true
+TRISTAN68,Tristan 1968,314,Tristan da Cunha,true
+TRUCIAL48,TrucialCoast1948,315,United Arab Emirates,true
+VITILEVU,Viti Levu 1916,316,Fiji - Viti Levu Island,true
+VOIROL60D,VoirolUnifie1960,320,Algeria - north of 32N - Voirol Unfie 1960 (degrees),true
+VOIROL60P,VoirolUnifie1960,321,Algeria - north of 32N - Voirol Unfie 1960 (Paris),true
+VOIROL75,Voirol 1875,318,Algeria - north of 32N,true
+VOIROL75D,Voirol 1875 deg,317,Algeria - north of 32N,true
+VOIROL75P,Voirol 1875Paris,319,Algeria - north of 32N,true
+WAKE52,Wake Island 1952,323,Wake Atoll,true
+WAKE60,WakeEniwetok1960,322,Marshall Islands,true
+WGS72,WGS 1972,9,World Datum 1972,true
+WGS84,WGS 1984,8,World Datum 1984,true
+XIAN1980,Xian 1980,324,China,true
+YACARE,Yacare,325,Uruguay,true
+YOFF,Yoff,326,Senegal,true
+ZSANDERIJ,ZSanderij,327,Suriname,true
+NAPARIMA72,Naparima 1972,219,Trinidad and Tobago,true
+NATGEODET,Nat Geodetic Net,220,National Geodetic Network - Kuwait,true
+NEA74,NEA74 Noumea,221,New Caledonia - Grande Terre - Noumea area,true
+NGO1948,NGO 1948,224,Norway,true
+NOIRE,Points Noire,248,Congo,true
+NORDSAHARA,Nord Sahara 1959,226,"Nord Sahara 1959 (Paris)- Algeria, Morocco, Tunisia.",true
+NOUVTRIANG,N Triangulation,227,Nouvelle Triangulation Francaise - France,true
+NSWC9Z2,NSWC 9Z-2,228,World,true
+NTFPARIS,NTF (Paris),229,France,true
+NZGEO1949,NZ GeoDat 1949,222,New Zealand Geodetic Datum 1949 - New Zealand,true
+NZGEO2000,NZ GeoDat 2000,223,New Zealand Geodetic Datum 2000 - New Zealand,true
+OBSERVATAR,Observatario,231,Mozambique - south,true
+OBSERVMET,OMeteorologico39,230,Observ Meteorologico 1939 - Azores - Corvo & Rores Islands,true
+OBSMET65,OMeteorologico65,232,Observatorio Meteorologico 1965 - Macau,true
+OLDAK,Old Alaska,3,Old Alaska (Mainland) and Aleutian Islands Datum,true
+OLDGUAM,Old Guam,7,Old Guam Datum,true
+OLDHI,Old Hawaiian,5,Old Hawaiian Datum,true
+OLDPR,Old PR & VI,4,Old Puerto Rico and Virgin Islands Datum,true
+OLDSAMOA,Old Am Samoa,6,Old American Samoa Datum,true
+OMAN,Oman,233,Oman,true
+OSGB1936,OSGB 1936,235,UK - Great Britain,true
+OSGB70SN,OSGB 1970 (SN),236,UK - Great Britain,true
+OSNI1952,OSNI 1952,237,UK - Northern Ireland,true
+OSSN80,OS (SN) 1980,234,UK & Ireland,true
+PADANG1884,Padang 1884,238,Padang 1884 (Jakarta)- Indonesia - Sumatra,true
+PALESTINE,Palestine 1923,239,"Israel, Jordan, Lebanon, Palestine",true
+PDO1993,PDO 1993,240,Oman,true
+PERROUD50,Pointe Perroud,247,Pointe Geologie Perroud 1950 - Antarctica - Adelie Land,true
+PETRELS72,Petrels 1972,241,Antarctica - Adelie Land - Petrels Island,true
+PITCAIRN67,Pitcairn 1967,243,Pitcairn Island,true
+PITON,Piton des Neiges,244,Reunion,true
+POHNPEI,Pohnpei,245,Fed. States of Micronesia - Pohnpei,true
+POINT58,Point 58,246,"Burkina Faso, Niger",true
+POSGAR,POSGAR,251,Argentina,true
+POSGAR98,POSGAR 1998,252,Argentina,true
+PUERTORICO,Puerto Rico,254,Puerto Rico & Virgin Islands,true
+PUIKOVO42,Puikovo 1942,255,"Armenia, Azerbaijan, Belarus, Estonia, Georgia, Kazakstan,",true
+PULKOVO42,Pulkovo 1942,20,"Armenia, Azerbaijan, Belarus, Estonia, Georgia, Kazakstan, Kirgistan, Latvia, Lithuania, Moldova, Russia, Tadzhikstan, Turkmenistan, Ukraine, Uzbekistan",true
+PULKOVO58,Pulkovo 1942/58,256,Poland,true
+PULKOVO83,Pulkovo 1942/83,257,Germany - states of former East Germany (DDR),true
+PULKOVO95,Pulkovo 1995,258,Russia,true
+QATAR1948,Qatar 1948,259,Qatar - onshore,true
+QATAR1974,Qatar 1974,260,Qatar - onshore,true
+QATAR1995,Qatar NatDat1995,261,Qatar - Qatar National Datum 1995,true
+QOMOQ,Qomoq,262,Greenland,true
+QOMOQ1927,Qomoq 1927,263,Greenland,true
+QORNOQ,Qornoq,264,Greenland,true
+RASSADIRAN,Rassadiran,265,Iran - Tehari refinery site only,true
+REGVEN,REGVEN,266,Venezuela,true
+RESEAU50,Reseau 1950,270,Belgium - Reseau National Beige 1950,true
+RESEAU72,Reseau 1972,271,Belgium,true
+RESEAU91,Reseau 1991,269,New Caledonia - Reseau Geodesique Nouvelle Caledonie 1991,true
+RESEAU92,Reseau 1992,267,Reunion - Reseau Geodesique de la Reunion 1992,true
+RESEAU95,Reseau 1995,268,French Guiana - Reseau Geodesique Francais Guyane 1995,true
+REUNION,Reunion,272,Mascarene Islands,true
+REYKJAVIK,Reykjavik 1900,273,Iceland,true
+RGF1993,RGF 1993,274,France,true
+ROMA1940,Roma 1940,275,Italy,true
+RT38,RT38(Stockholm),276,Sweden,true
+RT90,RT90,277,Sweden,true
+S42,S42 Hungary,278,Hungary,true
+SAINTEANNE,Sainte Anne,279,"Guadeloupe - Basse-Terre, Grande-Terre, Desiride, Made-Galante, Les Saintes",true
+SAMBOJA,Samboja,280,"Indonesia - east Kalimantan, Mahakam",true
+SAMDAT69,S.Amer Dat 1969,294,South America - South American Datum 1969,true
+JGD2000,JGD 2000,161,Japan,true
+JOHNSTON,Johnston Is 1961,162,Johnston Island,true
+JORDAN,Jordan,163,Jordan,true
+K01949,K01949,164,Kerguelen Island,true
+KALIANPUR1,Kalianpur 1880,165,"India, Pakistan",true
+KALIANPUR2,Kalianpur 1937,166,"Bangladesh, India, Pakistan",true
+KALIANPUR3,Kalianpur 1962,167,Pakistan,true
+KALIANPUR4,Kalianpur 1975,168,India,true
+KANDAWALA,Kandawala,169,Sri Lanka,true
+KERGUELEN,Kerguelen Is1949,170,Kerguelen Island!,true
+KERTAU,Kertau,171,Malaysia - west Malaysia & Singapore,true
+KOREAN85,Korean Datum1985,172,South Korea,true
+KOREAN95,Korean Datum1995,173,South Korea,true
+KOUSSERI,Kousseri,174,Cameroon - N'Djamena area,true
+KUSAIE51,Kusaie 1951,175,Fed. States of Micronesia - Caroline Islands,true
+KUWAITOIL,KuwaitOilCompany,176,Kuwait,true
+KUWAITUTIL,Kuwait Utility,177,Kuwait,true
+LACANOA,La Canoa,178,Venezuela,true
+LAKE,Lake,179,Venezuela,true
+LASNIEVES,Pico deLasNieves,242,Pico de Las Nieves - Canary Islands,true
+LC51961,LC51961,180,Cayman Brac Island,true
+LEIGON,Leigon,181,Ghana,true
+LEONE1924,Sierra Leone1924,289,Sierra Leone,true
+LEONE1960,Sierra Leone1960,290,Sierra Leone,true
+LEONE1968,Sierra Leone1968,291,Sierra Leone,true
+LIBERIA64,Liberia 1964,182,Liberia,true
+LISBOABES,Lisboa Bessel,183,Portugal,true
+LISBOAHAY,Lisboa Hayford,184,Portugal,true
+LISBON,Lisbon,185,Portugal,true
+LISBON1890,Lisbon 1890,186,Portugal,true
+LKS1992,LKS 1992,187,Latvia,true
+LKS1994,LKS 1994,188,Lithuania,true
+LOCODJO65,Locodjo 1965,189,Cote d'Ivoire,true
+LOME,Lome,191,Togo,true
+LQUINTANA,Loma Quintana,190,Venezuela,true
+LUXEMBOURG,Luxembourg 1930,192,Luxembourg,true
+LUZON1911,Luzon 1911,193,Philippines,true
+MADEIRA36,Madeira 1936,194,"Portugal - Madeira, Porto Santo and Desertas islands",true
+MADRID1870,Madrid 1870,195,Spain,true
+MADZANSUA,Madzansua,196,Mozambique - west,true
+MAHE1971,Mahe 1971,197,Seychelles,true
+MAJURO,Majuro,198,Marshall Islands - Majuro Island,true
+MAKASSAR,Makassar(Jakarta,199,)Indonesia - southwest Sulawesi,true
+MALONGO87,Malongo 1987,200,Angola - Cabinda,true
+MANOCA,Manoca,201,Cameroon,true
+MANOCA1962,Manoca 1962,202,Cameroon,true
+MASSAWA,Massawa,203,Eritrea,true
+MERCHICH,Merchich,204,Morocco,true
+MERCHICHD,Merchich degrees,205,Morocco,true
+MGIFERRO,MGI (Ferro),206,Austria,true
+MHAST,Mhast,207,Anbola - Cabinda,true
+MIDWAY1961,Midway 1961,208,Midway Island,true
+MILITARGEO,Militar-Geograph,209,Austria,true
+MINNA,Minna,210,Nigeria,true
+MONTEMARIO,MonteMario(Rome),211,Italy,true
+MONTSERRAT,Montserrat 1958,212,Leeward Islands - Montserrat,true
+MOP78,MOP78,213,Wallis and Futuna - Wallis,true
+MOZNET,Moznet,215,Mozambique,true
+MPORALOKO,M'poraloko,216,Gabon,true
+MTDILLON,Mount Dillon,214,Tobago,true
+NAD27,NA Datum of 1927,1,North American Datum of 1927,true
+NAD83,NA Datum of 1983,2,North American Datum of 1983,true
+NAHRWAN67,Nahrwan 1967,217,Arabian Gulf,true
+NAPARIMA55,Naparima 1955,218,Trinidad,true
+EMEP,EMEP,100,Europe,true
+ESTONIA37,Estonia 1937,101,Estonia,true
+ESTONIA92,Estonia 1992,102,Estonia,true
+ESTONIA97,Estonia 1997,103,Estonia,true
+EUREF,EUREF - Finland,104,Finland,true
+EURFRAME89,Europe Frame '89,109,Europe,true
+EUROLIBYAN,EuropeLibyan '79,108,Libya,true
+EUROPEAN50,European 1950,106,Europe (west),true
+EUROPEAN79,European 1979,105,Europe,true
+EUROPEAN87,European 1987,107,Europe (west),true
+EUROSYS89,EuropeSystem1989,110,Europe,true
+EVERESTBAN,Everest-Bangla,17,Bangladesh,true
+EVERESTIN,Everest - India,111,"India, Nepal",true
+FAHUD,Fahud,112,Oman ',true
+FINALDATUM,Final Datum 1958,113,Iran - Gulf coast and Arwaz,true
+FTDESAIX,Fort Desaix,114,Martinique,true
+FTMARIGOT,Fort Marigot,115,Guadeloupe - Saint Martin and Saint Barthelemy islands,true
+FTTHOMAS,Fort Thomas 1955,116,Nevis & St. Kitts - Leeward Is.,true
+GANDAJIKA,Gandajika 1970,117,Maldives,true
+GAROUA,Garoua,118,Cameroon,true
+GRACIOSA48,GraciosaBaseSW48,119,"Azores - Faial, Graaosa, Pioo, Sao Jorge, & Terceira Islands",true
+GRENADA53,Grenada 1953,121,Windward Islands-Grenada,true
+GUNUNG,Gunung Segara,122,Indonesia - Kalimantan,true
+GUX1,GUX 1,124,Guadalcanal Island,true
+GUYANAIS67,Centre Spatial,72,"Guyanais 1967, French Guiana",true
+GUYANE,Guyane Francaise,125,French Guyana,true
+HANOI1972,Hanoi 1972,126,Vietnam,true
+HARTEBEEST,Hartebeesthoek94,127,South Africa,true
+HELLO1954,Hello 1954,128,Norway -Jan Mayen,true
+HERATN,Herat North,14,Afghanistan,true
+HERMANNSKO,Hermannskogel,129,"Bosnia & Herzegovina, Croatia, Serbia, Slovenia, Yugoslavia (prior to 1990)",true
+HFTO1963,Hfto XVIII 1963,18,Chile - Tierra del Fuego,true
+HJORSEY55,Hjorsey 1955,130,Iceland,true
+HONGKONG63,Hong Kong 1963,131,Hong Kong,true
+HONGKONG80,Hong Kong 1980,132,Hong Kong,true
+HUNGARIAN,Hungarian 1972,134,Hungary,true
+HUTZUSHAN,Hu Tzu Shan,133,Taiwan,true
+IERS1988,IERS 1988,135,World  Terrestrial Reference Frame1988,true
+IERS1989,IERS 1989,136,World Terrestrial Reference Frame 1989,true
+IERS1990,IERS 1990,137,World Terrestrial Reference Frame 1990,true
+IERS1991,IERS 1991,138,World Terrestrial Reference Frame 1991,true
+IERS1992,IERS 1992,139,World Terrestrial Reference Frame 1992,true
+IERS1993,IERS 1993,140,World Terrestrial Reference Frame 1993,true
+IERS1994,IERS 1994,141,World Terrestrial Reference Frame 1994,true
+IERS1996,IERS 1996,142,World Terrestrial Reference Frame 1996,true
+IERS1997,IERS 1997,143,World Terrestrial Reference Frame 1997,true
+IERS2000,IERS 2000,144,World Terrestrial Reference Frame 2000,true
+IGM1995,IGM 1995,145,Italy,true
+IGN53MARE,IGN53 Mare,146,New Caledonia - Mare,true
+IGN56LIFOU,IGN56 Lifou,147,New Caledonia- Lifou,true
+IGN72NUKU,IGN72 Nuku Hiva,149,Marquises Islands - Nuku Hiva,true
+IGN72TERRE,IGN72GrandeTerre,148,New Caledonia - Grande Terre,true
+INDIAN54,Indian 1954,150,"Myanmar, Thailand",true
+INDIAN60,Indian 1960,151,"Cambodia, Viet Nam",true
+INDIAN75,Indian 1975,152,Thailand,true
+INDONESIAN,Indonesian 1974,153,Indonesia,true
+IRAQKUWAIT,Iraq-Kuwait 1992,19,"Iraq, Kuwait",true
+IRENET95,IRENET95,154,Ireland,true
+ISLANDS93,IslandsNetwork93,155,Iceland,true
+ISRAEL,Israel,156,Israel,true
+ISTS061,ISTS 061 1968,157,South Georgia Islands,true
+ISTS073,ISTS 073 1969,158,Diego Garcia,true
+JAMAICA69,Jamaica 1969,160,Jamaica,true
+JAMAICA75,Jamaica 1875,159,Jamaica,true
+ATFPARIS,ATF (Paris),38,France,true
+AUSANTARCT,AustraliaAntarct,39,Antarctica - Australian sector 1998,true
+AUSTRAL66,AustraliaGeo1966,40,Australia Geodetic Datum 1966,true
+AUSTRAL84,AustraliaGeo1984,41,Australia Geodetic Datum 1984,true
+AUSTRAL94,GeocentAustral94,42,Australia,true
+AZORES1939,AzoresOccidentIs,45,"Azores 1939 - Flores, Corvo",true
+AZORES1940,AzoresOrientalIs,46,Azores 1940 -,true
+AZORES1948,AzoresCentral Is,43,"Azores 1948 - Graciosa, Terceira, Sao Jorge, Pico, Faial",true
+AZORES1995,AzoresOrientalIs,47,Azores 1995 -,true
+BABSOUTH,Bab South,48,Republic of Palau - Bablethuap,true
+BARBADOS,Barbados 1938,49,Barbados,true
+BATAVIAIND,BataviaIndonesia,50,Indonesia - Java,true
+BATAVIAJAK,Batavia Jakarta,51,Indonesia - Java,true
+BEACON1945,Beacon E 1945,52,Iwo Jima,true
+BEDUARAM,Beduaram,53,Niger,true
+BEIGE1950,Beige 1950,54,Belgium,true
+BEIJING,Beijing 1954,55,China,true
+BELLEVUE,Bellevue IGN,56,Efate & Erromango Islands,true
+BERMUDA00,Bermuda 2000,58,Bermuda,true
+BERMUDA57,Bermuda 1957,57,Bermuda,true
+BERN1898,Bern 1898,59,"Liechtenstein, Switzerland",true
+BERN1938,Bern 1938,60,"Liechtenstein, Switzerland",true
+BISSAU,Bissau,61,Guinea - Bissau,true
+BOGOTA,Bogota,62,Colombia,true
+BUKIT,Bukit Rimpah,63,Indonesia - Banga & Belitung Islands,true
+CAMACUPA,Camacupa,64,Angola,true
+CAMPAREA,Camp Area Astro,65,Antarctica - McMurdo Camp Area,true
+CAMPOINCH,Campo Inchauspe,15,Argentina,true
+CANAVERAL,Cape Canaveral,68,"Cape Canaveral, Florida, Bahamas",true
+CANTON66,Canton 1966,66,Phoenix Islands,true
+CAPE,Cape,67,South Africa,true
+CARTHAGE,Carthage,69,Tunisia,true
+CARTHAGED,Carthage degrees,70,Tunisia,true
+CARTHAGEP,Carthage Paris,71,Tunisia,true
+CASGLLO,Pampa delCasGllo,16,Argentina-Coiradoro Rivadavia,true
+CH1903,CH1903,74,"Liechtenstein, Switzerland",true
+CH1903A,CH1903+,75,"Liechtenstein, Switzerland",true
+CHATHAM71,Chatham Is. 1971,76,New Zealand - Chatham Is.,true
+CHATHAM79,Chatham Is. 1979,77,Chatham Islands,true
+CHOSMALAL,Chos Malal 1914,78,Argentina- Neuquen,true
+CHTRF95,CH TRF 1995,73,"Liechtenstein, Switzerland",true
+CHUA,Chua,79,Brazil,true
+COMBANI50,Combani 1950,80,Mayotte,true
+COMOROS,Grand Comoros,120,Comoros,true
+CONAKRY05,Conakry 1905,81,Guinea,true
+CORREGO,Corrego Alegre,82,Brazil,true
+COTE,Cote d'ivoire,83,Cote d'Ivoire,true
+DABOLA81,Dabola 1981,84,Guinea,true
+DATUM73,Datum 73,85,Portugal,true
+DEALUL33,DealulPiscului33,86,Romania,true
+DEALUL70,DealulPiscului70,87,Romania,true
+DECEPTION,Deception Island,88,Antarctica - Deception Island,true
+DEGUERRE,Nord de Guerre,225,Nord de Guerre(Paris)- France,true
+DEIREZZOR,Deir ez Zor,89,Syrian Arab Republic,true
+DEUTSCHE,DeutscheHauptdr,90,Germany,true
+DOMINICA,Dominica 1945,91,Windward Islands - Dominica,true
+DOS1968,DOS 1968,92,New Georgia - Gizo Island,true
+DOS714,DOS 71/4,93,St. Helena Island,true
+DOUALA,Douala,94,Cameroon,true
+DOUALA48,Douala 1948,95,Cameroon,true
+EASTER,Easter Is. 1967,96,Easter Island,true
+ED1950,ED 1950 (ED77),97,Iran,true
+EGYPT1907,Egypt 1907,98,Egypt,true
+EGYPT1930,Egypt 1930,99,Egypt,true
+ABIDJAN,Abidjan 1987,21,Cote d'Ivoire,true
+ACCRA,Accra,22,Ghana,true
+ADINDAN,Adindan,23,"Ethiopia, Sudan",true
+AFGOOYE,Afgooye,24,Somalia,true
+AGADEZ,Agadez,25,Niger,true
+AINELABD,Ain el Abd 1970,26,"Kuwait,Saudi Arabia",true
+ALASKANIS,Alaskan Islands,13,Alaskan islands,true
+ALBANIAN,Albanian 1987,27,Albania,true
+AMERSFOORT,Amersfoort,28,Netherlands,true
+AMMASSALIK,Ammassalik 1958,29,Greenland -Ammassalik area,true
+ANGUILLA,Anguilla 1957,30,Leeward Islands - Anguilla,true
+ANNAL,Anna l 1965,31,Cocos Islands,true
+ANTIGUA,Antigua 1943,32,Leeward Islands - Antigua,true
+ARATU,Aratu,33,Brazil - coast South -2° 55',true
+ARC1950,Arc 1950,34,Africa - south & east,true
+ARC1960,Arc 1960,35,Africa - east,true
+ASCENSION,Ascension Is '58,36,Ascension Island,true
+ASTRO1952,Astro 1952,37,Marcus Island,true

@@ -1,6 +1,6 @@
 insert
 into discrete_ground_water_aqts(monitoring_location_id, agency_code, agency, site_identification_number, monitoring_location_identifier,
-                                site_type_code, site_type, geom, decimal_latitude, decimal_longitude, decimal_latitude_longitude_datum,
+                                district_cd, site_type_code, site_type, geom, decimal_latitude, decimal_longitude, decimal_latitude_longitude_datum,
                                 well_depth, hole_depth, local_aquifer, local_aquifer_type, field_visit_identifier,date_measured_raw,
                                 timezone_code, timezone_offset, parameter_code, date_measured,
                                 time_measured_utc, display_result,
@@ -9,21 +9,22 @@ into discrete_ground_water_aqts(monitoring_location_id, agency_code, agency, sit
                                 level_accuracy_code, level_accuracy, measurement_source_code, measurement_source,
                                 measurement_method_code, measurement_method, approval_status_code, approval_status,
                                 result_measure_qualifiers)
-select monitoring_location.monitoring_location_id,
-       monitoring_location.agency_cd agency_code,
-       monitoring_location.agency,
-       monitoring_location.site_identification_number,
-       monitoring_location.monitoring_location_identifier,
-       monitoring_location.site_tp_cd site_type_code,
-       monitoring_location.site_type,
-       monitoring_location.geom,
-       monitoring_location.decimal_latitude,
-       monitoring_location.decimal_longitude,
-       monitoring_location.decimal_latitude_longitude_datum,
-       monitoring_location.well_depth,
-       monitoring_location.hole_depth,
-       monitoring_location.local_aquifer,
-       monitoring_location.local_aquifer_type,
+select null monitoring_location_id,
+       sitefile.agency_cd agency_code,
+       agency.name agency,
+       sitefile.site_no site_identification_number,
+       coalesce(sitefile.agency_cd, '') || '-' || coalesce(sitefile.site_no, '') monitoring_location_identifier,
+       sitefile.district_cd district_cd,
+       sitefile.site_tp_cd site_type_code,
+       site_tp.site_tp_nm site_type,
+       null geom,
+       sitefile.dec_lat_va decimal_latitude,
+       sitefile.dec_long_va decimal_longitude,
+       decimal_lat_long_datum.description decimal_latitude_longitude_datum,
+       case when sitefile.well_depth_va in ('.', '-') then '0' else sitefile.well_depth_va end well_depth,
+       case when sitefile.hole_depth_va in ('.', '-') then '0' else sitefile.hole_depth_va end hole_depth,
+       aqfr.aqfr_nm local_aquifer,
+       aquifer_type.description local_aquifer_type,
        /* TODO everything below comes from AQTS */
        ? field_visit_identifier,
        ? date_measured_raw,
@@ -35,7 +36,6 @@ select monitoring_location.monitoring_location_id,
        ? display_result,
        ? vertical_datum_code,
        null vertical_datum,
-       /* Status may come from the monitoring_location table in the obs db */
        null site_status_code,
        null site_status,
        ? measuring_agency_code,
@@ -52,5 +52,18 @@ select monitoring_location.monitoring_location_id,
        null approval_status_code,
        null approval_status,
        ?::json result_measure_qualifiers
-from monitoring_location
-	where monitoring_location.monitoring_location_identifier = ?;
+from sitefile
+left join nwis.agency
+         on sitefile.agency_cd = agency.code
+left join nwis.site_tp
+         on sitefile.site_tp_cd = site_tp.site_tp_cd
+left join nwis.aqfr
+         on sitefile.aqfr_cd = aqfr.aqfr_cd and
+            sitefile.country_cd = aqfr.country_cd and
+            sitefile.state_cd = aqfr.state_cd
+left join nwis.aquifer_type
+         on sitefile.aqfr_type_cd = aquifer_type.code
+left join nwis.lat_long_datum decimal_lat_long_datum
+         on sitefile.dec_coord_datum_cd = decimal_lat_long_datum.code
+where agency_cd = ? and site_no = ?
+order by agency_cd, site_no;
