@@ -1,0 +1,6 @@
+"code","name","sort_order","description","valid_flag"
+X,Mixed Multiple,5,Mixed (confined and unconfined) multiple aquifers,true
+C,Confined Single,3,Confined single aquifer,true
+M,Conf Multiple,4,Confined multiple aquifers,true
+N,Unconf Multiple,2,Unconfined multiple aquifer,true
+U,Unconf Single,1,Unconfined single aquifer,true

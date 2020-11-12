@@ -1,0 +1,4 @@
+agency
+aquifer_type
+site_tp
+lat_long_datum

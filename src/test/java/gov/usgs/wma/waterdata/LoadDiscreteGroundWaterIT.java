@@ -21,7 +21,10 @@ import static org.junit.jupiter.api.Assertions.*;
 		value="classpath:/testData/transformDb/")
 @DatabaseSetup(
 		connection="observation",
-		value="classpath:/testData/monitoringLocation/")
+		value="classpath:/testData/lookups/")
+@DatabaseSetup(
+		connection="observation",
+		value="classpath:/testData/sitefile/")
 @ActiveProfiles("it")
 public class LoadDiscreteGroundWaterIT extends BaseTestDao {
 
