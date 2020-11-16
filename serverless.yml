@@ -2,12 +2,18 @@ service: aqts-capture-discrete-loader
 
 provider:
   name: aws
+  rolePermissionsBoundary:
+    Fn::Sub:
+      - "arn:aws:iam::${accountId}:policy/csr-Developer-Permissions-Boundary"
+      - accountId:
+          Ref: "AWS::AccountId"
   region: ${opt:region, 'us-west-2'}
   stage: ${opt:stage, 'TEST'}
   runtime: java11
   memorySize: 784
   timeout: 60
   logRetentionInDays: 90
+  vpc: ${self:custom.vpc}
   deploymentBucket:
     name: ${opt:bucket, iow-cloud-applications}
   stackTags:
@@ -29,11 +35,20 @@ custom:
     connectInfo: ${ssm:/aws/reference/secretsmanager/NWCAPTURE-DB-${self:provider.stage}~true}
   observationDb:
     connectInfo: ${ssm:/aws/reference/secretsmanager/WQP-EXTERNAL-${self:provider.stage}~true}
+  esLogs:
+    endpoint: ${ssm:/iow/aws/vpc/${self:provider.stage}/elasticsearchEndpoint}
+    index: ${self:service}
+    retentionInDays: 90
+    filterPattern: '?Exception ?ERROR ?WARN'
 
 functions:
   loadDiscrete:
     handler: gov.usgs.wma.waterdata.LoadDiscreteGroundWaterHandler
-    role: arn:aws:iam::#{AWS::AccountId}:role/csr-Lambda-Role
+    role:
+      Fn::Sub:
+        - arn:aws:iam::${accountId}:role/csr-Lambda-Role
+        - accountId:
+            Ref: AWS::AccountId
     environment:
       FUNCTION_NAME: loadDiscrete
       AWS_DEPLOYMENT_REGION: ${self:provider.region}
@@ -50,7 +65,6 @@ functions:
       OBSERVATION_SCHEMA_OWNER_USERNAME: ${self:custom.observationDb.connectInfo.NWIS_SCHEMA_OWNER_USERNAME}
       OBSERVATION_SCHEMA_OWNER_PASSWORD: ${self:custom.observationDb.connectInfo.NWIS_SCHEMA_OWNER_PASSWORD}
       ROOT_LOG_LEVEL: INFO
-    vpc: ${self:custom.vpc}
 
 resources:
   Resources:
@@ -98,7 +112,7 @@ resources:
 
 plugins:
   - serverless-plugin-git-variables
-  - serverless-pseudo-parameters
+  - serverless-es-logs
 
 package:
   artifact: aqts-capture-discrete-loader-aws.jar
