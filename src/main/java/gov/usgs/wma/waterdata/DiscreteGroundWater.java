@@ -35,6 +35,8 @@ public class DiscreteGroundWater {
 	protected String isValidReadings;
 	protected String referencePointUniqueId;
 	protected String useLocationDatumAsReference;
+	protected String approvalLevel;
+	protected String approvalLevelDescription;
 	protected String readingQualifiers;
 	protected String groundWaterMeasurement;
 	protected String datum;
@@ -284,6 +286,14 @@ public class DiscreteGroundWater {
 		this.useLocationDatumAsReference = useLocationDatumAsReference;
 	}
 
+	public String getApprovalLevel() { return approvalLevel; }
+
+	public void setApprovalLevel(final String approvalLevel) { this.approvalLevel = approvalLevel; }
+
+	public String getApprovalLevelDescription() { return approvalLevelDescription; }
+
+	public void setApprovalLevelDescription(final String approvalLevelDescription) { this.approvalLevelDescription = approvalLevelDescription; }
+
 	public String getReadingQualifiers() {
 		return readingQualifiers;
 	}
@@ -350,6 +360,8 @@ public class DiscreteGroundWater {
 				java.util.Objects.equals(isValidReadings, that.isValidReadings) &&
 				java.util.Objects.equals(referencePointUniqueId, that.referencePointUniqueId) &&
 				java.util.Objects.equals(useLocationDatumAsReference, that.useLocationDatumAsReference) &&
+				java.util.Objects.equals(approvalLevel, that.approvalLevel) &&
+				java.util.Objects.equals(approvalLevelDescription, that.approvalLevelDescription) &&
 				java.util.Objects.equals(readingQualifiers, that.readingQualifiers) &&
 				java.util.Objects.equals(groundWaterMeasurement, that.groundWaterMeasurement) &&
 				java.util.Objects.equals(datum, that.datum) &&
@@ -388,6 +400,8 @@ public class DiscreteGroundWater {
 				isValidReadings,
 				referencePointUniqueId,
 				useLocationDatumAsReference,
+				approvalLevel,
+				approvalLevelDescription,
 				readingQualifiers,
 				groundWaterMeasurement,
 				datum,

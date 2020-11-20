@@ -7,7 +7,7 @@ into discrete_ground_water_aqts(monitoring_location_id, agency_code, agency, sit
                                 vertical_datum_code, vertical_datum, site_status_code, site_status,
                                 measuring_agency_code, measuring_agency, date_time_accuracy_code, date_time_accuracy,
                                 level_accuracy_code, level_accuracy, measurement_source_code, measurement_source,
-                                measurement_method_code, measurement_method, approval_status_code, approval_status,
+                                measurement_method_code, measurement_method, approval_level, approval_level_description,
                                 result_measure_qualifiers)
 select null monitoring_location_id,
        sitefile.agency_cd agency_code,
@@ -49,8 +49,8 @@ select null monitoring_location_id,
        null measurement_source,
        ? measurement_method_code,
        ? measurement_method,
-       null approval_status_code,
-       null approval_status,
+       ? approval_level,
+       ? approval_level_description,
        ?::json result_measure_qualifiers
 from sitefile
 left join nwis.agency

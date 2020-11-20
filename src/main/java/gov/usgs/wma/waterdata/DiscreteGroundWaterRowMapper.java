@@ -43,6 +43,8 @@ public class DiscreteGroundWaterRowMapper implements RowMapper<DiscreteGroundWat
 		discreteGroundWater.setIsValidReadings(rs.getString("is_valid_readings"));
 		discreteGroundWater.setReferencePointUniqueId(rs.getString("reference_point_unique_id"));
 		discreteGroundWater.setUseLocationDatumAsReference(rs.getString("use_location_datum_as_reference"));
+		discreteGroundWater.setApprovalLevel(rs.getString("approval_level"));
+		discreteGroundWater.setApprovalLevelDescription(rs.getString("approval_level_description"));
 		discreteGroundWater.setReadingQualifiers(rs.getString("reading_qualifiers"));
 		discreteGroundWater.setGroundWaterMeasurement(rs.getString("ground_water_measurement"));
 		discreteGroundWater.setDatum(rs.getString("datum"));
