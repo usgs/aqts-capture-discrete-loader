@@ -71,9 +71,11 @@ public class ObservationDao {
                             ps.setString(11, discreteGroundWaterList.get(i).getUncertainty());
                             ps.setString(12, discreteGroundWaterList.get(i).getNwisMethodCode());
                             ps.setString(13, discreteGroundWaterList.get(i).getMonitoringMethod());
-                            ps.setString(14, discreteGroundWaterList.get(i).getReadingQualifiers());
-                            ps.setString(15, discreteGroundWaterList.get(i).getAgencyCode());
-                            ps.setString(16, discreteGroundWaterList.get(i).getLocationIdentifier());
+                            ps.setString(14, discreteGroundWaterList.get(i).getApprovalLevel());
+                            ps.setString(15, discreteGroundWaterList.get(i).getApprovalLevelDescription());
+                            ps.setString(16, discreteGroundWaterList.get(i).getReadingQualifiers());
+                            ps.setString(17, discreteGroundWaterList.get(i).getAgencyCode());
+                            ps.setString(18, discreteGroundWaterList.get(i).getLocationIdentifier());
                         }
                         @Override
                         public int getBatchSize() {

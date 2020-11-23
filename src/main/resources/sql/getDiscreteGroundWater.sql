@@ -27,6 +27,8 @@ select
     is_valid_readings,
     reference_point_unique_id,
     use_location_datum_as_reference,
+    approval_level,
+    approval_level_description,
     reading_qualifiers,
     ground_water_measurement,
     datum,

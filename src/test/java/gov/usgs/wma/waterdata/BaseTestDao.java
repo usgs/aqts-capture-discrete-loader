@@ -82,6 +82,8 @@ public abstract class BaseTestDao {
 		discreteGroundWater1.setIsValidReadings("true");
 		discreteGroundWater1.setReferencePointUniqueId("e42ffa2b69a3488aa8567a7e0c31e8cc");
 		discreteGroundWater1.setUseLocationDatumAsReference("false");
+		discreteGroundWater1.setApprovalLevel("1200");
+		discreteGroundWater1.setApprovalLevelDescription("Approved");
 		discreteGroundWater1.setReadingQualifiers("[\"Static\"]");
 		discreteGroundWater1.setGroundWaterMeasurement("{}");
 		discreteGroundWater1.setDatum("NAVD88");
@@ -118,6 +120,8 @@ public abstract class BaseTestDao {
 		discreteGroundWater2.setIsValidReadings("true");
 		discreteGroundWater2.setReferencePointUniqueId("f2f1d100913742e2b8b9cea16764ff30");
 		discreteGroundWater2.setUseLocationDatumAsReference("false");
+		discreteGroundWater2.setApprovalLevel("900");
+		discreteGroundWater2.setApprovalLevelDescription("Working");
 		discreteGroundWater2.setReadingQualifiers("[\"Static\"]");
 		discreteGroundWater2.setGroundWaterMeasurement("{}");
 		discreteGroundWater2.setDatum("NAVD88");
@@ -153,6 +157,8 @@ public abstract class BaseTestDao {
 		discreteGroundWater3.setIsValidReadings("true");
 		discreteGroundWater3.setReferencePointUniqueId("85352e7a8c734208907d67f512ac5b50");
 		discreteGroundWater3.setUseLocationDatumAsReference("false");
+		discreteGroundWater3.setApprovalLevel("1100");
+		discreteGroundWater3.setApprovalLevelDescription("Analyzed");
 		discreteGroundWater3.setReadingQualifiers("[\"Static\"]");
 		discreteGroundWater3.setGroundWaterMeasurement("{}");
 		discreteGroundWater3.setDatum("NAVD88");
@@ -188,6 +194,8 @@ public abstract class BaseTestDao {
 		discreteGroundWater4.setIsValidReadings("true");
 		discreteGroundWater4.setReferencePointUniqueId("e42ffa2b69a3488aa8567a7e0c31e8cc");
 		discreteGroundWater4.setUseLocationDatumAsReference("false");
+		discreteGroundWater4.setApprovalLevel("1300");
+		discreteGroundWater4.setApprovalLevelDescription("Admin Read-Only");
 		discreteGroundWater4.setReadingQualifiers("[\"Static\"]");
 		discreteGroundWater4.setGroundWaterMeasurement("{}");
 		discreteGroundWater4.setDatum("NAVD88");
@@ -224,6 +232,8 @@ public abstract class BaseTestDao {
 		discreteGroundWater5.setIsValidReadings("true");
 		discreteGroundWater5.setReferencePointUniqueId("e42ffa2b69a3488aa8567a7e0c31e8cc");
 		discreteGroundWater5.setUseLocationDatumAsReference("false");
+		discreteGroundWater5.setApprovalLevel("1200");
+		discreteGroundWater5.setApprovalLevelDescription("Approved");
 		discreteGroundWater5.setReadingQualifiers("[\"Static\"]");
 		discreteGroundWater5.setGroundWaterMeasurement("{}");
 		discreteGroundWater5.setDatum("NGVD89");
@@ -260,6 +270,8 @@ public abstract class BaseTestDao {
 		discreteGroundWater6.setIsValidReadings("true");
 		discreteGroundWater6.setReferencePointUniqueId("e42ffa2b69a3488aa8567a7e0c31e8cc");
 		discreteGroundWater6.setUseLocationDatumAsReference("false");
+		discreteGroundWater6.setApprovalLevel("1200");
+		discreteGroundWater6.setApprovalLevelDescription("Approved");
 		discreteGroundWater6.setReadingQualifiers("[\"Groundwater level affected by tide\",\"True value is below reported value due to local conditions\"]");
 		discreteGroundWater6.setGroundWaterMeasurement("{}");
 		discreteGroundWater6.setDatum("NGVD89");
