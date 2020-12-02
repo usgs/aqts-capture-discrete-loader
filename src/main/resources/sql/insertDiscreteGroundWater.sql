@@ -6,7 +6,7 @@ into discrete_ground_water_aqts(monitoring_location_id, agency_code, agency, sit
                                 time_measured_utc, display_result,
                                 vertical_datum_code, vertical_datum, site_status_code, site_status,
                                 measuring_agency_code, measuring_agency, date_time_accuracy_code, date_time_accuracy,
-                                level_accuracy_code, level_accuracy, measurement_source_code, measurement_source,
+                                level_accuracy_code, level_accuracy,
                                 measurement_method_code, measurement_method, approval_level, approval_level_description,
                                 result_measure_qualifiers)
 select null monitoring_location_id,
@@ -44,9 +44,6 @@ select null monitoring_location_id,
        ? date_time_accuracy,
        null level_accuracy_code,
        ? level_accuracy, /* uncertainty */
-       /* This will come in through the comments field as something like Source: Reporting Agency */
-       null measurement_source_code,
-       null measurement_source,
        ? measurement_method_code,
        ? measurement_method,
        ? approval_level,
