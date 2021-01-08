@@ -22,7 +22,7 @@ provider:
     "wma:application_id": "AQTS Capture Discrete Ground Water Loader"
     "wma:contact": "Jim Kreft jkreft@usgs.gov"
     "wma:environment": ${self:provider.stage}
-    "wma:taggingVersion": "1.0"
+    "wma:taggingVersion": ${opt:taggingVersion}
     "wma:costCenter": TBD
     "wma:organization": IOW
     "displayName": "Discrete Loader"
